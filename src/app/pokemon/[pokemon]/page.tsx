@@ -223,9 +223,9 @@ export default async function PokemonDetailPage({
                 ? URLS.pokemonDetail({ name: nextPokemon.name })
                 : URLS.home()
             }
-            className="flex items-center py-2 px-2 gap-1 min-w-40 hover:bg-card-background/60 active:bg-card-background/60 transition-[background] duration-150"
+            className="flex items-center py-2 px-2 gap-1 w-40 hover:bg-card-background/60 active:bg-card-background/60 transition-[background] duration-150"
           >
-            <span className="flex-1 text-center">
+            <span className="flex-1 text-center truncate">
               {nextPokemon
                 ? nextPokemon.pokemon_v2_pokemonspeciesname[0]!.name
                 : "Pokémon"}
@@ -241,7 +241,7 @@ export default async function PokemonDetailPage({
             ) : (
               <span className="w-4" />
             )}
-            <ChevronRight className="w-4" />
+            <ChevronRight className="w-4 shrink-0" />
           </AppLink>
         </div>
       </div>
