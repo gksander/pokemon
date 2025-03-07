@@ -1,0 +1,3717 @@
+{
+  "bulbasaur": {
+    "lightVibrant": "#94ccac"
+  },
+  "ivysaur": {
+    "lightVibrant": "#f0a5b0"
+  },
+  "venusaur": {
+    "lightVibrant": "#f47c94"
+  },
+  "charmander": {
+    "lightVibrant": "#f4d985"
+  },
+  "charmeleon": {
+    "lightVibrant": "#fadb83"
+  },
+  "charizard": {
+    "lightVibrant": "#fcac6c"
+  },
+  "squirtle": {
+    "lightVibrant": "#94ccdc"
+  },
+  "wartortle": {
+    "lightVibrant": "#fbf3d7"
+  },
+  "blastoise": {
+    "lightVibrant": "#90b8e4"
+  },
+  "caterpie": {
+    "lightVibrant": "#fce396"
+  },
+  "metapod": {
+    "lightVibrant": "#b9dc96"
+  },
+  "butterfree": {
+    "lightVibrant": "#ecf4fc"
+  },
+  "weedle": {
+    "lightVibrant": "#db92ba"
+  },
+  "kakuna": {
+    "lightVibrant": "#f8e381"
+  },
+  "beedrill": {
+    "lightVibrant": "#ecd45c"
+  },
+  "pidgey": {
+    "lightVibrant": "#fcecb4"
+  },
+  "pidgeotto": {
+    "lightVibrant": "#f0a688"
+  },
+  "pidgeot": {
+    "lightVibrant": "#f5d999"
+  },
+  "rattata": {
+    "lightVibrant": "#dcc4a4"
+  },
+  "raticate": {
+    "lightVibrant": "#fce4bc"
+  },
+  "spearow": {
+    "lightVibrant": "#e68c84"
+  },
+  "fearow": {
+    "lightVibrant": "#e47c65"
+  },
+  "ekans": {
+    "lightVibrant": "#e9d68c"
+  },
+  "arbok": {
+    "lightVibrant": "#d9a49f"
+  },
+  "pikachu": {
+    "lightVibrant": "#f4d47c"
+  },
+  "raichu": {
+    "lightVibrant": "#fbe27f"
+  },
+  "sandshrew": {
+    "lightVibrant": "#eccc7c"
+  },
+  "sandslash": {
+    "lightVibrant": "#eccc74"
+  },
+  "nidoran-f": {
+    "lightVibrant": "#ccd4eb"
+  },
+  "nidorina": {
+    "lightVibrant": "#a4c4d4"
+  },
+  "nidoqueen": {
+    "lightVibrant": "#ece0be"
+  },
+  "nidoran-m": {
+    "lightVibrant": "#a2d7d2"
+  },
+  "nidorino": {
+    "lightVibrant": "#ccaccc"
+  },
+  "nidoking": {
+    "lightVibrant": "#9dcfdb"
+  },
+  "clefairy": {
+    "lightVibrant": "#fcccd4"
+  },
+  "clefable": {
+    "lightVibrant": "#fcdcd4"
+  },
+  "vulpix": {
+    "lightVibrant": "#eaa47c"
+  },
+  "ninetales": {
+    "lightVibrant": "#f4eca4"
+  },
+  "jigglypuff": {
+    "lightVibrant": "#fcd3db"
+  },
+  "wigglytuff": {
+    "lightVibrant": "#fbdce4"
+  },
+  "zubat": {
+    "lightVibrant": "#88accc"
+  },
+  "golbat": {
+    "lightVibrant": "#88b4d4"
+  },
+  "oddish": {
+    "lightVibrant": "#ca8998"
+  },
+  "gloom": {
+    "lightVibrant": "#dd987e"
+  },
+  "vileplume": {
+    "lightVibrant": "#f49c94"
+  },
+  "paras": {
+    "lightVibrant": "#f1bc7b"
+  },
+  "parasect": {
+    "lightVibrant": "#f0c192"
+  },
+  "venonat": {
+    "lightVibrant": "#ec9cc4"
+  },
+  "venomoth": {
+    "lightVibrant": "#ececfc"
+  },
+  "diglett": {
+    "lightVibrant": "#cc94b2"
+  },
+  "dugtrio": {
+    "lightVibrant": "#d494bc"
+  },
+  "meowth": {
+    "lightVibrant": "#fcf1d4"
+  },
+  "persian": {
+    "lightVibrant": "#f4dcb4"
+  },
+  "psyduck": {
+    "lightVibrant": "#f4cd87"
+  },
+  "golduck": {
+    "lightVibrant": "#7cacd4"
+  },
+  "mankey": {
+    "lightVibrant": "#fcecdc"
+  },
+  "primeape": {
+    "lightVibrant": "#fcebdc"
+  },
+  "growlithe": {
+    "lightVibrant": "#eab48c"
+  },
+  "arcanine": {
+    "lightVibrant": "#f4d4ad"
+  },
+  "poliwag": {
+    "lightVibrant": "#9cbcdc"
+  },
+  "poliwhirl": {
+    "lightVibrant": "#e4ecfc"
+  },
+  "poliwrath": {
+    "lightVibrant": "#e4ecfc"
+  },
+  "abra": {
+    "lightVibrant": "#f4e88c"
+  },
+  "kadabra": {
+    "lightVibrant": "#fcec6c"
+  },
+  "alakazam": {
+    "lightVibrant": "#f1e387"
+  },
+  "machop": {
+    "lightVibrant": "#a4c4d4"
+  },
+  "machoke": {
+    "lightVibrant": "#dec39c"
+  },
+  "machamp": {
+    "lightVibrant": "#ded2ab"
+  },
+  "bellsprout": {
+    "lightVibrant": "#f3ee98"
+  },
+  "weepinbell": {
+    "lightVibrant": "#f2f18e"
+  },
+  "victreebel": {
+    "lightVibrant": "#f2ee83"
+  },
+  "tentacool": {
+    "lightVibrant": "#94caea"
+  },
+  "tentacruel": {
+    "lightVibrant": "#8ccbeb"
+  },
+  "geodude": {
+    "lightVibrant": "#c3c3b6"
+  },
+  "graveler": {
+    "lightVibrant": "#e6a9bc"
+  },
+  "golem": {
+    "lightVibrant": "#eccada"
+  },
+  "ponyta": {
+    "lightVibrant": "#fcfcd4"
+  },
+  "rapidash": {
+    "lightVibrant": "#f47757"
+  },
+  "slowpoke": {
+    "lightVibrant": "#e4abbc"
+  },
+  "slowbro": {
+    "lightVibrant": "#e4acbc"
+  },
+  "magnemite": {
+    "lightVibrant": "#89b7c8"
+  },
+  "magneton": {
+    "lightVibrant": "#9cc9dc"
+  },
+  "farfetchd": null,
+  "doduo": {
+    "lightVibrant": "#dcb38d"
+  },
+  "dodrio": {
+    "lightVibrant": "#e79d94"
+  },
+  "seel": {
+    "lightVibrant": "#ecdcac"
+  },
+  "dewgong": {
+    "lightVibrant": "#ecf4fc"
+  },
+  "grimer": {
+    "lightVibrant": "#c2aacf"
+  },
+  "muk": {
+    "lightVibrant": "#c1b1c8"
+  },
+  "shellder": {
+    "lightVibrant": "#aaaace"
+  },
+  "cloyster": {
+    "lightVibrant": "#b4b1c8"
+  },
+  "gastly": {
+    "lightVibrant": "#dd9bcd"
+  },
+  "haunter": {
+    "lightVibrant": "#d0a8bb"
+  },
+  "gengar": {
+    "lightVibrant": "#eba099"
+  },
+  "onix": {
+    "lightVibrant": "#b3b6c5"
+  },
+  "drowzee": {
+    "lightVibrant": "#e7d489"
+  },
+  "hypno": {
+    "lightVibrant": "#fae987"
+  },
+  "krabby": {
+    "lightVibrant": "#f3b08a"
+  },
+  "kingler": {
+    "lightVibrant": "#f3b697"
+  },
+  "voltorb": {
+    "lightVibrant": "#e49484"
+  },
+  "electrode": {
+    "lightVibrant": "#ea9c90"
+  },
+  "exeggcute": {
+    "lightVibrant": "#fce4ec"
+  },
+  "exeggutor": {
+    "lightVibrant": "#f5f1c8"
+  },
+  "cubone": {
+    "lightVibrant": "#dcbc8c"
+  },
+  "marowak": {
+    "lightVibrant": "#d4ac84"
+  },
+  "hitmonlee": {
+    "lightVibrant": "#e0d496"
+  },
+  "hitmonchan": {
+    "lightVibrant": "#ebaaa3"
+  },
+  "lickitung": {
+    "lightVibrant": "#f4bbc4"
+  },
+  "koffing": {
+    "lightVibrant": "#ccc791"
+  },
+  "weezing": {
+    "lightVibrant": "#bdafca"
+  },
+  "rhyhorn": {
+    "lightVibrant": "#b0b6c9"
+  },
+  "rhydon": {
+    "lightVibrant": "#d0bca9"
+  },
+  "chansey": {
+    "lightVibrant": "#fcdaea"
+  },
+  "tangela": {
+    "lightVibrant": "#f0b09c"
+  },
+  "kangaskhan": {
+    "lightVibrant": "#f4ecb6"
+  },
+  "horsea": {
+    "lightVibrant": "#93d4f4"
+  },
+  "seadra": {
+    "lightVibrant": "#94d4ec"
+  },
+  "goldeen": {
+    "lightVibrant": "#ec8c6c"
+  },
+  "seaking": {
+    "lightVibrant": "#e8a393"
+  },
+  "staryu": {
+    "lightVibrant": "#f8ea9c"
+  },
+  "starmie": {
+    "lightVibrant": "#f8e37e"
+  },
+  "mr-mime": {
+    "lightVibrant": "#ef8aa1"
+  },
+  "scyther": {
+    "lightVibrant": "#bfdc95"
+  },
+  "jynx": {
+    "lightVibrant": "#f8f2c4"
+  },
+  "electabuzz": {
+    "lightVibrant": "#fcd484"
+  },
+  "magmar": {
+    "lightVibrant": "#fcdc7c"
+  },
+  "pinsir": {
+    "lightVibrant": "#c5b5b4"
+  },
+  "tauros": {
+    "lightVibrant": "#e4b474"
+  },
+  "magikarp": {
+    "lightVibrant": "#f6c984"
+  },
+  "gyarados": {
+    "lightVibrant": "#68bfe6"
+  },
+  "lapras": {
+    "lightVibrant": "#80c5e5"
+  },
+  "ditto": {
+    "lightVibrant": "#ccb4dc"
+  },
+  "eevee": {
+    "lightVibrant": "#e4c296"
+  },
+  "vaporeon": {
+    "lightVibrant": "#8fd4e3"
+  },
+  "jolteon": {
+    "lightVibrant": "#fcd472"
+  },
+  "flareon": {
+    "lightVibrant": "#f4e29f"
+  },
+  "porygon": {
+    "lightVibrant": "#f4acbc"
+  },
+  "omanyte": {
+    "lightVibrant": "#b4dee9"
+  },
+  "omastar": {
+    "lightVibrant": "#a4d4e4"
+  },
+  "kabuto": {
+    "lightVibrant": "#f3cb88"
+  },
+  "kabutops": {
+    "lightVibrant": "#c49f71"
+  },
+  "aerodactyl": {
+    "lightVibrant": "#e1bebc"
+  },
+  "snorlax": {
+    "lightVibrant": "#f4e4dc"
+  },
+  "articuno": {
+    "lightVibrant": "#7cbce4"
+  },
+  "zapdos": {
+    "lightVibrant": "#fbdc7c"
+  },
+  "moltres": {
+    "lightVibrant": "#fbab7c"
+  },
+  "dratini": {
+    "lightVibrant": "#acc4e3"
+  },
+  "dragonair": {
+    "lightVibrant": "#8cb7e4"
+  },
+  "dragonite": {
+    "lightVibrant": "#f4c489"
+  },
+  "mewtwo": {
+    "lightVibrant": "#bfb8c0"
+  },
+  "mew": {
+    "lightVibrant": "#fcccd7"
+  },
+  "chikorita": {
+    "lightVibrant": "#d4e4ac"
+  },
+  "bayleef": {
+    "lightVibrant": "#fce49c"
+  },
+  "meganium": {
+    "lightVibrant": "#fade83"
+  },
+  "cyndaquil": {
+    "lightVibrant": "#f4dca4"
+  },
+  "quilava": {
+    "lightVibrant": "#fce4a4"
+  },
+  "typhlosion": {
+    "lightVibrant": "#fae99b"
+  },
+  "totodile": {
+    "lightVibrant": "#d7b394"
+  },
+  "croconaw": {
+    "lightVibrant": "#f0d993"
+  },
+  "feraligatr": {
+    "lightVibrant": "#6cccec"
+  },
+  "sentret": {
+    "lightVibrant": "#f6ebd2"
+  },
+  "furret": {
+    "lightVibrant": "#fcdcbc"
+  },
+  "hoothoot": {
+    "lightVibrant": "#d1b999"
+  },
+  "noctowl": {
+    "lightVibrant": "#d9cba0"
+  },
+  "ledyba": {
+    "lightVibrant": "#fbefac"
+  },
+  "ledian": {
+    "lightVibrant": "#f1dea1"
+  },
+  "spinarak": {
+    "lightVibrant": "#f1d276"
+  },
+  "ariados": {
+    "lightVibrant": "#f0c076"
+  },
+  "crobat": {
+    "lightVibrant": "#ecd58c"
+  },
+  "chinchou": {
+    "lightVibrant": "#ead882"
+  },
+  "lanturn": {
+    "lightVibrant": "#e4ce84"
+  },
+  "pichu": {
+    "lightVibrant": "#fcec94"
+  },
+  "cleffa": {
+    "lightVibrant": "#fcd4cc"
+  },
+  "igglybuff": {
+    "lightVibrant": "#e8998c"
+  },
+  "togepi": {
+    "lightVibrant": "#fcebc1"
+  },
+  "togetic": {
+    "lightVibrant": "#d7a19f"
+  },
+  "natu": {
+    "lightVibrant": "#e87480"
+  },
+  "xatu": {
+    "lightVibrant": "#e67172"
+  },
+  "mareep": {
+    "lightVibrant": "#f7e9c2"
+  },
+  "flaaffy": {
+    "lightVibrant": "#f3a4bc"
+  },
+  "ampharos": {
+    "lightVibrant": "#f5dc85"
+  },
+  "bellossom": {
+    "lightVibrant": "#f8dd87"
+  },
+  "marill": {
+    "lightVibrant": "#74ccf4"
+  },
+  "azumarill": {
+    "lightVibrant": "#94cce0"
+  },
+  "sudowoodo": {
+    "lightVibrant": "#db9192"
+  },
+  "politoed": {
+    "lightVibrant": "#f7e98c"
+  },
+  "hoppip": {
+    "lightVibrant": "#f494ac"
+  },
+  "skiploom": {
+    "lightVibrant": "#f7ec8c"
+  },
+  "jumpluff": {
+    "lightVibrant": "#fbecc3"
+  },
+  "aipom": {
+    "lightVibrant": "#f4e2ad"
+  },
+  "sunkern": {
+    "lightVibrant": "#efdb89"
+  },
+  "sunflora": {
+    "lightVibrant": "#f9db88"
+  },
+  "yanma": {
+    "lightVibrant": "#de8067"
+  },
+  "wooper": {
+    "lightVibrant": "#96c4e3"
+  },
+  "quagsire": {
+    "lightVibrant": "#9ed1e4"
+  },
+  "espeon": {
+    "lightVibrant": "#cc8c9c"
+  },
+  "umbreon": {
+    "lightVibrant": "#eed18c"
+  },
+  "murkrow": {
+    "lightVibrant": "#ecd197"
+  },
+  "slowking": {
+    "lightVibrant": "#f3b1aa"
+  },
+  "misdreavus": {
+    "lightVibrant": "#f3d49d"
+  },
+  "unown": {
+    "lightVibrant": "#94c3e5"
+  },
+  "wobbuffet": {
+    "lightVibrant": "#83c3dc"
+  },
+  "girafarig": {
+    "lightVibrant": "#fbcc6b"
+  },
+  "pineco": {
+    "lightVibrant": "#de7c74"
+  },
+  "forretress": {
+    "lightVibrant": "#f4dcdc"
+  },
+  "dunsparce": {
+    "lightVibrant": "#fcec84"
+  },
+  "gligar": {
+    "lightVibrant": "#e4a1bd"
+  },
+  "steelix": {
+    "lightVibrant": "#aebaca"
+  },
+  "snubbull": {
+    "lightVibrant": "#ef8c9b"
+  },
+  "granbull": {
+    "lightVibrant": "#e4b4d4"
+  },
+  "qwilfish": {
+    "lightVibrant": "#dde4ac"
+  },
+  "scizor": {
+    "lightVibrant": "#f0c873"
+  },
+  "shuckle": {
+    "lightVibrant": "#f5da82"
+  },
+  "heracross": {
+    "lightVibrant": "#a4c0d5"
+  },
+  "sneasel": {
+    "lightVibrant": "#ee8985"
+  },
+  "teddiursa": {
+    "lightVibrant": "#f0dc8c"
+  },
+  "ursaring": {
+    "lightVibrant": "#efd98a"
+  },
+  "slugma": {
+    "lightVibrant": "#f6e88c"
+  },
+  "magcargo": {
+    "lightVibrant": "#f7e797"
+  },
+  "swinub": {
+    "lightVibrant": "#de848b"
+  },
+  "piloswine": {
+    "lightVibrant": "#e18c92"
+  },
+  "corsola": {
+    "lightVibrant": "#f495a4"
+  },
+  "remoraid": {
+    "lightVibrant": "#fcf7f3"
+  },
+  "octillery": {
+    "lightVibrant": "#f5dc79"
+  },
+  "delibird": {
+    "lightVibrant": "#d0bc7a"
+  },
+  "mantine": {
+    "lightVibrant": "#c3b5bc"
+  },
+  "skarmory": {
+    "lightVibrant": "#c4d2ec"
+  },
+  "houndour": {
+    "lightVibrant": "#e5a278"
+  },
+  "houndoom": {
+    "lightVibrant": "#e09570"
+  },
+  "kingdra": {
+    "lightVibrant": "#98cee0"
+  },
+  "phanpy": {
+    "lightVibrant": "#ea8e78"
+  },
+  "donphan": {
+    "lightVibrant": "#acc1cc"
+  },
+  "porygon2": {
+    "lightVibrant": "#e47c91"
+  },
+  "stantler": {
+    "lightVibrant": "#efda88"
+  },
+  "smeargle": {
+    "lightVibrant": "#e4a09c"
+  },
+  "tyrogue": {
+    "lightVibrant": "#ecd4dc"
+  },
+  "hitmontop": {
+    "lightVibrant": "#d4b5a2"
+  },
+  "smoochum": {
+    "lightVibrant": "#f4e38c"
+  },
+  "elekid": {
+    "lightVibrant": "#fce484"
+  },
+  "magby": {
+    "lightVibrant": "#eadf94"
+  },
+  "miltank": {
+    "lightVibrant": "#fcbbc3"
+  },
+  "blissey": {
+    "lightVibrant": "#f4a4bc"
+  },
+  "raikou": {
+    "lightVibrant": "#f6dc7b"
+  },
+  "entei": {
+    "lightVibrant": "#e4b977"
+  },
+  "suicune": {
+    "lightVibrant": "#80c4cc"
+  },
+  "larvitar": {
+    "lightVibrant": "#c47272"
+  },
+  "pupitar": {
+    "lightVibrant": "#9cacd2"
+  },
+  "tyranitar": {
+    "lightVibrant": "#e1bbb8"
+  },
+  "lugia": {
+    "lightVibrant": "#99acdc"
+  },
+  "ho-oh": {
+    "lightVibrant": "#f1dc86"
+  },
+  "celebi": {
+    "lightVibrant": "#dcecc4"
+  },
+  "treecko": {
+    "lightVibrant": "#fbe28a"
+  },
+  "grovyle": {
+    "lightVibrant": "#ec9293"
+  },
+  "sceptile": {
+    "lightVibrant": "#ecd798"
+  },
+  "torchic": {
+    "lightVibrant": "#f6c287"
+  },
+  "combusken": {
+    "lightVibrant": "#fcec9d"
+  },
+  "blaziken": {
+    "lightVibrant": "#fbdf7d"
+  },
+  "mudkip": {
+    "lightVibrant": "#f4b464"
+  },
+  "marshtomp": {
+    "lightVibrant": "#efa17a"
+  },
+  "swampert": {
+    "lightVibrant": "#e9b790"
+  },
+  "poochyena": {
+    "lightVibrant": "#f4e494"
+  },
+  "mightyena": {
+    "lightVibrant": "#c8b07c"
+  },
+  "zigzagoon": {
+    "lightVibrant": "#e9dacb"
+  },
+  "linoone": {
+    "lightVibrant": "#e4ccc4"
+  },
+  "wurmple": {
+    "lightVibrant": "#fae8a2"
+  },
+  "silcoon": {
+    "lightVibrant": "#dce4f4"
+  },
+  "beautifly": {
+    "lightVibrant": "#fcdc7c"
+  },
+  "cascoon": {
+    "lightVibrant": "#e68f99"
+  },
+  "dustox": {
+    "lightVibrant": "#f1cf80"
+  },
+  "lotad": {
+    "lightVibrant": "#f9e29a"
+  },
+  "lombre": {
+    "lightVibrant": "#db858b"
+  },
+  "ludicolo": {
+    "lightVibrant": "#fcecbc"
+  },
+  "seedot": {
+    "lightVibrant": "#ecdcbc"
+  },
+  "nuzleaf": {
+    "lightVibrant": "#cbb9ad"
+  },
+  "shiftry": {
+    "lightVibrant": "#d1b092"
+  },
+  "taillow": {
+    "lightVibrant": "#ec939c"
+  },
+  "swellow": {
+    "lightVibrant": "#f3d793"
+  },
+  "wingull": {
+    "lightVibrant": "#99cce4"
+  },
+  "pelipper": {
+    "lightVibrant": "#f4dc9b"
+  },
+  "ralts": {
+    "lightVibrant": "#9cd3a4"
+  },
+  "kirlia": {
+    "lightVibrant": "#e98c94"
+  },
+  "gardevoir": {
+    "lightVibrant": "#a4d39d"
+  },
+  "surskit": {
+    "lightVibrant": "#8cd4f4"
+  },
+  "masquerain": {
+    "lightVibrant": "#f3ab93"
+  },
+  "shroomish": {
+    "lightVibrant": "#e4d4bc"
+  },
+  "breloom": {
+    "lightVibrant": "#ea949c"
+  },
+  "slakoth": {
+    "lightVibrant": "#d9a8a9"
+  },
+  "vigoroth": {
+    "lightVibrant": "#dca6ab"
+  },
+  "slaking": {
+    "lightVibrant": "#f4f6fb"
+  },
+  "nincada": {
+    "lightVibrant": "#dce4bc"
+  },
+  "ninjask": {
+    "lightVibrant": "#e3c983"
+  },
+  "shedinja": {
+    "lightVibrant": "#f1d09a"
+  },
+  "whismur": {
+    "lightVibrant": "#fbd486"
+  },
+  "loudred": {
+    "lightVibrant": "#f7db98"
+  },
+  "exploud": {
+    "lightVibrant": "#f1d487"
+  },
+  "makuhita": {
+    "lightVibrant": "#fce49c"
+  },
+  "hariyama": {
+    "lightVibrant": "#fbd976"
+  },
+  "azurill": {
+    "lightVibrant": "#8eccec"
+  },
+  "nosepass": {
+    "lightVibrant": "#d66d77"
+  },
+  "skitty": {
+    "lightVibrant": "#fbf8c0"
+  },
+  "delcatty": {
+    "lightVibrant": "#f3cb9b"
+  },
+  "sableye": {
+    "lightVibrant": "#84bce4"
+  },
+  "mawile": {
+    "lightVibrant": "#f5de9b"
+  },
+  "aron": {
+    "lightVibrant": "#6cbcdd"
+  },
+  "lairon": {
+    "lightVibrant": "#74c5e2"
+  },
+  "aggron": {
+    "lightVibrant": "#caafb6"
+  },
+  "meditite": {
+    "lightVibrant": "#7acaf1"
+  },
+  "medicham": {
+    "lightVibrant": "#f9d183"
+  },
+  "electrike": {
+    "lightVibrant": "#e6cc80"
+  },
+  "manectric": {
+    "lightVibrant": "#ecdca2"
+  },
+  "plusle": {
+    "lightVibrant": "#f4ecc3"
+  },
+  "minun": {
+    "lightVibrant": "#f4ecb4"
+  },
+  "volbeat": {
+    "lightVibrant": "#84b4f4"
+  },
+  "illumise": {
+    "lightVibrant": "#f1d07a"
+  },
+  "roselia": {
+    "lightVibrant": "#fce49c"
+  },
+  "gulpin": {
+    "lightVibrant": "#f9d876"
+  },
+  "swalot": {
+    "lightVibrant": "#f0d280"
+  },
+  "carvanha": {
+    "lightVibrant": "#fce486"
+  },
+  "sharpedo": {
+    "lightVibrant": "#d3a1b9"
+  },
+  "wailmer": {
+    "lightVibrant": "#fcdca4"
+  },
+  "wailord": {
+    "lightVibrant": "#87bede"
+  },
+  "numel": {
+    "lightVibrant": "#fcdc8c"
+  },
+  "camerupt": {
+    "lightVibrant": "#e48c84"
+  },
+  "torkoal": {
+    "lightVibrant": "#eb907d"
+  },
+  "spoink": {
+    "lightVibrant": "#eca4b4"
+  },
+  "grumpig": {
+    "lightVibrant": "#f2bac4"
+  },
+  "spinda": {
+    "lightVibrant": "#e46f75"
+  },
+  "trapinch": {
+    "lightVibrant": "#eca483"
+  },
+  "vibrava": {
+    "lightVibrant": "#d0d095"
+  },
+  "flygon": {
+    "lightVibrant": "#e4848c"
+  },
+  "cacnea": {
+    "lightVibrant": "#f0e399"
+  },
+  "cacturne": {
+    "lightVibrant": "#efd689"
+  },
+  "swablu": {
+    "lightVibrant": "#7cccf4"
+  },
+  "altaria": {
+    "lightVibrant": "#86d2ea"
+  },
+  "zangoose": {
+    "lightVibrant": "#da8ea3"
+  },
+  "seviper": {
+    "lightVibrant": "#fce488"
+  },
+  "lunatone": {
+    "lightVibrant": "#e4dca4"
+  },
+  "solrock": {
+    "lightVibrant": "#f2d889"
+  },
+  "barboach": {
+    "lightVibrant": "#59b4e4"
+  },
+  "whiscash": {
+    "lightVibrant": "#83ccec"
+  },
+  "corphish": {
+    "lightVibrant": "#f3a58b"
+  },
+  "crawdaunt": {
+    "lightVibrant": "#fbe597"
+  },
+  "baltoy": {
+    "lightVibrant": "#ec7c7c"
+  },
+  "claydol": {
+    "lightVibrant": "#e6989f"
+  },
+  "lileep": {
+    "lightVibrant": "#fcccc4"
+  },
+  "cradily": {
+    "lightVibrant": "#fbe99b"
+  },
+  "anorith": {
+    "lightVibrant": "#ec747c"
+  },
+  "armaldo": {
+    "lightVibrant": "#edd396"
+  },
+  "feebas": {
+    "lightVibrant": "#dcc49c"
+  },
+  "milotic": {
+    "lightVibrant": "#fcecc4"
+  },
+  "castform": {
+    "lightVibrant": "#e4e4f4"
+  },
+  "kecleon": {
+    "lightVibrant": "#f7d789"
+  },
+  "shuppet": {
+    "lightVibrant": "#98d0ef"
+  },
+  "banette": {
+    "lightVibrant": "#fce489"
+  },
+  "duskull": {
+    "lightVibrant": "#e99ea1"
+  },
+  "dusclops": {
+    "lightVibrant": "#bcbcbc"
+  },
+  "tropius": {
+    "lightVibrant": "#fae08d"
+  },
+  "chimecho": {
+    "lightVibrant": "#e6ce99"
+  },
+  "absol": {
+    "lightVibrant": "#e4e4f4"
+  },
+  "wynaut": {
+    "lightVibrant": "#f3beba"
+  },
+  "snorunt": {
+    "lightVibrant": "#f9e49e"
+  },
+  "glalie": {
+    "lightVibrant": "#b5c0dc"
+  },
+  "spheal": {
+    "lightVibrant": "#fcf4e3"
+  },
+  "sealeo": {
+    "lightVibrant": "#84d4f4"
+  },
+  "walrein": {
+    "lightVibrant": "#bedaf1"
+  },
+  "clamperl": {
+    "lightVibrant": "#9cd4f0"
+  },
+  "huntail": {
+    "lightVibrant": "#92d3f4"
+  },
+  "gorebyss": {
+    "lightVibrant": "#f4bbd4"
+  },
+  "relicanth": {
+    "lightVibrant": "#d86576"
+  },
+  "luvdisc": {
+    "lightVibrant": "#e48c9c"
+  },
+  "bagon": {
+    "lightVibrant": "#e5cb84"
+  },
+  "shelgon": {
+    "lightVibrant": "#fae9ab"
+  },
+  "salamence": {
+    "lightVibrant": "#84c4dc"
+  },
+  "beldum": {
+    "lightVibrant": "#da747a"
+  },
+  "metang": {
+    "lightVibrant": "#8ab4cc"
+  },
+  "metagross": {
+    "lightVibrant": "#9fc7d2"
+  },
+  "regirock": {
+    "lightVibrant": "#dc8c70"
+  },
+  "regice": {
+    "lightVibrant": "#a1d8e9"
+  },
+  "registeel": {
+    "lightVibrant": "#f08484"
+  },
+  "latias": {
+    "lightVibrant": "#e38989"
+  },
+  "latios": {
+    "lightVibrant": "#9ac5e1"
+  },
+  "kyogre": {
+    "lightVibrant": "#84b4dc"
+  },
+  "groudon": {
+    "lightVibrant": "#f0c88a"
+  },
+  "rayquaza": {
+    "lightVibrant": "#d7b6a1"
+  },
+  "jirachi": {
+    "lightVibrant": "#fce494"
+  },
+  "deoxys-normal": null,
+  "turtwig": {
+    "lightVibrant": "#f6d977"
+  },
+  "grotle": {
+    "lightVibrant": "#dcc47d"
+  },
+  "torterra": {
+    "lightVibrant": "#e49c94"
+  },
+  "chimchar": {
+    "lightVibrant": "#f4dca3"
+  },
+  "monferno": {
+    "lightVibrant": "#fccc4b"
+  },
+  "infernape": {
+    "lightVibrant": "#f2dc7e"
+  },
+  "piplup": {
+    "lightVibrant": "#f4dc81"
+  },
+  "prinplup": {
+    "lightVibrant": "#f2d47d"
+  },
+  "empoleon": {
+    "lightVibrant": "#e3be82"
+  },
+  "starly": {
+    "lightVibrant": "#ebad82"
+  },
+  "staravia": {
+    "lightVibrant": "#edb78c"
+  },
+  "staraptor": {
+    "lightVibrant": "#f2af65"
+  },
+  "bidoof": {
+    "lightVibrant": "#eed9a8"
+  },
+  "bibarel": {
+    "lightVibrant": "#fbecad"
+  },
+  "kricketot": {
+    "lightVibrant": "#f9e1a7"
+  },
+  "kricketune": {
+    "lightVibrant": "#decb97"
+  },
+  "shinx": {
+    "lightVibrant": "#eecc6c"
+  },
+  "luxio": {
+    "lightVibrant": "#8cc4dc"
+  },
+  "luxray": {
+    "lightVibrant": "#8cc4d5"
+  },
+  "budew": {
+    "lightVibrant": "#e4ec75"
+  },
+  "roserade": {
+    "lightVibrant": "#ec949e"
+  },
+  "cranidos": {
+    "lightVibrant": "#9cbdd4"
+  },
+  "rampardos": {
+    "lightVibrant": "#9dbddb"
+  },
+  "shieldon": {
+    "lightVibrant": "#fcd38e"
+  },
+  "bastiodon": {
+    "lightVibrant": "#ebcc82"
+  },
+  "burmy": {
+    "lightVibrant": "#efdea9"
+  },
+  "wormadam-plant": {
+    "lightVibrant": "#b4db9d"
+  },
+  "mothim": {
+    "lightVibrant": "#fcdc6c"
+  },
+  "combee": {
+    "lightVibrant": "#fcd464"
+  },
+  "vespiquen": {
+    "lightVibrant": "#fbcc5d"
+  },
+  "pachirisu": {
+    "lightVibrant": "#94dce4"
+  },
+  "buizel": {
+    "lightVibrant": "#f6d480"
+  },
+  "floatzel": {
+    "lightVibrant": "#fcecad"
+  },
+  "cherubi": {
+    "lightVibrant": "#eb8c94"
+  },
+  "cherrim": {
+    "lightVibrant": "#da9a9b"
+  },
+  "shellos": {
+    "lightVibrant": "#e494bc"
+  },
+  "gastrodon": {
+    "lightVibrant": "#ec9ec2"
+  },
+  "ambipom": {
+    "lightVibrant": "#fcecac"
+  },
+  "drifloon": {
+    "lightVibrant": "#f4dc7c"
+  },
+  "drifblim": {
+    "lightVibrant": "#edd177"
+  },
+  "buneary": {
+    "lightVibrant": "#fbecb4"
+  },
+  "lopunny": {
+    "lightVibrant": "#fce4ac"
+  },
+  "mismagius": {
+    "lightVibrant": "#ebd186"
+  },
+  "honchkrow": {
+    "lightVibrant": "#dbd19d"
+  },
+  "glameow": {
+    "lightVibrant": "#e7c073"
+  },
+  "purugly": {
+    "lightVibrant": "#ecce7a"
+  },
+  "chingling": {
+    "lightVibrant": "#ebd473"
+  },
+  "stunky": {
+    "lightVibrant": "#f5e4c3"
+  },
+  "skuntank": {
+    "lightVibrant": "#fbecc5"
+  },
+  "bronzor": {
+    "lightVibrant": "#ecc484"
+  },
+  "bronzong": {
+    "lightVibrant": "#8bccc1"
+  },
+  "bonsly": {
+    "lightVibrant": "#ebda80"
+  },
+  "mime-jr": {
+    "lightVibrant": "#fcdcec"
+  },
+  "happiny": {
+    "lightVibrant": "#fcd4d4"
+  },
+  "chatot": {
+    "lightVibrant": "#e69d6d"
+  },
+  "spiritomb": {
+    "lightVibrant": "#f6f19b"
+  },
+  "gible": {
+    "lightVibrant": "#74c4d4"
+  },
+  "gabite": {
+    "lightVibrant": "#db7354"
+  },
+  "garchomp": {
+    "lightVibrant": "#e7b741"
+  },
+  "munchlax": {
+    "lightVibrant": "#eedebb"
+  },
+  "riolu": {
+    "lightVibrant": "#87b6c6"
+  },
+  "lucario": {
+    "lightVibrant": "#e1d0af"
+  },
+  "hippopotas": {
+    "lightVibrant": "#dfcc90"
+  },
+  "hippowdon": {
+    "lightVibrant": "#ddd294"
+  },
+  "skorupi": {
+    "lightVibrant": "#7dbcc4"
+  },
+  "drapion": {
+    "lightVibrant": "#96cfe3"
+  },
+  "croagunk": {
+    "lightVibrant": "#e8a36c"
+  },
+  "toxicroak": {
+    "lightVibrant": "#e0cfb0"
+  },
+  "carnivine": {
+    "lightVibrant": "#bfdc91"
+  },
+  "finneon": {
+    "lightVibrant": "#dc8ca7"
+  },
+  "lumineon": {
+    "lightVibrant": "#b4dcdb"
+  },
+  "mantyke": {
+    "lightVibrant": "#a4d4e4"
+  },
+  "snover": {
+    "lightVibrant": "#adbccc"
+  },
+  "abomasnow": {
+    "lightVibrant": "#bdb5c4"
+  },
+  "weavile": {
+    "lightVibrant": "#ead883"
+  },
+  "magnezone": {
+    "lightVibrant": "#ec987e"
+  },
+  "lickilicky": {
+    "lightVibrant": "#ec9897"
+  },
+  "rhyperior": {
+    "lightVibrant": "#dc8444"
+  },
+  "tangrowth": {
+    "lightVibrant": "#ca6582"
+  },
+  "electivire": {
+    "lightVibrant": "#f4d385"
+  },
+  "magmortar": {
+    "lightVibrant": "#f7ca50"
+  },
+  "togekiss": {
+    "lightVibrant": "#acdce4"
+  },
+  "yanmega": {
+    "lightVibrant": "#ec8c7b"
+  },
+  "leafeon": {
+    "lightVibrant": "#fce4ab"
+  },
+  "glaceon": {
+    "lightVibrant": "#b4e4dc"
+  },
+  "gliscor": {
+    "lightVibrant": "#daab9f"
+  },
+  "mamoswine": {
+    "lightVibrant": "#d9bb9a"
+  },
+  "porygon-z": {
+    "lightVibrant": "#f0d492"
+  },
+  "gallade": {
+    "lightVibrant": "#d17484"
+  },
+  "probopass": {
+    "lightVibrant": "#94bad9"
+  },
+  "dusknoir": {
+    "lightVibrant": "#ec847c"
+  },
+  "froslass": {
+    "lightVibrant": "#9acbda"
+  },
+  "rotom": {
+    "lightVibrant": "#f5b096"
+  },
+  "uxie": {
+    "lightVibrant": "#f4d483"
+  },
+  "mesprit": {
+    "lightVibrant": "#ec94b4"
+  },
+  "azelf": {
+    "lightVibrant": "#b6d4eb"
+  },
+  "dialga": {
+    "lightVibrant": "#93d1de"
+  },
+  "palkia": {
+    "lightVibrant": "#f4ded7"
+  },
+  "heatran": {
+    "lightVibrant": "#f4c4a4"
+  },
+  "regigigas": {
+    "lightVibrant": "#f9dc89"
+  },
+  "giratina-altered": null,
+  "cresselia": {
+    "lightVibrant": "#f0c88c"
+  },
+  "phione": {
+    "lightVibrant": "#7cc4d3"
+  },
+  "manaphy": {
+    "lightVibrant": "#f2d48b"
+  },
+  "darkrai": {
+    "lightVibrant": "#d08176"
+  },
+  "shaymin-land": null,
+  "arceus": {
+    "lightVibrant": "#dbcfa1"
+  },
+  "victini": {
+    "lightVibrant": "#f79f75"
+  },
+  "snivy": {
+    "lightVibrant": "#f4f4bc"
+  },
+  "servine": {
+    "lightVibrant": "#f4f4d4"
+  },
+  "serperior": {
+    "lightVibrant": "#f4dc6c"
+  },
+  "tepig": {
+    "lightVibrant": "#f5d450"
+  },
+  "pignite": {
+    "lightVibrant": "#f4d14d"
+  },
+  "emboar": {
+    "lightVibrant": "#f39f4e"
+  },
+  "oshawott": {
+    "lightVibrant": "#f3e8b0"
+  },
+  "dewott": {
+    "lightVibrant": "#a2d6e4"
+  },
+  "samurott": {
+    "lightVibrant": "#dccc96"
+  },
+  "patrat": {
+    "lightVibrant": "#fad168"
+  },
+  "watchog": {
+    "lightVibrant": "#fccc30"
+  },
+  "lillipup": {
+    "lightVibrant": "#f4dc9c"
+  },
+  "herdier": {
+    "lightVibrant": "#f9e8c0"
+  },
+  "stoutland": {
+    "lightVibrant": "#f6e5ba"
+  },
+  "purrloin": {
+    "lightVibrant": "#f7f6c9"
+  },
+  "liepard": {
+    "lightVibrant": "#fbdc7a"
+  },
+  "pansage": {
+    "lightVibrant": "#f4da8b"
+  },
+  "simisage": {
+    "lightVibrant": "#f0d88d"
+  },
+  "pansear": {
+    "lightVibrant": "#f4da8c"
+  },
+  "simisear": {
+    "lightVibrant": "#f4d88c"
+  },
+  "panpour": {
+    "lightVibrant": "#f4dc8c"
+  },
+  "simipour": {
+    "lightVibrant": "#f3d98d"
+  },
+  "munna": {
+    "lightVibrant": "#ea8ea3"
+  },
+  "musharna": {
+    "lightVibrant": "#ec94a4"
+  },
+  "pidove": {
+    "lightVibrant": "#fbf0db"
+  },
+  "tranquill": {
+    "lightVibrant": "#dcc79d"
+  },
+  "unfezant": {
+    "lightVibrant": "#ce5e74"
+  },
+  "blitzle": {
+    "lightVibrant": "#70b8ce"
+  },
+  "zebstrika": {
+    "lightVibrant": "#dcc768"
+  },
+  "roggenrola": {
+    "lightVibrant": "#d4b660"
+  },
+  "boldore": {
+    "lightVibrant": "#f4946c"
+  },
+  "gigalith": {
+    "lightVibrant": "#f0b789"
+  },
+  "woobat": {
+    "lightVibrant": "#bddcf4"
+  },
+  "swoobat": {
+    "lightVibrant": "#bad5ea"
+  },
+  "drilbur": {
+    "lightVibrant": "#dd948f"
+  },
+  "excadrill": {
+    "lightVibrant": "#dc9494"
+  },
+  "audino": {
+    "lightVibrant": "#f4a4ac"
+  },
+  "timburr": {
+    "lightVibrant": "#ea8093"
+  },
+  "gurdurr": {
+    "lightVibrant": "#dc93bc"
+  },
+  "conkeldurr": {
+    "lightVibrant": "#d49fb4"
+  },
+  "tympole": {
+    "lightVibrant": "#82caee"
+  },
+  "palpitoad": {
+    "lightVibrant": "#f4dcab"
+  },
+  "seismitoad": {
+    "lightVibrant": "#95d4cc"
+  },
+  "throh": {
+    "lightVibrant": "#d4847b"
+  },
+  "sawk": {
+    "lightVibrant": "#a4d4d4"
+  },
+  "sewaddle": {
+    "lightVibrant": "#f5ce64"
+  },
+  "swadloon": {
+    "lightVibrant": "#f4e26a"
+  },
+  "leavanny": {
+    "lightVibrant": "#fce46c"
+  },
+  "venipede": {
+    "lightVibrant": "#ebb568"
+  },
+  "whirlipede": {
+    "lightVibrant": "#da9faa"
+  },
+  "scolipede": {
+    "lightVibrant": "#d0a084"
+  },
+  "cottonee": {
+    "lightVibrant": "#ebb584"
+  },
+  "whimsicott": {
+    "lightVibrant": "#efbe97"
+  },
+  "petilil": {
+    "lightVibrant": "#d4e48c"
+  },
+  "lilligant": {
+    "lightVibrant": "#cde2a4"
+  },
+  "basculin-red-striped": {
+    "lightVibrant": "#ee9482"
+  },
+  "sandile": {
+    "lightVibrant": "#dcbb8c"
+  },
+  "krokorok": {
+    "lightVibrant": "#e1989d"
+  },
+  "krookodile": {
+    "lightVibrant": "#cddceb"
+  },
+  "darumaka": {
+    "lightVibrant": "#fcdc8c"
+  },
+  "darmanitan-standard": null,
+  "maractus": {
+    "lightVibrant": "#ec94bd"
+  },
+  "dwebble": {
+    "lightVibrant": "#eca66b"
+  },
+  "crustle": {
+    "lightVibrant": "#e3ba95"
+  },
+  "scraggy": {
+    "lightVibrant": "#fcd175"
+  },
+  "scrafty": {
+    "lightVibrant": "#fbd682"
+  },
+  "sigilyph": {
+    "lightVibrant": "#f6cc7b"
+  },
+  "yamask": {
+    "lightVibrant": "#f1cc7e"
+  },
+  "cofagrigus": {
+    "lightVibrant": "#f7d593"
+  },
+  "tirtouga": {
+    "lightVibrant": "#82abd4"
+  },
+  "carracosta": {
+    "lightVibrant": "#74a4d3"
+  },
+  "archen": {
+    "lightVibrant": "#fcd484"
+  },
+  "archeops": {
+    "lightVibrant": "#f9d58e"
+  },
+  "trubbish": {
+    "lightVibrant": "#d06899"
+  },
+  "garbodor": {
+    "lightVibrant": "#d687a7"
+  },
+  "zorua": {
+    "lightVibrant": "#dc9ca0"
+  },
+  "zoroark": {
+    "lightVibrant": "#b86a61"
+  },
+  "minccino": {
+    "lightVibrant": "#d1797b"
+  },
+  "cinccino": {
+    "lightVibrant": "#e48a94"
+  },
+  "gothita": {
+    "lightVibrant": "#acdcf4"
+  },
+  "gothorita": {
+    "lightVibrant": "#5bbee3"
+  },
+  "gothitelle": {
+    "lightVibrant": "#e07464"
+  },
+  "solosis": {
+    "lightVibrant": "#ebe39c"
+  },
+  "duosion": {
+    "lightVibrant": "#e29c9c"
+  },
+  "reuniclus": {
+    "lightVibrant": "#e39c9c"
+  },
+  "ducklett": {
+    "lightVibrant": "#fae381"
+  },
+  "swanna": {
+    "lightVibrant": "#e9dc89"
+  },
+  "vanillite": {
+    "lightVibrant": "#acdcf4"
+  },
+  "vanillish": {
+    "lightVibrant": "#8ccff0"
+  },
+  "vanilluxe": {
+    "lightVibrant": "#d4ecfc"
+  },
+  "deerling": {
+    "lightVibrant": "#fbe484"
+  },
+  "sawsbuck": {
+    "lightVibrant": "#f2da94"
+  },
+  "emolga": {
+    "lightVibrant": "#ebd36b"
+  },
+  "karrablast": {
+    "lightVibrant": "#fad96f"
+  },
+  "escavalier": {
+    "lightVibrant": "#e27d85"
+  },
+  "foongus": {
+    "lightVibrant": "#e38678"
+  },
+  "amoonguss": {
+    "lightVibrant": "#d78597"
+  },
+  "frillish": {
+    "lightVibrant": "#afdbe4"
+  },
+  "jellicent": {
+    "lightVibrant": "#7bccf4"
+  },
+  "alomomola": {
+    "lightVibrant": "#ea95ac"
+  },
+  "joltik": {
+    "lightVibrant": "#fae46c"
+  },
+  "galvantula": {
+    "lightVibrant": "#fcdc7c"
+  },
+  "ferroseed": {
+    "lightVibrant": "#e5bf84"
+  },
+  "ferrothorn": {
+    "lightVibrant": "#f0bf88"
+  },
+  "klink": {
+    "lightVibrant": "#8eeae7"
+  },
+  "klang": {
+    "lightVibrant": "#9adfdd"
+  },
+  "klinklang": {
+    "lightVibrant": "#9bdddc"
+  },
+  "tynamo": {
+    "lightVibrant": "#e9e195"
+  },
+  "eelektrik": {
+    "lightVibrant": "#f6e25c"
+  },
+  "eelektross": {
+    "lightVibrant": "#faeb6e"
+  },
+  "elgyem": {
+    "lightVibrant": "#efae85"
+  },
+  "beheeyem": {
+    "lightVibrant": "#e49e96"
+  },
+  "litwick": {
+    "lightVibrant": "#9cacd4"
+  },
+  "lampent": {
+    "lightVibrant": "#e9d588"
+  },
+  "chandelure": {
+    "lightVibrant": "#f3e081"
+  },
+  "axew": {
+    "lightVibrant": "#cf625a"
+  },
+  "fraxure": {
+    "lightVibrant": "#d3939c"
+  },
+  "haxorus": {
+    "lightVibrant": "#d6c6a2"
+  },
+  "cubchoo": {
+    "lightVibrant": "#bce4fc"
+  },
+  "beartic": {
+    "lightVibrant": "#a3dcf4"
+  },
+  "cryogonal": {
+    "lightVibrant": "#abcfee"
+  },
+  "shelmet": {
+    "lightVibrant": "#ea778c"
+  },
+  "accelgor": {
+    "lightVibrant": "#f4949c"
+  },
+  "stunfisk": {
+    "lightVibrant": "#f9e07e"
+  },
+  "mienfoo": {
+    "lightVibrant": "#fcf49e"
+  },
+  "mienshao": {
+    "lightVibrant": "#f4cc8c"
+  },
+  "druddigon": {
+    "lightVibrant": "#cc6a73"
+  },
+  "golett": {
+    "lightVibrant": "#e2ca97"
+  },
+  "golurk": {
+    "lightVibrant": "#d6c2a2"
+  },
+  "pawniard": {
+    "lightVibrant": "#d09d83"
+  },
+  "bisharp": {
+    "lightVibrant": "#e4bf71"
+  },
+  "bouffalant": {
+    "lightVibrant": "#e2d1a7"
+  },
+  "rufflet": {
+    "lightVibrant": "#fcecd4"
+  },
+  "braviary": {
+    "lightVibrant": "#fcdc7d"
+  },
+  "vullaby": {
+    "lightVibrant": "#eedfc6"
+  },
+  "mandibuzz": {
+    "lightVibrant": "#d2a59e"
+  },
+  "heatmor": {
+    "lightVibrant": "#efbf78"
+  },
+  "durant": {
+    "lightVibrant": "#b8b8c0"
+  },
+  "deino": {
+    "lightVibrant": "#a5bad4"
+  },
+  "zweilous": {
+    "lightVibrant": "#a5bad3"
+  },
+  "hydreigon": {
+    "lightVibrant": "#a6b9d3"
+  },
+  "larvesta": {
+    "lightVibrant": "#e27a50"
+  },
+  "volcarona": {
+    "lightVibrant": "#f0a577"
+  },
+  "cobalion": {
+    "lightVibrant": "#c4a580"
+  },
+  "terrakion": {
+    "lightVibrant": "#d8b591"
+  },
+  "virizion": {
+    "lightVibrant": "#ec9396"
+  },
+  "tornadus-incarnate": null,
+  "thundurus-incarnate": null,
+  "reshiram": {
+    "lightVibrant": "#acbcda"
+  },
+  "zekrom": {
+    "lightVibrant": "#6cacbc"
+  },
+  "landorus-incarnate": null,
+  "kyurem": {
+    "lightVibrant": "#c4e4e4"
+  },
+  "keldeo-ordinary": null,
+  "meloetta-aria": null,
+  "genesect": {
+    "lightVibrant": "#e5a38e"
+  },
+  "chespin": {
+    "lightVibrant": "#f4a27c"
+  },
+  "quilladin": {
+    "lightVibrant": "#de9d72"
+  },
+  "chesnaught": {
+    "lightVibrant": "#f4f4c6"
+  },
+  "fennekin": {
+    "lightVibrant": "#fcec7f"
+  },
+  "braixen": {
+    "lightVibrant": "#fce474"
+  },
+  "delphox": {
+    "lightVibrant": "#eedc83"
+  },
+  "froakie": {
+    "lightVibrant": "#fbf196"
+  },
+  "frogadier": {
+    "lightVibrant": "#f3ea7d"
+  },
+  "greninja": {
+    "lightVibrant": "#e48092"
+  },
+  "bunnelby": {
+    "lightVibrant": "#d3949b"
+  },
+  "diggersby": {
+    "lightVibrant": "#f6db83"
+  },
+  "fletchling": {
+    "lightVibrant": "#f3aa82"
+  },
+  "fletchinder": {
+    "lightVibrant": "#f48359"
+  },
+  "talonflame": {
+    "lightVibrant": "#f19d74"
+  },
+  "scatterbug": {
+    "lightVibrant": "#d1c9a7"
+  },
+  "spewpa": {
+    "lightVibrant": "#dbcab1"
+  },
+  "vivillon": {
+    "lightVibrant": "#d98eb3"
+  },
+  "litleo": {
+    "lightVibrant": "#f39a6b"
+  },
+  "pyroar": {
+    "lightVibrant": "#e7c686"
+  },
+  "flabebe": null,
+  "floette": {
+    "lightVibrant": "#d3df8a"
+  },
+  "florges": {
+    "lightVibrant": "#e18e86"
+  },
+  "skiddo": {
+    "lightVibrant": "#e99068"
+  },
+  "gogoat": {
+    "lightVibrant": "#db744e"
+  },
+  "pancham": {
+    "lightVibrant": "#fcf4d6"
+  },
+  "pangoro": {
+    "lightVibrant": "#a4d4b1"
+  },
+  "furfrou": {
+    "lightVibrant": "#ebf4e4"
+  },
+  "espurr": {
+    "lightVibrant": "#cfaace"
+  },
+  "meowstic-male": null,
+  "honedge": {
+    "lightVibrant": "#a3d3e4"
+  },
+  "doublade": {
+    "lightVibrant": "#ec7eae"
+  },
+  "aegislash-shield": {
+    "lightVibrant": "#ded5a6"
+  },
+  "spritzee": {
+    "lightVibrant": "#ec8ca4"
+  },
+  "aromatisse": {
+    "lightVibrant": "#f092a6"
+  },
+  "swirlix": {
+    "lightVibrant": "#dca1b0"
+  },
+  "slurpuff": {
+    "lightVibrant": "#e4bccc"
+  },
+  "inkay": {
+    "lightVibrant": "#e4a4ac"
+  },
+  "malamar": {
+    "lightVibrant": "#e8e195"
+  },
+  "binacle": {
+    "lightVibrant": "#e3e8b4"
+  },
+  "barbaracle": {
+    "lightVibrant": "#e69b78"
+  },
+  "skrelp": {
+    "lightVibrant": "#a4d1e3"
+  },
+  "dragalge": {
+    "lightVibrant": "#cd787a"
+  },
+  "clauncher": {
+    "lightVibrant": "#8cd4f4"
+  },
+  "clawitzer": {
+    "lightVibrant": "#85ccef"
+  },
+  "helioptile": {
+    "lightVibrant": "#fcec7d"
+  },
+  "heliolisk": {
+    "lightVibrant": "#fce474"
+  },
+  "tyrunt": {
+    "lightVibrant": "#d59297"
+  },
+  "tyrantrum": {
+    "lightVibrant": "#e8b47c"
+  },
+  "amaura": {
+    "lightVibrant": "#9cd4f4"
+  },
+  "aurorus": {
+    "lightVibrant": "#84ccef"
+  },
+  "sylveon": {
+    "lightVibrant": "#ef9cac"
+  },
+  "hawlucha": {
+    "lightVibrant": "#e5e09d"
+  },
+  "dedenne": {
+    "lightVibrant": "#ebb95e"
+  },
+  "carbink": {
+    "lightVibrant": "#91c2df"
+  },
+  "goomy": {
+    "lightVibrant": "#ddd4ec"
+  },
+  "sliggoo": {
+    "lightVibrant": "#dcd4ec"
+  },
+  "goodra": {
+    "lightVibrant": "#acd4a4"
+  },
+  "klefki": {
+    "lightVibrant": "#dec497"
+  },
+  "phantump": {
+    "lightVibrant": "#98e0c0"
+  },
+  "trevenant": {
+    "lightVibrant": "#9bddbf"
+  },
+  "pumpkaboo-average": null,
+  "gourgeist-average": null,
+  "bergmite": {
+    "lightVibrant": "#f4d49c"
+  },
+  "avalugg": {
+    "lightVibrant": "#d4ecfc"
+  },
+  "noibat": {
+    "lightVibrant": "#c0aacf"
+  },
+  "noivern": {
+    "lightVibrant": "#eee08a"
+  },
+  "xerneas": {
+    "lightVibrant": "#f0cb9d"
+  },
+  "yveltal": {
+    "lightVibrant": "#eb7970"
+  },
+  "zygarde-50": null,
+  "diancie": {
+    "lightVibrant": "#efe4a9"
+  },
+  "hoopa": {
+    "lightVibrant": "#ebe17a"
+  },
+  "volcanion": {
+    "lightVibrant": "#fcdc9c"
+  },
+  "rowlet": {
+    "lightVibrant": "#ecccac"
+  },
+  "dartrix": {
+    "lightVibrant": "#afd484"
+  },
+  "decidueye": {
+    "lightVibrant": "#dca071"
+  },
+  "litten": {
+    "lightVibrant": "#f4e972"
+  },
+  "torracat": {
+    "lightVibrant": "#f0e867"
+  },
+  "incineroar": {
+    "lightVibrant": "#f6d140"
+  },
+  "popplio": {
+    "lightVibrant": "#91c8dc"
+  },
+  "brionne": {
+    "lightVibrant": "#94c4e4"
+  },
+  "primarina": {
+    "lightVibrant": "#83cbdc"
+  },
+  "pikipek": {
+    "lightVibrant": "#fcfaf4"
+  },
+  "trumbeak": {
+    "lightVibrant": "#edb28c"
+  },
+  "toucannon": {
+    "lightVibrant": "#e7ad58"
+  },
+  "yungoos": {
+    "lightVibrant": "#f5d885"
+  },
+  "gumshoos": {
+    "lightVibrant": "#e4d594"
+  },
+  "grubbin": {
+    "lightVibrant": "#f4d47c"
+  },
+  "charjabug": {
+    "lightVibrant": "#cd9b5b"
+  },
+  "vikavolt": {
+    "lightVibrant": "#ebdc8c"
+  },
+  "crabrawler": {
+    "lightVibrant": "#51c0db"
+  },
+  "crabominable": {
+    "lightVibrant": "#90d4e3"
+  },
+  "oricorio-baile": null,
+  "cutiefly": {
+    "lightVibrant": "#f4e484"
+  },
+  "ribombee": {
+    "lightVibrant": "#f3e898"
+  },
+  "rockruff": {
+    "lightVibrant": "#81b4dc"
+  },
+  "lycanroc-midday": null,
+  "wishiwashi-solo": null,
+  "mareanie": {
+    "lightVibrant": "#eed685"
+  },
+  "toxapex": {
+    "lightVibrant": "#a5dcec"
+  },
+  "mudbray": {
+    "lightVibrant": "#e7a48e"
+  },
+  "mudsdale": {
+    "lightVibrant": "#e07a64"
+  },
+  "dewpider": {
+    "lightVibrant": "#a3c7d8"
+  },
+  "araquanid": {
+    "lightVibrant": "#d4e066"
+  },
+  "fomantis": {
+    "lightVibrant": "#e48c94"
+  },
+  "lurantis": {
+    "lightVibrant": "#ec8189"
+  },
+  "morelull": {
+    "lightVibrant": "#f4d3dc"
+  },
+  "shiinotic": {
+    "lightVibrant": "#e7efc0"
+  },
+  "salandit": {
+    "lightVibrant": "#e47c3c"
+  },
+  "salazzle": {
+    "lightVibrant": "#e474a8"
+  },
+  "stufful": {
+    "lightVibrant": "#eca4b4"
+  },
+  "bewear": {
+    "lightVibrant": "#eba4b4"
+  },
+  "bounsweet": {
+    "lightVibrant": "#ec8c99"
+  },
+  "steenee": {
+    "lightVibrant": "#cbe493"
+  },
+  "tsareena": {
+    "lightVibrant": "#c4e49c"
+  },
+  "comfey": {
+    "lightVibrant": "#f3eb6b"
+  },
+  "oranguru": {
+    "lightVibrant": "#90a4d1"
+  },
+  "passimian": {
+    "lightVibrant": "#dae28d"
+  },
+  "wimpod": {
+    "lightVibrant": "#ebe38f"
+  },
+  "golisopod": {
+    "lightVibrant": "#b3c5ba"
+  },
+  "sandygast": {
+    "lightVibrant": "#f6c4c2"
+  },
+  "palossand": {
+    "lightVibrant": "#fcc48b"
+  },
+  "pyukumuku": {
+    "lightVibrant": "#ec9cbc"
+  },
+  "type-null": {
+    "lightVibrant": "#9fc2d9"
+  },
+  "silvally": {
+    "lightVibrant": "#f4f7fb"
+  },
+  "minior-red-meteor": null,
+  "komala": {
+    "lightVibrant": "#e7caa5"
+  },
+  "turtonator": {
+    "lightVibrant": "#ec5c64"
+  },
+  "togedemaru": {
+    "lightVibrant": "#fae976"
+  },
+  "mimikyu-disguised": null,
+  "bruxish": {
+    "lightVibrant": "#94d3e4"
+  },
+  "drampa": {
+    "lightVibrant": "#ead35c"
+  },
+  "dhelmise": {
+    "lightVibrant": "#ecdc74"
+  },
+  "jangmo-o": {
+    "lightVibrant": "#eddfa9"
+  },
+  "hakamo-o": {
+    "lightVibrant": "#ebdc7c"
+  },
+  "kommo-o": {
+    "lightVibrant": "#e4d982"
+  },
+  "tapu-koko": {
+    "lightVibrant": "#f49854"
+  },
+  "tapu-lele": {
+    "lightVibrant": "#ec8c98"
+  },
+  "tapu-bulu": {
+    "lightVibrant": "#db7574"
+  },
+  "tapu-fini": {
+    "lightVibrant": "#a4bde4"
+  },
+  "cosmog": {
+    "lightVibrant": "#e5e498"
+  },
+  "cosmoem": {
+    "lightVibrant": "#e5e38e"
+  },
+  "solgaleo": {
+    "lightVibrant": "#82cfef"
+  },
+  "lunala": {
+    "lightVibrant": "#f4eea3"
+  },
+  "nihilego": {
+    "lightVibrant": "#8dcce6"
+  },
+  "buzzwole": {
+    "lightVibrant": "#f3ae74"
+  },
+  "pheromosa": {
+    "lightVibrant": "#ecd4a3"
+  },
+  "xurkitree": {
+    "lightVibrant": "#dabd80"
+  },
+  "celesteela": {
+    "lightVibrant": "#dad189"
+  },
+  "kartana": {
+    "lightVibrant": "#f6d451"
+  },
+  "guzzlord": {
+    "lightVibrant": "#ece484"
+  },
+  "necrozma": {
+    "lightVibrant": "#e19c97"
+  },
+  "magearna": {
+    "lightVibrant": "#f2ecbc"
+  },
+  "marshadow": {
+    "lightVibrant": "#ddb49b"
+  },
+  "poipole": {
+    "lightVibrant": "#e49cc4"
+  },
+  "naganadel": {
+    "lightVibrant": "#cf7eaf"
+  },
+  "stakataka": {
+    "lightVibrant": "#9ec9da"
+  },
+  "blacephalon": {
+    "lightVibrant": "#eae762"
+  },
+  "zeraora": {
+    "lightVibrant": "#f2e492"
+  },
+  "meltan": {
+    "lightVibrant": "#f4dc94"
+  },
+  "melmetal": {
+    "lightVibrant": "#f5d67a"
+  },
+  "grookey": {
+    "lightVibrant": "#e3db84"
+  },
+  "thwackey": {
+    "lightVibrant": "#dce474"
+  },
+  "rillaboom": {
+    "lightVibrant": "#f0a388"
+  },
+  "scorbunny": {
+    "lightVibrant": "#edc778"
+  },
+  "raboot": {
+    "lightVibrant": "#f3d361"
+  },
+  "cinderace": {
+    "lightVibrant": "#f1d977"
+  },
+  "sobble": {
+    "lightVibrant": "#ebd484"
+  },
+  "drizzile": {
+    "lightVibrant": "#a4ccd4"
+  },
+  "inteleon": {
+    "lightVibrant": "#e1e19a"
+  },
+  "skwovet": {
+    "lightVibrant": "#d9bba0"
+  },
+  "greedent": {
+    "lightVibrant": "#d1a08e"
+  },
+  "rookidee": {
+    "lightVibrant": "#e5dc73"
+  },
+  "corvisquire": {
+    "lightVibrant": "#a0bbd9"
+  },
+  "corviknight": {
+    "lightVibrant": "#8c9ccc"
+  },
+  "blipbug": {
+    "lightVibrant": "#f7e7a9"
+  },
+  "dottler": {
+    "lightVibrant": "#e8cc80"
+  },
+  "orbeetle": {
+    "lightVibrant": "#ec9484"
+  },
+  "nickit": {
+    "lightVibrant": "#d4b4a4"
+  },
+  "thievul": {
+    "lightVibrant": "#cca48c"
+  },
+  "gossifleur": {
+    "lightVibrant": "#f8dd6f"
+  },
+  "eldegoss": {
+    "lightVibrant": "#f4e4b2"
+  },
+  "wooloo": {
+    "lightVibrant": "#eba6b1"
+  },
+  "dubwool": {
+    "lightVibrant": "#c6b8b2"
+  },
+  "chewtle": {
+    "lightVibrant": "#eba444"
+  },
+  "drednaw": {
+    "lightVibrant": "#e7c581"
+  },
+  "yamper": {
+    "lightVibrant": "#fcf471"
+  },
+  "boltund": {
+    "lightVibrant": "#f4ec72"
+  },
+  "rolycoly": {
+    "lightVibrant": "#ecb38c"
+  },
+  "carkol": {
+    "lightVibrant": "#dec79c"
+  },
+  "coalossal": {
+    "lightVibrant": "#e4a294"
+  },
+  "applin": {
+    "lightVibrant": "#dce18b"
+  },
+  "flapple": {
+    "lightVibrant": "#ebd89d"
+  },
+  "appletun": {
+    "lightVibrant": "#f1dc94"
+  },
+  "silicobra": {
+    "lightVibrant": "#b3d369"
+  },
+  "sandaconda": {
+    "lightVibrant": "#c6dc9d"
+  },
+  "cramorant": {
+    "lightVibrant": "#ead381"
+  },
+  "arrokuda": {
+    "lightVibrant": "#f4f4b4"
+  },
+  "barraskewda": {
+    "lightVibrant": "#c7bf85"
+  },
+  "toxel": {
+    "lightVibrant": "#c0a7d1"
+  },
+  "toxtricity-amped": {
+    "lightVibrant": "#e4cc62"
+  },
+  "sizzlipede": {
+    "lightVibrant": "#e5bf4c"
+  },
+  "centiskorch": {
+    "lightVibrant": "#f4c12d"
+  },
+  "clobbopus": {
+    "lightVibrant": "#eeab94"
+  },
+  "grapploct": {
+    "lightVibrant": "#dbe198"
+  },
+  "sinistea": {
+    "lightVibrant": "#f2d274"
+  },
+  "polteageist": {
+    "lightVibrant": "#f5d579"
+  },
+  "hatenna": {
+    "lightVibrant": "#bcd4e5"
+  },
+  "hattrem": {
+    "lightVibrant": "#bcd4e4"
+  },
+  "hatterene": {
+    "lightVibrant": "#eabac7"
+  },
+  "impidimp": {
+    "lightVibrant": "#e46c8f"
+  },
+  "morgrem": {
+    "lightVibrant": "#d9768b"
+  },
+  "grimmsnarl": {
+    "lightVibrant": "#a2d7c4"
+  },
+  "obstagoon": {
+    "lightVibrant": "#c5b3bd"
+  },
+  "perrserker": {
+    "lightVibrant": "#ddb69c"
+  },
+  "cursola": {
+    "lightVibrant": "#e199b9"
+  },
+  "sirfetchd": {
+    "lightVibrant": "#c4dc76"
+  },
+  "mr-rime": {
+    "lightVibrant": "#e5ca84"
+  },
+  "runerigus": {
+    "lightVibrant": "#c27474"
+  },
+  "milcery": {
+    "lightVibrant": "#ece4c4"
+  },
+  "alcremie": {
+    "lightVibrant": "#fcf4dc"
+  },
+  "falinks": {
+    "lightVibrant": "#e9ae44"
+  },
+  "pincurchin": {
+    "lightVibrant": "#f6e2a2"
+  },
+  "snom": {
+    "lightVibrant": "#9fb7dd"
+  },
+  "frosmoth": {
+    "lightVibrant": "#b4c4dc"
+  },
+  "stonjourner": {
+    "lightVibrant": "#bcbcbc"
+  },
+  "eiscue-ice": null,
+  "indeedee-male": null,
+  "morpeko-full-belly": null,
+  "cufant": {
+    "lightVibrant": "#f4ab74"
+  },
+  "copperajah": {
+    "lightVibrant": "#f1d190"
+  },
+  "dracozolt": {
+    "lightVibrant": "#e9e198"
+  },
+  "arctozolt": {
+    "lightVibrant": "#e5de91"
+  },
+  "dracovish": {
+    "lightVibrant": "#ee9d9e"
+  },
+  "arctovish": {
+    "lightVibrant": "#94bcdc"
+  },
+  "duraludon": {
+    "lightVibrant": "#e4ecf3"
+  },
+  "dreepy": {
+    "lightVibrant": "#e4a193"
+  },
+  "drakloak": {
+    "lightVibrant": "#e0b799"
+  },
+  "dragapult": {
+    "lightVibrant": "#f5e6ab"
+  },
+  "zacian": {
+    "lightVibrant": "#e09c94"
+  },
+  "zamazenta": {
+    "lightVibrant": "#d7a2a6"
+  },
+  "eternatus": {
+    "lightVibrant": "#ea6574"
+  },
+  "kubfu": {
+    "lightVibrant": "#ebeaa4"
+  },
+  "urshifu-single-strike": {
+    "lightVibrant": "#e6e193"
+  },
+  "zarude": {
+    "lightVibrant": "#e3ac95"
+  },
+  "regieleki": {
+    "lightVibrant": "#eaeba2"
+  },
+  "regidrago": {
+    "lightVibrant": "#ed8bab"
+  },
+  "glastrier": {
+    "lightVibrant": "#a4bcdc"
+  },
+  "spectrier": {
+    "lightVibrant": "#a9a4d5"
+  },
+  "calyrex": {
+    "lightVibrant": "#81f8dd"
+  },
+  "wyrdeer": {
+    "lightVibrant": "#f5d699"
+  },
+  "kleavor": {
+    "lightVibrant": "#c7ab7c"
+  },
+  "ursaluna": {
+    "lightVibrant": "#e1c797"
+  },
+  "basculegion-male": null,
+  "sneasler": {
+    "lightVibrant": "#a4bcd4"
+  },
+  "overqwil": {
+    "lightVibrant": "#dca4cc"
+  },
+  "enamorus-incarnate": null,
+  "sprigatito": {
+    "lightVibrant": "#d4e4bb"
+  },
+  "floragato": {
+    "lightVibrant": "#e891a4"
+  },
+  "meowscarada": {
+    "lightVibrant": "#ecf4dc"
+  },
+  "fuecoco": {
+    "lightVibrant": "#ece463"
+  },
+  "crocalor": {
+    "lightVibrant": "#e8d588"
+  },
+  "skeledirge": {
+    "lightVibrant": "#e6d97b"
+  },
+  "quaxly": {
+    "lightVibrant": "#fbe380"
+  },
+  "quaxwell": {
+    "lightVibrant": "#dccf84"
+  },
+  "quaquaval": {
+    "lightVibrant": "#8accdb"
+  },
+  "lechonk": {
+    "lightVibrant": "#efd58c"
+  },
+  "oinkologne-male": null,
+  "tarountula": {
+    "lightVibrant": "#e4dc6b"
+  },
+  "spidops": {
+    "lightVibrant": "#bda464"
+  },
+  "nymble": {
+    "lightVibrant": "#f4d385"
+  },
+  "lokix": {
+    "lightVibrant": "#d4bda4"
+  },
+  "pawmi": {
+    "lightVibrant": "#f1b467"
+  },
+  "pawmo": {
+    "lightVibrant": "#f4dc87"
+  },
+  "pawmot": {
+    "lightVibrant": "#f4d894"
+  },
+  "tandemaus": {
+    "lightVibrant": "#fcfcf4"
+  },
+  "maushold-family-of-four": null,
+  "fidough": {
+    "lightVibrant": "#f6e17c"
+  },
+  "dachsbun": {
+    "lightVibrant": "#f6ec99"
+  },
+  "smoliv": {
+    "lightVibrant": "#e6e18d"
+  },
+  "dolliv": {
+    "lightVibrant": "#eaea6d"
+  },
+  "arboliva": {
+    "lightVibrant": "#ecf0db"
+  },
+  "squawkabilly-green-plumage": null,
+  "nacli": {
+    "lightVibrant": "#d7baab"
+  },
+  "naclstack": {
+    "lightVibrant": "#e1d478"
+  },
+  "garganacl": {
+    "lightVibrant": "#d4ac9c"
+  },
+  "charcadet": {
+    "lightVibrant": "#f3b03e"
+  },
+  "armarouge": {
+    "lightVibrant": "#f2e770"
+  },
+  "ceruledge": {
+    "lightVibrant": "#c2c7e4"
+  },
+  "tadbulb": {
+    "lightVibrant": "#fbee83"
+  },
+  "bellibolt": {
+    "lightVibrant": "#f2e352"
+  },
+  "wattrel": {
+    "lightVibrant": "#f4d467"
+  },
+  "kilowattrel": {
+    "lightVibrant": "#f2d27f"
+  },
+  "maschiff": {
+    "lightVibrant": "#eed08b"
+  },
+  "mabosstiff": {
+    "lightVibrant": "#e7b26c"
+  },
+  "shroodle": {
+    "lightVibrant": "#9cd4b4"
+  },
+  "grafaiai": {
+    "lightVibrant": "#e395b3"
+  },
+  "bramblin": {
+    "lightVibrant": "#e4c594"
+  },
+  "brambleghast": {
+    "lightVibrant": "#c4ac6c"
+  },
+  "toedscool": {
+    "lightVibrant": "#f4e46a"
+  },
+  "toedscruel": {
+    "lightVibrant": "#ede795"
+  },
+  "klawf": {
+    "lightVibrant": "#f4d3a9"
+  },
+  "capsakid": {
+    "lightVibrant": "#e4a464"
+  },
+  "scovillain": {
+    "lightVibrant": "#ec9c8c"
+  },
+  "rellor": {
+    "lightVibrant": "#edc68b"
+  },
+  "rabsca": {
+    "lightVibrant": "#e84f76"
+  },
+  "flittle": {
+    "lightVibrant": "#f4ec84"
+  },
+  "espathra": {
+    "lightVibrant": "#ecc986"
+  },
+  "tinkatink": {
+    "lightVibrant": "#e799b8"
+  },
+  "tinkatuff": {
+    "lightVibrant": "#e191b2"
+  },
+  "tinkaton": {
+    "lightVibrant": "#da608c"
+  },
+  "wiglett": {
+    "lightVibrant": "#ec8191"
+  },
+  "wugtrio": {
+    "lightVibrant": "#ec8493"
+  },
+  "bombirdier": {
+    "lightVibrant": "#dc9dab"
+  },
+  "finizen": {
+    "lightVibrant": "#a0d5df"
+  },
+  "palafin-zero": null,
+  "varoom": {
+    "lightVibrant": "#fcec8c"
+  },
+  "revavroom": {
+    "lightVibrant": "#f7e38f"
+  },
+  "cyclizar": {
+    "lightVibrant": "#eb9a72"
+  },
+  "orthworm": {
+    "lightVibrant": "#fcccb4"
+  },
+  "glimmet": {
+    "lightVibrant": "#e4de4d"
+  },
+  "glimmora": {
+    "lightVibrant": "#5c95d4"
+  },
+  "greavard": {
+    "lightVibrant": "#aabbce"
+  },
+  "houndstone": {
+    "lightVibrant": "#b0b0c9"
+  },
+  "flamigo": {
+    "lightVibrant": "#e2899a"
+  },
+  "cetoddle": {
+    "lightVibrant": "#e4a1c3"
+  },
+  "cetitan": {
+    "lightVibrant": "#fcf8f4"
+  },
+  "veluza": {
+    "lightVibrant": "#e493bc"
+  },
+  "dondozo": {
+    "lightVibrant": "#6cbcec"
+  },
+  "tatsugiri-curly": null,
+  "annihilape": {
+    "lightVibrant": "#e884b1"
+  },
+  "clodsire": {
+    "lightVibrant": "#c0b2c7"
+  },
+  "farigiraf": {
+    "lightVibrant": "#eae290"
+  },
+  "dudunsparce-two-segment": null,
+  "kingambit": {
+    "lightVibrant": "#fbdc86"
+  },
+  "great-tusk": {
+    "lightVibrant": "#e47998"
+  },
+  "scream-tail": {
+    "lightVibrant": "#f2e18c"
+  },
+  "brute-bonnet": {
+    "lightVibrant": "#c4e4ac"
+  },
+  "flutter-mane": {
+    "lightVibrant": "#e35864"
+  },
+  "slither-wing": {
+    "lightVibrant": "#e6d271"
+  },
+  "sandy-shocks": {
+    "lightVibrant": "#8cbce4"
+  },
+  "iron-treads": {
+    "lightVibrant": "#ee8d8c"
+  },
+  "iron-bundle": {
+    "lightVibrant": "#84c1ea"
+  },
+  "iron-hands": {
+    "lightVibrant": "#fbe156"
+  },
+  "iron-jugulis": {
+    "lightVibrant": "#e494bc"
+  },
+  "iron-moth": {
+    "lightVibrant": "#f6b87e"
+  },
+  "iron-thorns": {
+    "lightVibrant": "#bfd561"
+  },
+  "frigibax": {
+    "lightVibrant": "#e5d893"
+  },
+  "arctibax": {
+    "lightVibrant": "#f0bf70"
+  },
+  "baxcalibur": {
+    "lightVibrant": "#c8e5e8"
+  },
+  "gimmighoul": {
+    "lightVibrant": "#d1c389"
+  },
+  "gholdengo": {
+    "lightVibrant": "#fcec5c"
+  },
+  "wo-chien": {
+    "lightVibrant": "#dc9c54"
+  },
+  "chien-pao": {
+    "lightVibrant": "#92c0dc"
+  },
+  "ting-lu": {
+    "lightVibrant": "#e09e98"
+  },
+  "chi-yu": {
+    "lightVibrant": "#f1c691"
+  },
+  "roaring-moon": {
+    "lightVibrant": "#93d4e4"
+  },
+  "iron-valiant": {
+    "lightVibrant": "#e288aa"
+  },
+  "koraidon": {
+    "lightVibrant": "#e88676"
+  },
+  "miraidon": {
+    "lightVibrant": "#f4ec84"
+  },
+  "walking-wake": {
+    "lightVibrant": "#d65b6b"
+  },
+  "iron-leaves": {
+    "lightVibrant": "#f49cb0"
+  },
+  "dipplin": {
+    "lightVibrant": "#f1e281"
+  },
+  "poltchageist": {
+    "lightVibrant": "#f6f2e1"
+  },
+  "sinistcha": {
+    "lightVibrant": "#ccc58e"
+  },
+  "okidogi": {
+    "lightVibrant": "#db9dc1"
+  },
+  "munkidori": {
+    "lightVibrant": "#faf275"
+  },
+  "fezandipiti": {
+    "lightVibrant": "#d47cb4"
+  },
+  "ogerpon": {
+    "lightVibrant": "#e6ba67"
+  },
+  "archaludon": {
+    "lightVibrant": "#d09583"
+  },
+  "hydrapple": {
+    "lightVibrant": "#e8d591"
+  },
+  "gouging-fire": {
+    "lightVibrant": "#f4e599"
+  },
+  "raging-bolt": {
+    "lightVibrant": "#e9d264"
+  },
+  "iron-boulder": {
+    "lightVibrant": "#fcbc54"
+  },
+  "iron-crown": null,
+  "terapagos": null,
+  "pecharunt": {
+    "lightVibrant": "#f4c3dc"
+  },
+  "deoxys-attack": {
+    "lightVibrant": "#e4a47c"
+  },
+  "deoxys-defense": {
+    "lightVibrant": "#ebac8d"
+  },
+  "deoxys-speed": {
+    "lightVibrant": "#f3cc9c"
+  },
+  "wormadam-sandy": {
+    "lightVibrant": "#f4e4a9"
+  },
+  "wormadam-trash": {
+    "lightVibrant": "#ec9b9c"
+  },
+  "shaymin-sky": {
+    "lightVibrant": "#fcfcf7"
+  },
+  "giratina-origin": {
+    "lightVibrant": "#ebd586"
+  },
+  "rotom-heat": {
+    "lightVibrant": "#e89c8e"
+  },
+  "rotom-wash": {
+    "lightVibrant": "#eca47c"
+  },
+  "rotom-frost": {
+    "lightVibrant": "#eba687"
+  },
+  "rotom-fan": {
+    "lightVibrant": "#f4dc85"
+  },
+  "rotom-mow": {
+    "lightVibrant": "#e2af98"
+  },
+  "castform-sunny": {
+    "lightVibrant": "#fcf394"
+  },
+  "castform-rainy": {
+    "lightVibrant": "#7cc4ec"
+  },
+  "castform-snowy": {
+    "lightVibrant": "#abcdcd"
+  },
+  "basculin-blue-striped": {
+    "lightVibrant": "#7ed8fb"
+  },
+  "darmanitan-zen": {
+    "lightVibrant": "#b6d5ec"
+  },
+  "meloetta-pirouette": {
+    "lightVibrant": "#eda084"
+  },
+  "tornadus-therian": {
+    "lightVibrant": "#f47848"
+  },
+  "thundurus-therian": {
+    "lightVibrant": "#8dc5ec"
+  },
+  "landorus-therian": {
+    "lightVibrant": "#f3b279"
+  },
+  "kyurem-black": {
+    "lightVibrant": "#e5d58c"
+  },
+  "kyurem-white": {
+    "lightVibrant": "#eedc7a"
+  },
+  "keldeo-resolute": {
+    "lightVibrant": "#8ad3f4"
+  },
+  "meowstic-female": {
+    "lightVibrant": "#f4fcfc"
+  },
+  "aegislash-blade": {
+    "lightVibrant": "#e4d493"
+  },
+  "pumpkaboo-small": null,
+  "pumpkaboo-large": null,
+  "pumpkaboo-super": null,
+  "gourgeist-small": null,
+  "gourgeist-large": null,
+  "gourgeist-super": null,
+  "venusaur-mega": {
+    "lightVibrant": "#eb8b94"
+  },
+  "charizard-mega-x": {
+    "lightVibrant": "#8fcdef"
+  },
+  "charizard-mega-y": {
+    "lightVibrant": "#eba380"
+  },
+  "blastoise-mega": {
+    "lightVibrant": "#9db8e4"
+  },
+  "alakazam-mega": {
+    "lightVibrant": "#f1e37d"
+  },
+  "gengar-mega": {
+    "lightVibrant": "#e2b958"
+  },
+  "kangaskhan-mega": {
+    "lightVibrant": "#f5eaad"
+  },
+  "pinsir-mega": {
+    "lightVibrant": "#e8e78b"
+  },
+  "gyarados-mega": {
+    "lightVibrant": "#e6dd92"
+  },
+  "aerodactyl-mega": {
+    "lightVibrant": "#c2b6c3"
+  },
+  "mewtwo-mega-x": {
+    "lightVibrant": "#e4e4f4"
+  },
+  "mewtwo-mega-y": {
+    "lightVibrant": "#e4a49c"
+  },
+  "ampharos-mega": {
+    "lightVibrant": "#f9e182"
+  },
+  "scizor-mega": {
+    "lightVibrant": "#cc8173"
+  },
+  "heracross-mega": {
+    "lightVibrant": "#e09468"
+  },
+  "houndoom-mega": {
+    "lightVibrant": "#e4e6f4"
+  },
+  "tyranitar-mega": {
+    "lightVibrant": "#d5a18c"
+  },
+  "blaziken-mega": {
+    "lightVibrant": "#fad284"
+  },
+  "gardevoir-mega": {
+    "lightVibrant": "#acd4a0"
+  },
+  "mawile-mega": {
+    "lightVibrant": "#f7f1b7"
+  },
+  "aggron-mega": {
+    "lightVibrant": "#f4f4fc"
+  },
+  "medicham-mega": {
+    "lightVibrant": "#efc46d"
+  },
+  "manectric-mega": {
+    "lightVibrant": "#ecec84"
+  },
+  "banette-mega": {
+    "lightVibrant": "#e27580"
+  },
+  "absol-mega": {
+    "lightVibrant": "#b2bde0"
+  },
+  "garchomp-mega": {
+    "lightVibrant": "#efde73"
+  },
+  "lucario-mega": {
+    "lightVibrant": "#dfc98b"
+  },
+  "abomasnow-mega": {
+    "lightVibrant": "#acbce4"
+  },
+  "floette-eternal": {
+    "lightVibrant": "#d89470"
+  },
+  "latias-mega": {
+    "lightVibrant": "#a4a7d4"
+  },
+  "latios-mega": {
+    "lightVibrant": "#e4785c"
+  },
+  "swampert-mega": {
+    "lightVibrant": "#6cabd2"
+  },
+  "sceptile-mega": {
+    "lightVibrant": "#f7de98"
+  },
+  "sableye-mega": {
+    "lightVibrant": "#f493a2"
+  },
+  "altaria-mega": {
+    "lightVibrant": "#9eb9d4"
+  },
+  "gallade-mega": {
+    "lightVibrant": "#8cccd4"
+  },
+  "audino-mega": {
+    "lightVibrant": "#e5889c"
+  },
+  "sharpedo-mega": {
+    "lightVibrant": "#e8c67c"
+  },
+  "slowbro-mega": {
+    "lightVibrant": "#f19096"
+  },
+  "steelix-mega": {
+    "lightVibrant": "#f7f5c1"
+  },
+  "pidgeot-mega": {
+    "lightVibrant": "#dc7d7e"
+  },
+  "glalie-mega": {
+    "lightVibrant": "#acd7df"
+  },
+  "diancie-mega": {
+    "lightVibrant": "#ebb2c3"
+  },
+  "metagross-mega": {
+    "lightVibrant": "#f8d0a0"
+  },
+  "kyogre-primal": {
+    "lightVibrant": "#f2e89f"
+  },
+  "groudon-primal": {
+    "lightVibrant": "#f7eebe"
+  },
+  "rayquaza-mega": {
+    "lightVibrant": "#f9df7b"
+  },
+  "pikachu-rock-star": {
+    "lightVibrant": "#fcdc7c"
+  },
+  "pikachu-belle": {
+    "lightVibrant": "#fbdb7b"
+  },
+  "pikachu-pop-star": {
+    "lightVibrant": "#fcdc7c"
+  },
+  "pikachu-phd": {
+    "lightVibrant": "#fbdb7b"
+  },
+  "pikachu-libre": {
+    "lightVibrant": "#fcdc7c"
+  },
+  "pikachu-cosplay": {
+    "lightVibrant": "#fce67c"
+  },
+  "hoopa-unbound": {
+    "lightVibrant": "#aecbe4"
+  },
+  "camerupt-mega": {
+    "lightVibrant": "#ec8474"
+  },
+  "lopunny-mega": {
+    "lightVibrant": "#f7ecbc"
+  },
+  "salamence-mega": {
+    "lightVibrant": "#db8480"
+  },
+  "beedrill-mega": {
+    "lightVibrant": "#ecd088"
+  },
+  "rattata-alola": {
+    "lightVibrant": "#dc949a"
+  },
+  "raticate-alola": {
+    "lightVibrant": "#ebdbcb"
+  },
+  "raticate-totem-alola": {
+    "lightVibrant": "#ebdbcb"
+  },
+  "pikachu-original-cap": {
+    "lightVibrant": "#f4ce7c"
+  },
+  "pikachu-hoenn-cap": {
+    "lightVibrant": "#f4ce7d"
+  },
+  "pikachu-sinnoh-cap": {
+    "lightVibrant": "#f4cf7b"
+  },
+  "pikachu-unova-cap": {
+    "lightVibrant": "#f4cf7c"
+  },
+  "pikachu-kalos-cap": {
+    "lightVibrant": "#f4cc7b"
+  },
+  "pikachu-alola-cap": {
+    "lightVibrant": "#f4cf7c"
+  },
+  "raichu-alola": {
+    "lightVibrant": "#ece38b"
+  },
+  "sandshrew-alola": {
+    "lightVibrant": "#ecf4fc"
+  },
+  "sandslash-alola": {
+    "lightVibrant": "#b4dae9"
+  },
+  "vulpix-alola": {
+    "lightVibrant": "#91cce4"
+  },
+  "ninetales-alola": {
+    "lightVibrant": "#84ccec"
+  },
+  "diglett-alola": {
+    "lightVibrant": "#e9e4a6"
+  },
+  "dugtrio-alola": {
+    "lightVibrant": "#f4e48e"
+  },
+  "meowth-alola": {
+    "lightVibrant": "#efd98f"
+  },
+  "persian-alola": {
+    "lightVibrant": "#8ccded"
+  },
+  "geodude-alola": {
+    "lightVibrant": "#b2b6c6"
+  },
+  "graveler-alola": {
+    "lightVibrant": "#f1d6b2"
+  },
+  "golem-alola": {
+    "lightVibrant": "#f9bc5e"
+  },
+  "grimer-alola": {
+    "lightVibrant": "#f9f163"
+  },
+  "muk-alola": {
+    "lightVibrant": "#faf25c"
+  },
+  "exeggutor-alola": {
+    "lightVibrant": "#d7cba2"
+  },
+  "marowak-alola": {
+    "lightVibrant": "#9bded7"
+  },
+  "greninja-battle-bond": null,
+  "greninja-ash": {
+    "lightVibrant": "#e4929a"
+  },
+  "zygarde-10-power-construct": null,
+  "zygarde-50-power-construct": null,
+  "zygarde-complete": {
+    "lightVibrant": "#efbc76"
+  },
+  "gumshoos-totem": null,
+  "vikavolt-totem": null,
+  "oricorio-pom-pom": {
+    "lightVibrant": "#f3eba4"
+  },
+  "oricorio-pau": {
+    "lightVibrant": "#eb839b"
+  },
+  "oricorio-sensu": {
+    "lightVibrant": "#f2acb3"
+  },
+  "lycanroc-midnight": {
+    "lightVibrant": "#da597d"
+  },
+  "wishiwashi-school": {
+    "lightVibrant": "#59b9e4"
+  },
+  "lurantis-totem": null,
+  "salazzle-totem": null,
+  "minior-orange-meteor": null,
+  "minior-yellow-meteor": null,
+  "minior-green-meteor": null,
+  "minior-blue-meteor": null,
+  "minior-indigo-meteor": null,
+  "minior-violet-meteor": null,
+  "minior-red": {
+    "lightVibrant": "#e9a2bc"
+  },
+  "minior-orange": null,
+  "minior-yellow": null,
+  "minior-green": null,
+  "minior-blue": null,
+  "minior-indigo": null,
+  "minior-violet": null,
+  "mimikyu-busted": {
+    "lightVibrant": "#fce494"
+  },
+  "mimikyu-totem-disguised": null,
+  "mimikyu-totem-busted": null,
+  "kommo-o-totem": null,
+  "magearna-original": {
+    "lightVibrant": "#fbf249"
+  },
+  "pikachu-partner-cap": {
+    "lightVibrant": "#f4d373"
+  },
+  "marowak-totem": {
+    "lightVibrant": "#9bded7"
+  },
+  "ribombee-totem": null,
+  "rockruff-own-tempo": null,
+  "lycanroc-dusk": {
+    "lightVibrant": "#dc9a6a"
+  },
+  "araquanid-totem": null,
+  "togedemaru-totem": null,
+  "necrozma-dusk": {
+    "lightVibrant": "#e7cc90"
+  },
+  "necrozma-dawn": {
+    "lightVibrant": "#b2d7ec"
+  },
+  "necrozma-ultra": {
+    "lightVibrant": "#fbf4ba"
+  },
+  "pikachu-starter": {
+    "lightVibrant": "#f8e682"
+  },
+  "eevee-starter": {
+    "lightVibrant": "#f1c670"
+  },
+  "pikachu-world-cap": {
+    "lightVibrant": "#fcdc7c"
+  },
+  "meowth-galar": {
+    "lightVibrant": "#e6d7b0"
+  },
+  "ponyta-galar": {
+    "lightVibrant": "#9cd4ce"
+  },
+  "rapidash-galar": {
+    "lightVibrant": "#e4c4dc"
+  },
+  "slowpoke-galar": {
+    "lightVibrant": "#f7ee7e"
+  },
+  "slowbro-galar": {
+    "lightVibrant": "#e39cc4"
+  },
+  "farfetchd-galar": {
+    "lightVibrant": "#efd167"
+  },
+  "weezing-galar": {
+    "lightVibrant": "#cddf9c"
+  },
+  "mr-mime-galar": {
+    "lightVibrant": "#f1fbfc"
+  },
+  "articuno-galar": {
+    "lightVibrant": "#b3a4d4"
+  },
+  "zapdos-galar": {
+    "lightVibrant": "#f38c64"
+  },
+  "moltres-galar": {
+    "lightVibrant": "#e98bb4"
+  },
+  "slowking-galar": {
+    "lightVibrant": "#e3a1c4"
+  },
+  "corsola-galar": {
+    "lightVibrant": "#dc9cbc"
+  },
+  "zigzagoon-galar": {
+    "lightVibrant": "#e893b0"
+  },
+  "linoone-galar": {
+    "lightVibrant": "#e494b4"
+  },
+  "darumaka-galar": {
+    "lightVibrant": "#bcc4e4"
+  },
+  "darmanitan-galar-standard": {
+    "lightVibrant": "#8dabdc"
+  },
+  "darmanitan-galar-zen": {
+    "lightVibrant": "#ecd599"
+  },
+  "yamask-galar": {
+    "lightVibrant": "#c5847c"
+  },
+  "stunfisk-galar": {
+    "lightVibrant": "#e39b96"
+  },
+  "zygarde-10": {
+    "lightVibrant": "#bfd98e"
+  },
+  "cramorant-gulping": {
+    "lightVibrant": "#e1de6c"
+  },
+  "cramorant-gorging": {
+    "lightVibrant": "#f4dc94"
+  },
+  "toxtricity-low-key": {
+    "lightVibrant": "#98cbdc"
+  },
+  "eiscue-noice": {
+    "lightVibrant": "#9be4f4"
+  },
+  "indeedee-female": {
+    "lightVibrant": "#c3b5bc"
+  },
+  "morpeko-hangry": {
+    "lightVibrant": "#e6aab3"
+  },
+  "zacian-crowned": {
+    "lightVibrant": "#e6a498"
+  },
+  "zamazenta-crowned": {
+    "lightVibrant": "#ece493"
+  },
+  "eternatus-eternamax": {
+    "lightVibrant": "#fc7daa"
+  },
+  "urshifu-rapid-strike": {
+    "lightVibrant": "#e7e291"
+  },
+  "zarude-dada": {
+    "lightVibrant": "#eb86e1"
+  },
+  "calyrex-ice": {
+    "lightVibrant": "#a6d6d6"
+  },
+  "calyrex-shadow": {
+    "lightVibrant": "#aca2d6"
+  },
+  "venusaur-gmax": {
+    "lightVibrant": "#ec91a1"
+  },
+  "charizard-gmax": {
+    "lightVibrant": "#f2d539"
+  },
+  "blastoise-gmax": {
+    "lightVibrant": "#c16a7f"
+  },
+  "butterfree-gmax": {
+    "lightVibrant": "#e78899"
+  },
+  "pikachu-gmax": {
+    "lightVibrant": "#f3de91"
+  },
+  "meowth-gmax": {
+    "lightVibrant": "#eaac70"
+  },
+  "machamp-gmax": {
+    "lightVibrant": "#c8616c"
+  },
+  "gengar-gmax": {
+    "lightVibrant": "#eabd5f"
+  },
+  "kingler-gmax": {
+    "lightVibrant": "#dc8f97"
+  },
+  "lapras-gmax": {
+    "lightVibrant": "#dc7f8c"
+  },
+  "eevee-gmax": {
+    "lightVibrant": "#ececb1"
+  },
+  "snorlax-gmax": {
+    "lightVibrant": "#da8c94"
+  },
+  "garbodor-gmax": {
+    "lightVibrant": "#e6be74"
+  },
+  "melmetal-gmax": {
+    "lightVibrant": "#ddad75"
+  },
+  "rillaboom-gmax": {
+    "lightVibrant": "#e4d39f"
+  },
+  "cinderace-gmax": {
+    "lightVibrant": "#f1dd7c"
+  },
+  "inteleon-gmax": {
+    "lightVibrant": "#6cacc4"
+  },
+  "corviknight-gmax": {
+    "lightVibrant": "#ec4c54"
+  },
+  "orbeetle-gmax": {
+    "lightVibrant": "#debb9d"
+  },
+  "drednaw-gmax": {
+    "lightVibrant": "#f4cb81"
+  },
+  "coalossal-gmax": {
+    "lightVibrant": "#f0a44d"
+  },
+  "flapple-gmax": {
+    "lightVibrant": "#ecd474"
+  },
+  "appletun-gmax": null,
+  "sandaconda-gmax": {
+    "lightVibrant": "#d39693"
+  },
+  "toxtricity-amped-gmax": {
+    "lightVibrant": "#f2d782"
+  },
+  "centiskorch-gmax": {
+    "lightVibrant": "#f3d546"
+  },
+  "hatterene-gmax": {
+    "lightVibrant": "#e296a8"
+  },
+  "grimmsnarl-gmax": {
+    "lightVibrant": "#c96887"
+  },
+  "alcremie-gmax": {
+    "lightVibrant": "#f3d78c"
+  },
+  "copperajah-gmax": {
+    "lightVibrant": "#ddc496"
+  },
+  "duraludon-gmax": {
+    "lightVibrant": "#d77b93"
+  },
+  "urshifu-single-strike-gmax": {
+    "lightVibrant": "#e1bbc4"
+  },
+  "urshifu-rapid-strike-gmax": {
+    "lightVibrant": "#dba1aa"
+  },
+  "toxtricity-low-key-gmax": null,
+  "growlithe-hisui": {
+    "lightVibrant": "#e2744c"
+  },
+  "arcanine-hisui": {
+    "lightVibrant": "#e3a596"
+  },
+  "voltorb-hisui": {
+    "lightVibrant": "#f4b464"
+  },
+  "electrode-hisui": {
+    "lightVibrant": "#e4c48c"
+  },
+  "typhlosion-hisui": {
+    "lightVibrant": "#fcecb4"
+  },
+  "qwilfish-hisui": {
+    "lightVibrant": "#d49cc4"
+  },
+  "sneasel-hisui": {
+    "lightVibrant": "#f8d797"
+  },
+  "samurott-hisui": {
+    "lightVibrant": "#93b9e6"
+  },
+  "lilligant-hisui": {
+    "lightVibrant": "#bed994"
+  },
+  "zorua-hisui": {
+    "lightVibrant": "#eaa887"
+  },
+  "zoroark-hisui": {
+    "lightVibrant": "#ea9a99"
+  },
+  "braviary-hisui": {
+    "lightVibrant": "#d7c2a1"
+  },
+  "sliggoo-hisui": {
+    "lightVibrant": "#b4dcd4"
+  },
+  "goodra-hisui": {
+    "lightVibrant": "#aabcce"
+  },
+  "avalugg-hisui": {
+    "lightVibrant": "#cfe3f4"
+  },
+  "decidueye-hisui": {
+    "lightVibrant": "#ccbc94"
+  },
+  "dialga-origin": {
+    "lightVibrant": "#99c0e0"
+  },
+  "palkia-origin": {
+    "lightVibrant": "#ea9a92"
+  },
+  "basculin-white-striped": {
+    "lightVibrant": "#f4fcfc"
+  },
+  "basculegion-female": null,
+  "enamorus-therian": {
+    "lightVibrant": "#e77ca4"
+  },
+  "tauros-paldea-combat-breed": null,
+  "tauros-paldea-blaze-breed": null,
+  "tauros-paldea-aqua-breed": null,
+  "wooper-paldea": null,
+  "oinkologne-female": null,
+  "dudunsparce-three-segment": null,
+  "palafin-hero": null,
+  "maushold-family-of-three": null,
+  "tatsugiri-droopy": null,
+  "tatsugiri-stretchy": null,
+  "squawkabilly-blue-plumage": null,
+  "squawkabilly-yellow-plumage": null,
+  "squawkabilly-white-plumage": null,
+  "gimmighoul-roaming": null,
+  "koraidon-limited-build": null,
+  "koraidon-sprinting-build": null,
+  "koraidon-swimming-build": null,
+  "koraidon-gliding-build": null,
+  "miraidon-low-power-mode": null,
+  "miraidon-drive-mode": null,
+  "miraidon-aquatic-mode": null,
+  "miraidon-glide-mode": null,
+  "ursaluna-bloodmoon": null,
+  "ogerpon-wellspring-mask": null,
+  "ogerpon-hearthflame-mask": null,
+  "ogerpon-cornerstone-mask": null,
+  "terapagos-terastal": null,
+  "terapagos-stellar": null,
+  "jellicent-female": null
+}

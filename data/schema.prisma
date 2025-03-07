@@ -1,0 +1,2331 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./pokeapi.sqlite3"
+}
+
+model auth_group {
+  id                     Int                      @id @default(autoincrement())
+  name                   String                   @unique(map: "sqlite_autoindex_auth_group_1")
+  auth_group_permissions auth_group_permissions[]
+  auth_user_groups       auth_user_groups[]
+}
+
+model auth_group_permissions {
+  id              Int             @id @default(autoincrement())
+  group_id        Int
+  permission_id   Int
+  auth_permission auth_permission @relation(fields: [permission_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  auth_group      auth_group      @relation(fields: [group_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@unique([group_id, permission_id], map: "auth_group_permissions_group_id_permission_id_0cd325b0_uniq")
+  @@index([permission_id], map: "auth_group_permissions_permission_id_84c5c92e")
+  @@index([group_id], map: "auth_group_permissions_group_id_b120cbf9")
+}
+
+model auth_permission {
+  id                         Int                          @id @default(autoincrement())
+  content_type_id            Int
+  codename                   String
+  name                       String
+  auth_group_permissions     auth_group_permissions[]
+  django_content_type        django_content_type          @relation(fields: [content_type_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  auth_user_user_permissions auth_user_user_permissions[]
+
+  @@unique([content_type_id, codename], map: "auth_permission_content_type_id_codename_01ab375a_uniq")
+  @@index([content_type_id], map: "auth_permission_content_type_id_2f476e4b")
+}
+
+model auth_user {
+  id                         Int                          @id @default(autoincrement())
+  password                   String
+  last_login                 DateTime?
+  is_superuser               Unsupported("bool")
+  username                   String                       @unique(map: "sqlite_autoindex_auth_user_1")
+  last_name                  String
+  email                      String
+  is_staff                   Unsupported("bool")
+  is_active                  Unsupported("bool")
+  date_joined                DateTime
+  first_name                 String
+  auth_user_groups           auth_user_groups[]
+  auth_user_user_permissions auth_user_user_permissions[]
+  django_admin_log           django_admin_log[]
+}
+
+model auth_user_groups {
+  id         Int        @id @default(autoincrement())
+  user_id    Int
+  group_id   Int
+  auth_group auth_group @relation(fields: [group_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  auth_user  auth_user  @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@unique([user_id, group_id], map: "auth_user_groups_user_id_group_id_94350c0c_uniq")
+  @@index([group_id], map: "auth_user_groups_group_id_97559544")
+  @@index([user_id], map: "auth_user_groups_user_id_6a12ed8b")
+}
+
+model auth_user_user_permissions {
+  id              Int             @id @default(autoincrement())
+  user_id         Int
+  permission_id   Int
+  auth_permission auth_permission @relation(fields: [permission_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  auth_user       auth_user       @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@unique([user_id, permission_id], map: "auth_user_user_permissions_user_id_permission_id_14a6b632_uniq")
+  @@index([permission_id], map: "auth_user_user_permissions_permission_id_1fbb5f2c")
+  @@index([user_id], map: "auth_user_user_permissions_user_id_a95ead1b")
+}
+
+model django_admin_log {
+  id                  Int                              @id @default(autoincrement())
+  action_time         DateTime
+  object_id           String?
+  object_repr         String
+  change_message      String
+  content_type_id     Int?
+  user_id             Int
+  action_flag         Unsupported("smallint unsigned")
+  auth_user           auth_user                        @relation(fields: [user_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  django_content_type django_content_type?             @relation(fields: [content_type_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([user_id], map: "django_admin_log_user_id_c564eba6")
+  @@index([content_type_id], map: "django_admin_log_content_type_id_c4bce8eb")
+}
+
+model django_content_type {
+  id               Int                @id @default(autoincrement())
+  app_label        String
+  model            String
+  auth_permission  auth_permission[]
+  django_admin_log django_admin_log[]
+
+  @@unique([app_label, model], map: "django_content_type_app_label_model_76bd3d3b_uniq")
+}
+
+model django_migrations {
+  id      Int      @id @default(autoincrement())
+  app     String
+  name    String
+  applied DateTime
+}
+
+model django_session {
+  session_key  String   @id
+  session_data String
+  expire_date  DateTime
+
+  @@index([expire_date], map: "django_session_expire_date_a5c62663")
+}
+
+model django_site {
+  id     Int    @id @default(autoincrement())
+  name   String
+  domain String @unique(map: "sqlite_autoindex_django_site_1")
+}
+
+model pokemon_v2_ability {
+  id                            Int                             @id @default(autoincrement())
+  is_main_series                Unsupported("bool")
+  generation_id                 Int?
+  name                          String
+  pokemon_v2_generation         pokemon_v2_generation?          @relation(fields: [generation_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_abilitychange      pokemon_v2_abilitychange[]
+  pokemon_v2_abilityeffecttext  pokemon_v2_abilityeffecttext[]
+  pokemon_v2_abilityflavortext  pokemon_v2_abilityflavortext[]
+  pokemon_v2_abilityname        pokemon_v2_abilityname[]
+  pokemon_v2_pokemonability     pokemon_v2_pokemonability[]
+  pokemon_v2_pokemonabilitypast pokemon_v2_pokemonabilitypast[]
+
+  @@index([name], map: "pokemon_v2_ability_name_744d1800")
+  @@index([generation_id], map: "pokemon_v2_ability_generation_id_225aa68a")
+}
+
+model pokemon_v2_abilitychange {
+  id                                 Int                                  @id @default(autoincrement())
+  ability_id                         Int?
+  version_group_id                   Int?
+  pokemon_v2_versiongroup            pokemon_v2_versiongroup?             @relation(fields: [version_group_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_ability                 pokemon_v2_ability?                  @relation(fields: [ability_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_abilitychangeeffecttext pokemon_v2_abilitychangeeffecttext[]
+
+  @@index([version_group_id], map: "pokemon_v2_abilitychange_version_group_id_04bcdf19")
+  @@index([ability_id], map: "pokemon_v2_abilitychange_ability_id_b263505f")
+}
+
+model pokemon_v2_abilitychangeeffecttext {
+  id                       Int                       @id @default(autoincrement())
+  effect                   String
+  ability_change_id        Int?
+  language_id              Int?
+  pokemon_v2_language      pokemon_v2_language?      @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_abilitychange pokemon_v2_abilitychange? @relation(fields: [ability_change_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([language_id], map: "pokemon_v2_abilitychangeeffecttext_language_id_ed14bf34")
+  @@index([ability_change_id], map: "pokemon_v2_abilitychangeeffecttext_ability_change_id_7b10479d")
+}
+
+model pokemon_v2_abilityeffecttext {
+  id                  Int                  @id @default(autoincrement())
+  effect              String
+  short_effect        String
+  ability_id          Int?
+  language_id         Int?
+  pokemon_v2_language pokemon_v2_language? @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_ability  pokemon_v2_ability?  @relation(fields: [ability_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([language_id], map: "pokemon_v2_abilityeffecttext_language_id_9a3fc9eb")
+  @@index([ability_id], map: "pokemon_v2_abilityeffecttext_ability_id_9fe65f70")
+}
+
+model pokemon_v2_abilityflavortext {
+  id                      Int                      @id @default(autoincrement())
+  ability_id              Int?
+  language_id             Int?
+  version_group_id        Int?
+  flavor_text             String
+  pokemon_v2_versiongroup pokemon_v2_versiongroup? @relation(fields: [version_group_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language     pokemon_v2_language?     @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_ability      pokemon_v2_ability?      @relation(fields: [ability_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([version_group_id], map: "pokemon_v2_abilityflavortext_version_group_id_a379dd5d")
+  @@index([language_id], map: "pokemon_v2_abilityflavortext_language_id_91dfb962")
+  @@index([ability_id], map: "pokemon_v2_abilityflavortext_ability_id_8c20d4bf")
+}
+
+model pokemon_v2_abilityname {
+  id                  Int                  @id @default(autoincrement())
+  ability_id          Int?
+  language_id         Int?
+  name                String
+  pokemon_v2_language pokemon_v2_language? @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_ability  pokemon_v2_ability?  @relation(fields: [ability_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_abilityname_name_8db2ae39")
+  @@index([language_id], map: "pokemon_v2_abilityname_language_id_e64c37fb")
+  @@index([ability_id], map: "pokemon_v2_abilityname_ability_id_2753864d")
+}
+
+model pokemon_v2_berry {
+  id                        Int                         @id @default(autoincrement())
+  natural_gift_power        Int
+  size                      Int
+  max_harvest               Int
+  growth_time               Int
+  soil_dryness              Int
+  smoothness                Int
+  berry_firmness_id         Int?
+  item_id                   Int?
+  natural_gift_type_id      Int?
+  name                      String
+  pokemon_v2_type           pokemon_v2_type?            @relation(fields: [natural_gift_type_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_item           pokemon_v2_item?            @relation(fields: [item_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_berryfirmness  pokemon_v2_berryfirmness?   @relation(fields: [berry_firmness_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_berryflavormap pokemon_v2_berryflavormap[]
+
+  @@index([name], map: "pokemon_v2_berry_name_4eaa4d0f")
+  @@index([natural_gift_type_id], map: "pokemon_v2_berry_natural_gift_type_id_7d76f035")
+  @@index([item_id], map: "pokemon_v2_berry_item_id_72a1ed81")
+  @@index([berry_firmness_id], map: "pokemon_v2_berry_berry_firmness_id_780e6268")
+}
+
+model pokemon_v2_berryfirmness {
+  id                           Int                            @id @default(autoincrement())
+  name                         String
+  pokemon_v2_berry             pokemon_v2_berry[]
+  pokemon_v2_berryfirmnessname pokemon_v2_berryfirmnessname[]
+
+  @@index([name], map: "pokemon_v2_berryfirmness_name_13b8b31d")
+}
+
+model pokemon_v2_berryfirmnessname {
+  id                       Int                       @id @default(autoincrement())
+  berry_firmness_id        Int?
+  language_id              Int?
+  name                     String
+  pokemon_v2_language      pokemon_v2_language?      @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_berryfirmness pokemon_v2_berryfirmness? @relation(fields: [berry_firmness_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_berryfirmnessname_name_2a74382f")
+  @@index([language_id], map: "pokemon_v2_berryfirmnessname_language_id_7e7f395e")
+  @@index([berry_firmness_id], map: "pokemon_v2_berryfirmnessname_berry_firmness_id_905d4dcf")
+}
+
+model pokemon_v2_berryflavor {
+  id                                                                          Int                          @id @default(autoincrement())
+  contest_type_id                                                             Int?                         @unique(map: "sqlite_autoindex_pokemon_v2_berryflavor_1")
+  name                                                                        String
+  pokemon_v2_contesttype                                                      pokemon_v2_contesttype?      @relation(fields: [contest_type_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_berryflavormap                                                   pokemon_v2_berryflavormap[]
+  pokemon_v2_berryflavorname                                                  pokemon_v2_berryflavorname[]
+  pokemon_v2_nature_pokemon_v2_nature_likes_flavor_idTopokemon_v2_berryflavor pokemon_v2_nature[]          @relation("pokemon_v2_nature_likes_flavor_idTopokemon_v2_berryflavor")
+  pokemon_v2_nature_pokemon_v2_nature_hates_flavor_idTopokemon_v2_berryflavor pokemon_v2_nature[]          @relation("pokemon_v2_nature_hates_flavor_idTopokemon_v2_berryflavor")
+
+  @@index([name], map: "pokemon_v2_berryflavor_name_b33ebfb3")
+}
+
+model pokemon_v2_berryflavormap {
+  id                     Int                     @id @default(autoincrement())
+  potency                Int
+  berry_id               Int?
+  berry_flavor_id        Int?
+  pokemon_v2_berryflavor pokemon_v2_berryflavor? @relation(fields: [berry_flavor_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_berry       pokemon_v2_berry?       @relation(fields: [berry_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([berry_flavor_id], map: "pokemon_v2_berryflavormap_berry_flavor_id_65cf6f73")
+  @@index([berry_id], map: "pokemon_v2_berryflavormap_berry_id_e4a753e4")
+}
+
+model pokemon_v2_berryflavorname {
+  id                     Int                     @id @default(autoincrement())
+  berry_flavor_id        Int?
+  language_id            Int?
+  name                   String
+  pokemon_v2_language    pokemon_v2_language?    @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_berryflavor pokemon_v2_berryflavor? @relation(fields: [berry_flavor_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_berryflavorname_name_c499b01c")
+  @@index([language_id], map: "pokemon_v2_berryflavorname_language_id_fa96a7af")
+  @@index([berry_flavor_id], map: "pokemon_v2_berryflavorname_berry_flavor_id_1dd899da")
+}
+
+model pokemon_v2_characteristic {
+  id                                   Int                                    @id @default(autoincrement())
+  gene_mod_5                           Int
+  stat_id                              Int?
+  pokemon_v2_stat                      pokemon_v2_stat?                       @relation(fields: [stat_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_characteristicdescription pokemon_v2_characteristicdescription[]
+
+  @@index([stat_id], map: "pokemon_v2_characteristic_stat_id_cf62870d")
+}
+
+model pokemon_v2_characteristicdescription {
+  id                        Int                        @id @default(autoincrement())
+  description               String
+  characteristic_id         Int?
+  language_id               Int?
+  pokemon_v2_language       pokemon_v2_language?       @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_characteristic pokemon_v2_characteristic? @relation(fields: [characteristic_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([language_id], map: "pokemon_v2_characteristicdescription_language_id_48d9a020")
+  @@index([characteristic_id], map: "pokemon_v2_characteristicdescription_characteristic_id_a943ddcf")
+}
+
+model pokemon_v2_contestcombo {
+  id                                                                      Int              @id @default(autoincrement())
+  first_move_id                                                           Int?
+  second_move_id                                                          Int?
+  pokemon_v2_move_pokemon_v2_contestcombo_second_move_idTopokemon_v2_move pokemon_v2_move? @relation("pokemon_v2_contestcombo_second_move_idTopokemon_v2_move", fields: [second_move_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_move_pokemon_v2_contestcombo_first_move_idTopokemon_v2_move  pokemon_v2_move? @relation("pokemon_v2_contestcombo_first_move_idTopokemon_v2_move", fields: [first_move_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([second_move_id], map: "pokemon_v2_contestcombo_second_move_id_5bf6f920")
+  @@index([first_move_id], map: "pokemon_v2_contestcombo_first_move_id_e86fe950")
+}
+
+model pokemon_v2_contesteffect {
+  id                                 Int                                  @id @default(autoincrement())
+  appeal                             Int
+  jam                                Int
+  pokemon_v2_contesteffecteffecttext pokemon_v2_contesteffecteffecttext[]
+  pokemon_v2_contesteffectflavortext pokemon_v2_contesteffectflavortext[]
+  pokemon_v2_move                    pokemon_v2_move[]
+}
+
+model pokemon_v2_contesteffecteffecttext {
+  id                       Int                       @id @default(autoincrement())
+  effect                   String
+  contest_effect_id        Int?
+  language_id              Int?
+  pokemon_v2_language      pokemon_v2_language?      @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_contesteffect pokemon_v2_contesteffect? @relation(fields: [contest_effect_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([language_id], map: "pokemon_v2_contesteffecteffecttext_language_id_0e98da56")
+  @@index([contest_effect_id], map: "pokemon_v2_contesteffecteffecttext_contest_effect_id_523f86e5")
+}
+
+model pokemon_v2_contesteffectflavortext {
+  id                       Int                       @id @default(autoincrement())
+  flavor_text              String
+  contest_effect_id        Int?
+  language_id              Int?
+  pokemon_v2_language      pokemon_v2_language?      @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_contesteffect pokemon_v2_contesteffect? @relation(fields: [contest_effect_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([language_id], map: "pokemon_v2_contesteffectflavortext_language_id_a584e527")
+  @@index([contest_effect_id], map: "pokemon_v2_contesteffectflavortext_contest_effect_id_73bd43b4")
+}
+
+model pokemon_v2_contesttype {
+  id                         Int                          @id @default(autoincrement())
+  name                       String
+  pokemon_v2_berryflavor     pokemon_v2_berryflavor?
+  pokemon_v2_contesttypename pokemon_v2_contesttypename[]
+  pokemon_v2_move            pokemon_v2_move[]
+
+  @@index([name], map: "pokemon_v2_contesttype_name_18e75f76")
+}
+
+model pokemon_v2_contesttypename {
+  id                     Int                     @id @default(autoincrement())
+  flavor                 String
+  color                  String
+  contest_type_id        Int?
+  language_id            Int?
+  name                   String
+  pokemon_v2_language    pokemon_v2_language?    @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_contesttype pokemon_v2_contesttype? @relation(fields: [contest_type_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_contesttypename_name_270b053a")
+  @@index([language_id], map: "pokemon_v2_contesttypename_language_id_2113d494")
+  @@index([contest_type_id], map: "pokemon_v2_contesttypename_contest_type_id_08e7cb9d")
+}
+
+model pokemon_v2_egggroup {
+  id                         Int                          @id @default(autoincrement())
+  name                       String
+  pokemon_v2_egggroupname    pokemon_v2_egggroupname[]
+  pokemon_v2_pokemonegggroup pokemon_v2_pokemonegggroup[]
+
+  @@index([name], map: "pokemon_v2_egggroup_name_452dc3a4")
+}
+
+model pokemon_v2_egggroupname {
+  id                  Int                  @id @default(autoincrement())
+  egg_group_id        Int?
+  language_id         Int?
+  name                String
+  pokemon_v2_language pokemon_v2_language? @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_egggroup pokemon_v2_egggroup? @relation(fields: [egg_group_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_egggroupname_name_4ae8920c")
+  @@index([language_id], map: "pokemon_v2_egggroupname_language_id_b233cbf3")
+  @@index([egg_group_id], map: "pokemon_v2_egggroupname_egg_group_id_0e05a091")
+}
+
+model pokemon_v2_encounter {
+  id                                    Int                                     @id @default(autoincrement())
+  min_level                             Int
+  max_level                             Int
+  location_area_id                      Int?
+  pokemon_id                            Int?
+  version_id                            Int?
+  encounter_slot_id                     Int?
+  pokemon_v2_encounterslot              pokemon_v2_encounterslot?               @relation(fields: [encounter_slot_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_version                    pokemon_v2_version?                     @relation(fields: [version_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_pokemon                    pokemon_v2_pokemon?                     @relation(fields: [pokemon_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_locationarea               pokemon_v2_locationarea?                @relation(fields: [location_area_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_encounterconditionvaluemap pokemon_v2_encounterconditionvaluemap[]
+
+  @@index([encounter_slot_id], map: "pokemon_v2_encounter_encounter_slot_id_67f269af")
+  @@index([version_id], map: "pokemon_v2_encounter_version_id_46932476")
+  @@index([pokemon_id], map: "pokemon_v2_encounter_pokemon_id_a4a76f85")
+  @@index([location_area_id], map: "pokemon_v2_encounter_location_area_id_fa408e67")
+}
+
+model pokemon_v2_encountercondition {
+  id                                 Int                                  @id @default(autoincrement())
+  name                               String
+  pokemon_v2_encounterconditionname  pokemon_v2_encounterconditionname[]
+  pokemon_v2_encounterconditionvalue pokemon_v2_encounterconditionvalue[]
+
+  @@index([name], map: "pokemon_v2_encountercondition_name_6825a841")
+}
+
+model pokemon_v2_encounterconditionname {
+  id                            Int                            @id @default(autoincrement())
+  encounter_condition_id        Int?
+  language_id                   Int?
+  name                          String
+  pokemon_v2_language           pokemon_v2_language?           @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_encountercondition pokemon_v2_encountercondition? @relation(fields: [encounter_condition_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_encounterconditionname_name_9140f29e")
+  @@index([language_id], map: "pokemon_v2_encounterconditionname_language_id_15462dd7")
+  @@index([encounter_condition_id], map: "pokemon_v2_encounterconditionname_encounter_condition_id_07da9a9c")
+}
+
+model pokemon_v2_encounterconditionvalue {
+  id                                     Int                                      @id @default(autoincrement())
+  is_default                             Unsupported("bool")
+  encounter_condition_id                 Int?
+  name                                   String
+  pokemon_v2_encountercondition          pokemon_v2_encountercondition?           @relation(fields: [encounter_condition_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_encounterconditionvaluemap  pokemon_v2_encounterconditionvaluemap[]
+  pokemon_v2_encounterconditionvaluename pokemon_v2_encounterconditionvaluename[]
+
+  @@index([name], map: "pokemon_v2_encounterconditionvalue_name_fd9a9104")
+  @@index([encounter_condition_id], map: "pokemon_v2_encounterconditionvalue_encounter_condition_id_e246ac97")
+}
+
+model pokemon_v2_encounterconditionvaluemap {
+  id                                 Int                                 @id @default(autoincrement())
+  encounter_id                       Int?
+  encounter_condition_value_id       Int?
+  pokemon_v2_encounterconditionvalue pokemon_v2_encounterconditionvalue? @relation(fields: [encounter_condition_value_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_encounter               pokemon_v2_encounter?               @relation(fields: [encounter_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([encounter_condition_value_id], map: "pokemon_v2_encounterconditionvaluemap_encounter_condition_value_id_aea7c219")
+  @@index([encounter_id], map: "pokemon_v2_encounterconditionvaluemap_encounter_id_07cf7d14")
+}
+
+model pokemon_v2_encounterconditionvaluename {
+  id                                 Int                                 @id @default(autoincrement())
+  encounter_condition_value_id       Int?
+  language_id                        Int?
+  name                               String
+  pokemon_v2_language                pokemon_v2_language?                @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_encounterconditionvalue pokemon_v2_encounterconditionvalue? @relation(fields: [encounter_condition_value_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_encounterconditionvaluename_name_09aada74")
+  @@index([language_id], map: "pokemon_v2_encounterconditionvaluename_language_id_759f2aa7")
+  @@index([encounter_condition_value_id], map: "pokemon_v2_encounterconditionvaluename_encounter_condition_value_id_30a8cc50")
+}
+
+model pokemon_v2_encountermethod {
+  id                                   Int                                    @id @default(autoincrement())
+  order                                Int?
+  name                                 String
+  pokemon_v2_encountermethodname       pokemon_v2_encountermethodname[]
+  pokemon_v2_encounterslot             pokemon_v2_encounterslot[]
+  pokemon_v2_locationareaencounterrate pokemon_v2_locationareaencounterrate[]
+
+  @@index([name], map: "pokemon_v2_encountermethod_name_807a7363")
+}
+
+model pokemon_v2_encountermethodname {
+  id                         Int                         @id @default(autoincrement())
+  encounter_method_id        Int?
+  language_id                Int?
+  name                       String
+  pokemon_v2_language        pokemon_v2_language?        @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_encountermethod pokemon_v2_encountermethod? @relation(fields: [encounter_method_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_encountermethodname_name_c50b0da6")
+  @@index([language_id], map: "pokemon_v2_encountermethodname_language_id_df10978f")
+  @@index([encounter_method_id], map: "pokemon_v2_encountermethodname_encounter_method_id_f0b81197")
+}
+
+model pokemon_v2_encounterslot {
+  id                         Int                         @id @default(autoincrement())
+  slot                       Int?
+  rarity                     Int
+  encounter_method_id        Int?
+  version_group_id           Int?
+  pokemon_v2_encounter       pokemon_v2_encounter[]
+  pokemon_v2_versiongroup    pokemon_v2_versiongroup?    @relation(fields: [version_group_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_encountermethod pokemon_v2_encountermethod? @relation(fields: [encounter_method_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([version_group_id], map: "pokemon_v2_encounterslot_version_group_id_de2e9658")
+  @@index([encounter_method_id], map: "pokemon_v2_encounterslot_encounter_method_id_b9a4d963")
+}
+
+model pokemon_v2_evolutionchain {
+  id                        Int                         @id @default(autoincrement())
+  baby_trigger_item_id      Int?
+  pokemon_v2_item           pokemon_v2_item?            @relation(fields: [baby_trigger_item_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_pokemonspecies pokemon_v2_pokemonspecies[]
+
+  @@index([baby_trigger_item_id], map: "pokemon_v2_evolutionchain_baby_trigger_item_id_8341ae6a")
+}
+
+model pokemon_v2_evolutiontrigger {
+  id                              Int                               @id @default(autoincrement())
+  name                            String
+  pokemon_v2_evolutiontriggername pokemon_v2_evolutiontriggername[]
+  pokemon_v2_pokemonevolution     pokemon_v2_pokemonevolution[]
+
+  @@index([name], map: "pokemon_v2_evolutiontrigger_name_5e94bd81")
+}
+
+model pokemon_v2_evolutiontriggername {
+  id                          Int                          @id @default(autoincrement())
+  evolution_trigger_id        Int?
+  language_id                 Int?
+  name                        String
+  pokemon_v2_language         pokemon_v2_language?         @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_evolutiontrigger pokemon_v2_evolutiontrigger? @relation(fields: [evolution_trigger_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_evolutiontriggername_name_8119ef67")
+  @@index([language_id], map: "pokemon_v2_evolutiontriggername_language_id_9a05e0c7")
+  @@index([evolution_trigger_id], map: "pokemon_v2_evolutiontriggername_evolution_trigger_id_9d66b90d")
+}
+
+model pokemon_v2_experience {
+  id                    Int                    @id @default(autoincrement())
+  level                 Int
+  experience            Int
+  growth_rate_id        Int?
+  pokemon_v2_growthrate pokemon_v2_growthrate? @relation(fields: [growth_rate_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([growth_rate_id], map: "pokemon_v2_experience_growth_rate_id_42dcd743")
+}
+
+model pokemon_v2_gender {
+  id                          Int                           @id @default(autoincrement())
+  name                        String
+  pokemon_v2_pokemonevolution pokemon_v2_pokemonevolution[]
+
+  @@index([name], map: "pokemon_v2_gender_name_40507af4")
+}
+
+model pokemon_v2_generation {
+  id                               Int                                @id @default(autoincrement())
+  region_id                        Int?                               @unique(map: "sqlite_autoindex_pokemon_v2_generation_1")
+  name                             String
+  pokemon_v2_ability               pokemon_v2_ability[]
+  pokemon_v2_region                pokemon_v2_region?                 @relation(fields: [region_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_generationname        pokemon_v2_generationname[]
+  pokemon_v2_itemgameindex         pokemon_v2_itemgameindex[]
+  pokemon_v2_locationgameindex     pokemon_v2_locationgameindex[]
+  pokemon_v2_move                  pokemon_v2_move[]
+  pokemon_v2_pokemonabilitypast    pokemon_v2_pokemonabilitypast[]
+  pokemon_v2_pokemonformgeneration pokemon_v2_pokemonformgeneration[]
+  pokemon_v2_pokemonspecies        pokemon_v2_pokemonspecies[]
+  pokemon_v2_pokemontypepast       pokemon_v2_pokemontypepast[]
+  pokemon_v2_type                  pokemon_v2_type[]
+  pokemon_v2_typeefficacypast      pokemon_v2_typeefficacypast[]
+  pokemon_v2_typegameindex         pokemon_v2_typegameindex[]
+  pokemon_v2_versiongroup          pokemon_v2_versiongroup[]
+
+  @@index([name], map: "pokemon_v2_generation_name_6e9940f4")
+}
+
+model pokemon_v2_generationname {
+  id                    Int                    @id @default(autoincrement())
+  generation_id         Int?
+  language_id           Int?
+  name                  String
+  pokemon_v2_language   pokemon_v2_language?   @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_generation pokemon_v2_generation? @relation(fields: [generation_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_generationname_name_f79c2051")
+  @@index([language_id], map: "pokemon_v2_generationname_language_id_4e855215")
+  @@index([generation_id], map: "pokemon_v2_generationname_generation_id_9f22cdbb")
+}
+
+model pokemon_v2_growthrate {
+  id                               Int                                @id @default(autoincrement())
+  formula                          String
+  name                             String
+  pokemon_v2_experience            pokemon_v2_experience[]
+  pokemon_v2_growthratedescription pokemon_v2_growthratedescription[]
+  pokemon_v2_machine               pokemon_v2_machine[]
+  pokemon_v2_pokemonspecies        pokemon_v2_pokemonspecies[]
+
+  @@index([name], map: "pokemon_v2_growthrate_name_1926e11a")
+}
+
+model pokemon_v2_growthratedescription {
+  id                    Int                    @id @default(autoincrement())
+  growth_rate_id        Int?
+  language_id           Int?
+  description           String
+  pokemon_v2_language   pokemon_v2_language?   @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_growthrate pokemon_v2_growthrate? @relation(fields: [growth_rate_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([language_id], map: "pokemon_v2_growthratedescription_language_id_5bbe9b57")
+  @@index([growth_rate_id], map: "pokemon_v2_growthratedescription_growth_rate_id_2e126dd5")
+}
+
+model pokemon_v2_item {
+  id                                                                                         Int                           @id @default(autoincrement())
+  cost                                                                                       Int?
+  fling_power                                                                                Int?
+  item_category_id                                                                           Int?
+  item_fling_effect_id                                                                       Int?
+  name                                                                                       String
+  pokemon_v2_berry                                                                           pokemon_v2_berry[]
+  pokemon_v2_evolutionchain                                                                  pokemon_v2_evolutionchain[]
+  pokemon_v2_itemflingeffect                                                                 pokemon_v2_itemflingeffect?   @relation(fields: [item_fling_effect_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_itemcategory                                                                    pokemon_v2_itemcategory?      @relation(fields: [item_category_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_itemattributemap                                                                pokemon_v2_itemattributemap[]
+  pokemon_v2_itemeffecttext                                                                  pokemon_v2_itemeffecttext[]
+  pokemon_v2_itemflavortext                                                                  pokemon_v2_itemflavortext[]
+  pokemon_v2_itemgameindex                                                                   pokemon_v2_itemgameindex[]
+  pokemon_v2_itemname                                                                        pokemon_v2_itemname[]
+  pokemon_v2_itemsprites                                                                     pokemon_v2_itemsprites[]
+  pokemon_v2_machine                                                                         pokemon_v2_machine[]
+  pokemon_v2_pokemonevolution_pokemon_v2_pokemonevolution_held_item_idTopokemon_v2_item      pokemon_v2_pokemonevolution[] @relation("pokemon_v2_pokemonevolution_held_item_idTopokemon_v2_item")
+  pokemon_v2_pokemonevolution_pokemon_v2_pokemonevolution_evolution_item_idTopokemon_v2_item pokemon_v2_pokemonevolution[] @relation("pokemon_v2_pokemonevolution_evolution_item_idTopokemon_v2_item")
+  pokemon_v2_pokemonitem                                                                     pokemon_v2_pokemonitem[]
+
+  @@index([name], map: "pokemon_v2_item_name_5597f95e")
+  @@index([item_fling_effect_id], map: "pokemon_v2_item_item_fling_effect_id_8e7cefaa")
+  @@index([item_category_id], map: "pokemon_v2_item_item_category_id_9f55b7ca")
+}
+
+model pokemon_v2_itemattribute {
+  id                                  Int                                   @id @default(autoincrement())
+  name                                String
+  pokemon_v2_itemattributedescription pokemon_v2_itemattributedescription[]
+  pokemon_v2_itemattributemap         pokemon_v2_itemattributemap[]
+  pokemon_v2_itemattributename        pokemon_v2_itemattributename[]
+
+  @@index([name], map: "pokemon_v2_itemattribute_name_7e365d21")
+}
+
+model pokemon_v2_itemattributedescription {
+  id                       Int                       @id @default(autoincrement())
+  description              String
+  item_attribute_id        Int?
+  language_id              Int?
+  pokemon_v2_language      pokemon_v2_language?      @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_itemattribute pokemon_v2_itemattribute? @relation(fields: [item_attribute_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([language_id], map: "pokemon_v2_itemattributedescription_language_id_5385b04c")
+  @@index([item_attribute_id], map: "pokemon_v2_itemattributedescription_item_attribute_id_cdd96fff")
+}
+
+model pokemon_v2_itemattributemap {
+  id                       Int                       @id @default(autoincrement())
+  item_id                  Int?
+  item_attribute_id        Int?
+  pokemon_v2_itemattribute pokemon_v2_itemattribute? @relation(fields: [item_attribute_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_item          pokemon_v2_item?          @relation(fields: [item_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([item_attribute_id], map: "pokemon_v2_itemattributemap_item_attribute_id_e6cd252f")
+  @@index([item_id], map: "pokemon_v2_itemattributemap_item_id_e6dba1a6")
+}
+
+model pokemon_v2_itemattributename {
+  id                       Int                       @id @default(autoincrement())
+  item_attribute_id        Int?
+  language_id              Int?
+  name                     String
+  pokemon_v2_language      pokemon_v2_language?      @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_itemattribute pokemon_v2_itemattribute? @relation(fields: [item_attribute_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_itemattributename_name_3e2ccd4a")
+  @@index([language_id], map: "pokemon_v2_itemattributename_language_id_e36a7fe1")
+  @@index([item_attribute_id], map: "pokemon_v2_itemattributename_item_attribute_id_85acc7f5")
+}
+
+model pokemon_v2_itemcategory {
+  id                          Int                           @id @default(autoincrement())
+  item_pocket_id              Int?
+  name                        String
+  pokemon_v2_item             pokemon_v2_item[]
+  pokemon_v2_itempocket       pokemon_v2_itempocket?        @relation(fields: [item_pocket_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_itemcategoryname pokemon_v2_itemcategoryname[]
+
+  @@index([name], map: "pokemon_v2_itemcategory_name_54594288")
+  @@index([item_pocket_id], map: "pokemon_v2_itemcategory_item_pocket_id_8ebf7645")
+}
+
+model pokemon_v2_itemcategoryname {
+  id                      Int                      @id @default(autoincrement())
+  item_category_id        Int?
+  language_id             Int?
+  name                    String
+  pokemon_v2_language     pokemon_v2_language?     @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_itemcategory pokemon_v2_itemcategory? @relation(fields: [item_category_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_itemcategoryname_name_b0889e22")
+  @@index([language_id], map: "pokemon_v2_itemcategoryname_language_id_6a5424db")
+  @@index([item_category_id], map: "pokemon_v2_itemcategoryname_item_category_id_10412a45")
+}
+
+model pokemon_v2_itemeffecttext {
+  id                  Int                  @id @default(autoincrement())
+  effect              String
+  short_effect        String
+  item_id             Int?
+  language_id         Int?
+  pokemon_v2_language pokemon_v2_language? @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_item     pokemon_v2_item?     @relation(fields: [item_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([language_id], map: "pokemon_v2_itemeffecttext_language_id_53e95659")
+  @@index([item_id], map: "pokemon_v2_itemeffecttext_item_id_2fb7601c")
+}
+
+model pokemon_v2_itemflavortext {
+  id                      Int                      @id @default(autoincrement())
+  flavor_text             String
+  item_id                 Int?
+  language_id             Int?
+  version_group_id        Int?
+  pokemon_v2_versiongroup pokemon_v2_versiongroup? @relation(fields: [version_group_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language     pokemon_v2_language?     @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_item         pokemon_v2_item?         @relation(fields: [item_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([version_group_id], map: "pokemon_v2_itemflavortext_version_group_id_20b07485")
+  @@index([language_id], map: "pokemon_v2_itemflavortext_language_id_dee91cde")
+  @@index([item_id], map: "pokemon_v2_itemflavortext_item_id_f2575960")
+}
+
+model pokemon_v2_itemflingeffect {
+  id                                   Int                                    @id @default(autoincrement())
+  name                                 String
+  pokemon_v2_item                      pokemon_v2_item[]
+  pokemon_v2_itemflingeffecteffecttext pokemon_v2_itemflingeffecteffecttext[]
+
+  @@index([name], map: "pokemon_v2_itemflingeffect_name_bcd91c57")
+}
+
+model pokemon_v2_itemflingeffecteffecttext {
+  id                         Int                         @id @default(autoincrement())
+  item_fling_effect_id       Int?
+  language_id                Int?
+  effect                     String
+  pokemon_v2_language        pokemon_v2_language?        @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_itemflingeffect pokemon_v2_itemflingeffect? @relation(fields: [item_fling_effect_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([language_id], map: "pokemon_v2_itemflingeffecteffecttext_language_id_7c369333")
+  @@index([item_fling_effect_id], map: "pokemon_v2_itemflingeffecteffecttext_item_fling_effect_id_31f3ddda")
+}
+
+model pokemon_v2_itemgameindex {
+  id                    Int                    @id @default(autoincrement())
+  game_index            Int
+  generation_id         Int?
+  item_id               Int?
+  pokemon_v2_item       pokemon_v2_item?       @relation(fields: [item_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_generation pokemon_v2_generation? @relation(fields: [generation_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([item_id], map: "pokemon_v2_itemgameindex_item_id_518e20fd")
+  @@index([generation_id], map: "pokemon_v2_itemgameindex_generation_id_a182ee37")
+}
+
+model pokemon_v2_itemname {
+  id                  Int                  @id @default(autoincrement())
+  item_id             Int?
+  language_id         Int?
+  name                String
+  pokemon_v2_language pokemon_v2_language? @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_item     pokemon_v2_item?     @relation(fields: [item_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_itemname_name_4b3fc446")
+  @@index([language_id], map: "pokemon_v2_itemname_language_id_69bf5660")
+  @@index([item_id], map: "pokemon_v2_itemname_item_id_cf942d90")
+}
+
+model pokemon_v2_itempocket {
+  id                        Int                         @id @default(autoincrement())
+  name                      String
+  pokemon_v2_itemcategory   pokemon_v2_itemcategory[]
+  pokemon_v2_itempocketname pokemon_v2_itempocketname[]
+
+  @@index([name], map: "pokemon_v2_itempocket_name_d30e337a")
+}
+
+model pokemon_v2_itempocketname {
+  id                    Int                    @id @default(autoincrement())
+  item_pocket_id        Int?
+  language_id           Int?
+  name                  String
+  pokemon_v2_language   pokemon_v2_language?   @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_itempocket pokemon_v2_itempocket? @relation(fields: [item_pocket_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_itempocketname_name_c3e53fd6")
+  @@index([language_id], map: "pokemon_v2_itempocketname_language_id_bd18485d")
+  @@index([item_pocket_id], map: "pokemon_v2_itempocketname_item_pocket_id_2856f7ba")
+}
+
+model pokemon_v2_itemsprites {
+  id              Int              @id @default(autoincrement())
+  item_id         Int?
+  sprites         String
+  pokemon_v2_item pokemon_v2_item? @relation(fields: [item_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([item_id], map: "pokemon_v2_itemsprites_item_id_ad42d3ae")
+}
+
+model pokemon_v2_language {
+  id                                                                                     Int                                       @id @default(autoincrement())
+  iso639                                                                                 String
+  iso3166                                                                                String
+  official                                                                               Unsupported("bool")
+  order                                                                                  Int?
+  name                                                                                   String
+  pokemon_v2_abilitychangeeffecttext                                                     pokemon_v2_abilitychangeeffecttext[]
+  pokemon_v2_abilityeffecttext                                                           pokemon_v2_abilityeffecttext[]
+  pokemon_v2_abilityflavortext                                                           pokemon_v2_abilityflavortext[]
+  pokemon_v2_abilityname                                                                 pokemon_v2_abilityname[]
+  pokemon_v2_berryfirmnessname                                                           pokemon_v2_berryfirmnessname[]
+  pokemon_v2_berryflavorname                                                             pokemon_v2_berryflavorname[]
+  pokemon_v2_characteristicdescription                                                   pokemon_v2_characteristicdescription[]
+  pokemon_v2_contesteffecteffecttext                                                     pokemon_v2_contesteffecteffecttext[]
+  pokemon_v2_contesteffectflavortext                                                     pokemon_v2_contesteffectflavortext[]
+  pokemon_v2_contesttypename                                                             pokemon_v2_contesttypename[]
+  pokemon_v2_egggroupname                                                                pokemon_v2_egggroupname[]
+  pokemon_v2_encounterconditionname                                                      pokemon_v2_encounterconditionname[]
+  pokemon_v2_encounterconditionvaluename                                                 pokemon_v2_encounterconditionvaluename[]
+  pokemon_v2_encountermethodname                                                         pokemon_v2_encountermethodname[]
+  pokemon_v2_evolutiontriggername                                                        pokemon_v2_evolutiontriggername[]
+  pokemon_v2_generationname                                                              pokemon_v2_generationname[]
+  pokemon_v2_growthratedescription                                                       pokemon_v2_growthratedescription[]
+  pokemon_v2_itemattributedescription                                                    pokemon_v2_itemattributedescription[]
+  pokemon_v2_itemattributename                                                           pokemon_v2_itemattributename[]
+  pokemon_v2_itemcategoryname                                                            pokemon_v2_itemcategoryname[]
+  pokemon_v2_itemeffecttext                                                              pokemon_v2_itemeffecttext[]
+  pokemon_v2_itemflavortext                                                              pokemon_v2_itemflavortext[]
+  pokemon_v2_itemflingeffecteffecttext                                                   pokemon_v2_itemflingeffecteffecttext[]
+  pokemon_v2_itemname                                                                    pokemon_v2_itemname[]
+  pokemon_v2_itempocketname                                                              pokemon_v2_itempocketname[]
+  pokemon_v2_languagename_pokemon_v2_languagename_local_language_idTopokemon_v2_language pokemon_v2_languagename[]                 @relation("pokemon_v2_languagename_local_language_idTopokemon_v2_language")
+  pokemon_v2_languagename_pokemon_v2_languagename_language_idTopokemon_v2_language       pokemon_v2_languagename[]                 @relation("pokemon_v2_languagename_language_idTopokemon_v2_language")
+  pokemon_v2_locationareaname                                                            pokemon_v2_locationareaname[]
+  pokemon_v2_locationname                                                                pokemon_v2_locationname[]
+  pokemon_v2_moveattributedescription                                                    pokemon_v2_moveattributedescription[]
+  pokemon_v2_moveattributename                                                           pokemon_v2_moveattributename[]
+  pokemon_v2_movebattlestylename                                                         pokemon_v2_movebattlestylename[]
+  pokemon_v2_movedamageclassdescription                                                  pokemon_v2_movedamageclassdescription[]
+  pokemon_v2_movedamageclassname                                                         pokemon_v2_movedamageclassname[]
+  pokemon_v2_moveeffectchangeeffecttext                                                  pokemon_v2_moveeffectchangeeffecttext[]
+  pokemon_v2_moveeffecteffecttext                                                        pokemon_v2_moveeffecteffecttext[]
+  pokemon_v2_moveflavortext                                                              pokemon_v2_moveflavortext[]
+  pokemon_v2_movelearnmethoddescription                                                  pokemon_v2_movelearnmethoddescription[]
+  pokemon_v2_movelearnmethodname                                                         pokemon_v2_movelearnmethodname[]
+  pokemon_v2_movemetaailmentname                                                         pokemon_v2_movemetaailmentname[]
+  pokemon_v2_movemetacategorydescription                                                 pokemon_v2_movemetacategorydescription[]
+  pokemon_v2_movename                                                                    pokemon_v2_movename[]
+  pokemon_v2_movetargetdescription                                                       pokemon_v2_movetargetdescription[]
+  pokemon_v2_movetargetname                                                              pokemon_v2_movetargetname[]
+  pokemon_v2_naturename                                                                  pokemon_v2_naturename[]
+  pokemon_v2_palparkareaname                                                             pokemon_v2_palparkareaname[]
+  pokemon_v2_pokeathlonstatname                                                          pokemon_v2_pokeathlonstatname[]
+  pokemon_v2_pokedexdescription                                                          pokemon_v2_pokedexdescription[]
+  pokemon_v2_pokedexname                                                                 pokemon_v2_pokedexname[]
+  pokemon_v2_pokemoncolorname                                                            pokemon_v2_pokemoncolorname[]
+  pokemon_v2_pokemonformname                                                             pokemon_v2_pokemonformname[]
+  pokemon_v2_pokemonhabitatname                                                          pokemon_v2_pokemonhabitatname[]
+  pokemon_v2_pokemonshapename                                                            pokemon_v2_pokemonshapename[]
+  pokemon_v2_pokemonspeciesdescription                                                   pokemon_v2_pokemonspeciesdescription[]
+  pokemon_v2_pokemonspeciesflavortext                                                    pokemon_v2_pokemonspeciesflavortext[]
+  pokemon_v2_pokemonspeciesname                                                          pokemon_v2_pokemonspeciesname[]
+  pokemon_v2_regionname                                                                  pokemon_v2_regionname[]
+  pokemon_v2_statname                                                                    pokemon_v2_statname[]
+  pokemon_v2_supercontesteffectflavortext                                                pokemon_v2_supercontesteffectflavortext[]
+  pokemon_v2_typename                                                                    pokemon_v2_typename[]
+  pokemon_v2_versionname                                                                 pokemon_v2_versionname[]
+
+  @@index([name], map: "pokemon_v2_language_name_012b2a8c")
+}
+
+model pokemon_v2_languagename {
+  id                                                                                 Int                  @id @default(autoincrement())
+  language_id                                                                        Int?
+  local_language_id                                                                  Int?
+  name                                                                               String
+  pokemon_v2_language_pokemon_v2_languagename_local_language_idTopokemon_v2_language pokemon_v2_language? @relation("pokemon_v2_languagename_local_language_idTopokemon_v2_language", fields: [local_language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language_pokemon_v2_languagename_language_idTopokemon_v2_language       pokemon_v2_language? @relation("pokemon_v2_languagename_language_idTopokemon_v2_language", fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_languagename_name_6597eeaa")
+  @@index([local_language_id], map: "pokemon_v2_languagename_local_language_id_b09a9c7d")
+  @@index([language_id], map: "pokemon_v2_languagename_language_id_75856281")
+}
+
+model pokemon_v2_location {
+  id                           Int                            @id @default(autoincrement())
+  region_id                    Int?
+  name                         String
+  pokemon_v2_region            pokemon_v2_region?             @relation(fields: [region_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_locationarea      pokemon_v2_locationarea[]
+  pokemon_v2_locationgameindex pokemon_v2_locationgameindex[]
+  pokemon_v2_locationname      pokemon_v2_locationname[]
+  pokemon_v2_pokemonevolution  pokemon_v2_pokemonevolution[]
+
+  @@index([name], map: "pokemon_v2_location_name_09fe9462")
+  @@index([region_id], map: "pokemon_v2_location_region_id_fd1b5904")
+}
+
+model pokemon_v2_locationarea {
+  id                                   Int                                    @id @default(autoincrement())
+  game_index                           Int
+  location_id                          Int?
+  name                                 String
+  pokemon_v2_encounter                 pokemon_v2_encounter[]
+  pokemon_v2_location                  pokemon_v2_location?                   @relation(fields: [location_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_locationareaencounterrate pokemon_v2_locationareaencounterrate[]
+  pokemon_v2_locationareaname          pokemon_v2_locationareaname[]
+
+  @@index([name], map: "pokemon_v2_locationarea_name_8b427914")
+  @@index([location_id], map: "pokemon_v2_locationarea_location_id_a62c4737")
+}
+
+model pokemon_v2_locationareaencounterrate {
+  id                         Int                         @id @default(autoincrement())
+  rate                       Int
+  location_area_id           Int?
+  version_id                 Int?
+  encounter_method_id        Int?
+  pokemon_v2_encountermethod pokemon_v2_encountermethod? @relation(fields: [encounter_method_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_version         pokemon_v2_version?         @relation(fields: [version_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_locationarea    pokemon_v2_locationarea?    @relation(fields: [location_area_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([encounter_method_id], map: "pokemon_v2_locationareaencounterrate_encounter_method_id_631902d6")
+  @@index([version_id], map: "pokemon_v2_locationareaencounterrate_version_id_67e1bbb9")
+  @@index([location_area_id], map: "pokemon_v2_locationareaencounterrate_location_area_id_78fab47d")
+}
+
+model pokemon_v2_locationareaname {
+  id                      Int                      @id @default(autoincrement())
+  language_id             Int?
+  location_area_id        Int?
+  name                    String
+  pokemon_v2_locationarea pokemon_v2_locationarea? @relation(fields: [location_area_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language     pokemon_v2_language?     @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_locationareaname_name_36edcff1")
+  @@index([location_area_id], map: "pokemon_v2_locationareaname_location_area_id_99f07edf")
+  @@index([language_id], map: "pokemon_v2_locationareaname_language_id_82f198e4")
+}
+
+model pokemon_v2_locationgameindex {
+  id                    Int                    @id @default(autoincrement())
+  game_index            Int
+  generation_id         Int?
+  location_id           Int?
+  pokemon_v2_location   pokemon_v2_location?   @relation(fields: [location_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_generation pokemon_v2_generation? @relation(fields: [generation_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([location_id], map: "pokemon_v2_locationgameindex_location_id_4eadd886")
+  @@index([generation_id], map: "pokemon_v2_locationgameindex_generation_id_15ae87aa")
+}
+
+model pokemon_v2_locationname {
+  id                  Int                  @id @default(autoincrement())
+  language_id         Int?
+  location_id         Int?
+  name                String
+  pokemon_v2_location pokemon_v2_location? @relation(fields: [location_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language pokemon_v2_language? @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_locationname_name_0dc028d2")
+  @@index([location_id], map: "pokemon_v2_locationname_location_id_b4de5b51")
+  @@index([language_id], map: "pokemon_v2_locationname_language_id_9c042035")
+}
+
+model pokemon_v2_machine {
+  id                      Int                      @id @default(autoincrement())
+  machine_number          Int
+  growth_rate_id          Int?
+  move_id                 Int?
+  version_group_id        Int?
+  item_id                 Int?
+  pokemon_v2_item         pokemon_v2_item?         @relation(fields: [item_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_versiongroup pokemon_v2_versiongroup? @relation(fields: [version_group_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_move         pokemon_v2_move?         @relation(fields: [move_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_growthrate   pokemon_v2_growthrate?   @relation(fields: [growth_rate_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([item_id], map: "pokemon_v2_machine_item_id_4c870846")
+  @@index([version_group_id], map: "pokemon_v2_machine_version_group_id_d69b6064")
+  @@index([move_id], map: "pokemon_v2_machine_move_id_965a6a38")
+  @@index([growth_rate_id], map: "pokemon_v2_machine_growth_rate_id_d67448d0")
+}
+
+model pokemon_v2_move {
+  id                                                                                        Int                             @id @default(autoincrement())
+  power                                                                                     Int?
+  pp                                                                                        Int?
+  accuracy                                                                                  Int?
+  priority                                                                                  Int?
+  move_effect_chance                                                                        Int?
+  generation_id                                                                             Int?
+  move_damage_class_id                                                                      Int?
+  move_effect_id                                                                            Int?
+  move_target_id                                                                            Int?
+  type_id                                                                                   Int?
+  contest_effect_id                                                                         Int?
+  contest_type_id                                                                           Int?
+  super_contest_effect_id                                                                   Int?
+  name                                                                                      String
+  pokemon_v2_contestcombo_pokemon_v2_contestcombo_second_move_idTopokemon_v2_move           pokemon_v2_contestcombo[]       @relation("pokemon_v2_contestcombo_second_move_idTopokemon_v2_move")
+  pokemon_v2_contestcombo_pokemon_v2_contestcombo_first_move_idTopokemon_v2_move            pokemon_v2_contestcombo[]       @relation("pokemon_v2_contestcombo_first_move_idTopokemon_v2_move")
+  pokemon_v2_machine                                                                        pokemon_v2_machine[]
+  pokemon_v2_supercontesteffect                                                             pokemon_v2_supercontesteffect?  @relation(fields: [super_contest_effect_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_contesttype                                                                    pokemon_v2_contesttype?         @relation(fields: [contest_type_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_contesteffect                                                                  pokemon_v2_contesteffect?       @relation(fields: [contest_effect_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_type                                                                           pokemon_v2_type?                @relation(fields: [type_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_movetarget                                                                     pokemon_v2_movetarget?          @relation(fields: [move_target_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_moveeffect                                                                     pokemon_v2_moveeffect?          @relation(fields: [move_effect_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_movedamageclass                                                                pokemon_v2_movedamageclass?     @relation(fields: [move_damage_class_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_generation                                                                     pokemon_v2_generation?          @relation(fields: [generation_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_moveattributemap                                                               pokemon_v2_moveattributemap[]
+  pokemon_v2_movechange                                                                     pokemon_v2_movechange[]
+  pokemon_v2_moveflavortext                                                                 pokemon_v2_moveflavortext[]
+  pokemon_v2_movemeta                                                                       pokemon_v2_movemeta?
+  pokemon_v2_movemetastatchange                                                             pokemon_v2_movemetastatchange[]
+  pokemon_v2_movename                                                                       pokemon_v2_movename[]
+  pokemon_v2_pokemonevolution                                                               pokemon_v2_pokemonevolution[]
+  pokemon_v2_pokemonmove                                                                    pokemon_v2_pokemonmove[]
+  pokemon_v2_supercontestcombo_pokemon_v2_supercontestcombo_second_move_idTopokemon_v2_move pokemon_v2_supercontestcombo[]  @relation("pokemon_v2_supercontestcombo_second_move_idTopokemon_v2_move")
+  pokemon_v2_supercontestcombo_pokemon_v2_supercontestcombo_first_move_idTopokemon_v2_move  pokemon_v2_supercontestcombo[]  @relation("pokemon_v2_supercontestcombo_first_move_idTopokemon_v2_move")
+
+  @@index([name], map: "pokemon_v2_move_name_b3558818")
+  @@index([super_contest_effect_id], map: "pokemon_v2_move_super_contest_effect_id_c0efdaf5")
+  @@index([contest_type_id], map: "pokemon_v2_move_contest_type_id_8da106eb")
+  @@index([contest_effect_id], map: "pokemon_v2_move_contest_effect_id_2e4d04a1")
+  @@index([type_id], map: "pokemon_v2_move_type_id_a2b25a4c")
+  @@index([move_target_id], map: "pokemon_v2_move_move_target_id_47f917eb")
+  @@index([move_effect_id], map: "pokemon_v2_move_move_effect_id_e12d5c62")
+  @@index([move_damage_class_id], map: "pokemon_v2_move_move_damage_class_id_6f60c380")
+  @@index([generation_id], map: "pokemon_v2_move_generation_id_d18da2f9")
+}
+
+model pokemon_v2_moveattribute {
+  id                                  Int                                   @id @default(autoincrement())
+  name                                String
+  pokemon_v2_moveattributedescription pokemon_v2_moveattributedescription[]
+  pokemon_v2_moveattributemap         pokemon_v2_moveattributemap[]
+  pokemon_v2_moveattributename        pokemon_v2_moveattributename[]
+
+  @@index([name], map: "pokemon_v2_moveattribute_name_3a5f5200")
+}
+
+model pokemon_v2_moveattributedescription {
+  id                       Int                       @id @default(autoincrement())
+  description              String
+  language_id              Int?
+  move_attribute_id        Int?
+  pokemon_v2_moveattribute pokemon_v2_moveattribute? @relation(fields: [move_attribute_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language      pokemon_v2_language?      @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([move_attribute_id], map: "pokemon_v2_moveattributedescription_move_attribute_id_26fa4593")
+  @@index([language_id], map: "pokemon_v2_moveattributedescription_language_id_3cc96a2c")
+}
+
+model pokemon_v2_moveattributemap {
+  id                       Int                       @id @default(autoincrement())
+  move_id                  Int?
+  move_attribute_id        Int?
+  pokemon_v2_moveattribute pokemon_v2_moveattribute? @relation(fields: [move_attribute_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_move          pokemon_v2_move?          @relation(fields: [move_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([move_attribute_id], map: "pokemon_v2_moveattributemap_move_attribute_id_4bdcbae4")
+  @@index([move_id], map: "pokemon_v2_moveattributemap_move_id_8e9353e9")
+}
+
+model pokemon_v2_moveattributename {
+  id                       Int                       @id @default(autoincrement())
+  language_id              Int?
+  move_attribute_id        Int?
+  name                     String
+  pokemon_v2_moveattribute pokemon_v2_moveattribute? @relation(fields: [move_attribute_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language      pokemon_v2_language?      @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_moveattributename_name_9d7c4e1e")
+  @@index([move_attribute_id], map: "pokemon_v2_moveattributename_move_attribute_id_06b2d536")
+  @@index([language_id], map: "pokemon_v2_moveattributename_language_id_f0fdbb0e")
+}
+
+model pokemon_v2_movebattlestyle {
+  id                                     Int                                      @id @default(autoincrement())
+  name                                   String
+  pokemon_v2_movebattlestylename         pokemon_v2_movebattlestylename[]
+  pokemon_v2_naturebattlestylepreference pokemon_v2_naturebattlestylepreference[]
+
+  @@index([name], map: "pokemon_v2_movebattlestyle_name_0257848e")
+}
+
+model pokemon_v2_movebattlestylename {
+  id                         Int                         @id @default(autoincrement())
+  language_id                Int?
+  move_battle_style_id       Int?
+  name                       String
+  pokemon_v2_movebattlestyle pokemon_v2_movebattlestyle? @relation(fields: [move_battle_style_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language        pokemon_v2_language?        @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_movebattlestylename_name_4470754a")
+  @@index([move_battle_style_id], map: "pokemon_v2_movebattlestylename_move_battle_style_id_0216e7a5")
+  @@index([language_id], map: "pokemon_v2_movebattlestylename_language_id_6dd407cd")
+}
+
+model pokemon_v2_movechange {
+  id                      Int                      @id @default(autoincrement())
+  power                   Int?
+  accuracy                Int?
+  move_effect_chance      Int?
+  move_id                 Int?
+  move_effect_id          Int?
+  type_id                 Int?
+  version_group_id        Int?
+  pp                      Int?
+  pokemon_v2_versiongroup pokemon_v2_versiongroup? @relation(fields: [version_group_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_type         pokemon_v2_type?         @relation(fields: [type_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_moveeffect   pokemon_v2_moveeffect?   @relation(fields: [move_effect_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_move         pokemon_v2_move?         @relation(fields: [move_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([version_group_id], map: "pokemon_v2_movechange_version_group_id_d98e7e4b")
+  @@index([type_id], map: "pokemon_v2_movechange_type_id_07064588")
+  @@index([move_effect_id], map: "pokemon_v2_movechange_move_effect_id_d0711cd2")
+  @@index([move_id], map: "pokemon_v2_movechange_move_id_56b40d0f")
+}
+
+model pokemon_v2_movedamageclass {
+  id                                    Int                                     @id @default(autoincrement())
+  name                                  String
+  pokemon_v2_move                       pokemon_v2_move[]
+  pokemon_v2_movedamageclassdescription pokemon_v2_movedamageclassdescription[]
+  pokemon_v2_movedamageclassname        pokemon_v2_movedamageclassname[]
+  pokemon_v2_stat                       pokemon_v2_stat[]
+  pokemon_v2_type                       pokemon_v2_type[]
+
+  @@index([name], map: "pokemon_v2_movedamageclass_name_8c1669d6")
+}
+
+model pokemon_v2_movedamageclassdescription {
+  id                         Int                         @id @default(autoincrement())
+  description                String
+  language_id                Int?
+  move_damage_class_id       Int?
+  pokemon_v2_movedamageclass pokemon_v2_movedamageclass? @relation(fields: [move_damage_class_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language        pokemon_v2_language?        @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([move_damage_class_id], map: "pokemon_v2_movedamageclassdescription_move_damage_class_id_4624e8c3")
+  @@index([language_id], map: "pokemon_v2_movedamageclassdescription_language_id_984a7058")
+}
+
+model pokemon_v2_movedamageclassname {
+  id                         Int                         @id @default(autoincrement())
+  language_id                Int?
+  move_damage_class_id       Int?
+  name                       String
+  pokemon_v2_movedamageclass pokemon_v2_movedamageclass? @relation(fields: [move_damage_class_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language        pokemon_v2_language?        @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_movedamageclassname_name_e38f4f0f")
+  @@index([move_damage_class_id], map: "pokemon_v2_movedamageclassname_move_damage_class_id_8d041412")
+  @@index([language_id], map: "pokemon_v2_movedamageclassname_language_id_b66d9a02")
+}
+
+model pokemon_v2_moveeffect {
+  id                              Int                               @id @default(autoincrement())
+  pokemon_v2_move                 pokemon_v2_move[]
+  pokemon_v2_movechange           pokemon_v2_movechange[]
+  pokemon_v2_moveeffectchange     pokemon_v2_moveeffectchange[]
+  pokemon_v2_moveeffecteffecttext pokemon_v2_moveeffecteffecttext[]
+}
+
+model pokemon_v2_moveeffectchange {
+  id                                    Int                                     @id @default(autoincrement())
+  move_effect_id                        Int?
+  version_group_id                      Int?
+  pokemon_v2_versiongroup               pokemon_v2_versiongroup?                @relation(fields: [version_group_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_moveeffect                 pokemon_v2_moveeffect?                  @relation(fields: [move_effect_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_moveeffectchangeeffecttext pokemon_v2_moveeffectchangeeffecttext[]
+
+  @@index([version_group_id], map: "pokemon_v2_moveeffectchange_version_group_id_ad5675d0")
+  @@index([move_effect_id], map: "pokemon_v2_moveeffectchange_move_effect_id_83bb0e24")
+}
+
+model pokemon_v2_moveeffectchangeeffecttext {
+  id                          Int                          @id @default(autoincrement())
+  effect                      String
+  language_id                 Int?
+  move_effect_change_id       Int?
+  pokemon_v2_moveeffectchange pokemon_v2_moveeffectchange? @relation(fields: [move_effect_change_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language         pokemon_v2_language?         @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([move_effect_change_id], map: "pokemon_v2_moveeffectchangeeffecttext_move_effect_change_id_c4e6b8f2")
+  @@index([language_id], map: "pokemon_v2_moveeffectchangeeffecttext_language_id_f616622c")
+}
+
+model pokemon_v2_moveeffecteffecttext {
+  id                    Int                    @id @default(autoincrement())
+  effect                String
+  short_effect          String
+  language_id           Int?
+  move_effect_id        Int?
+  pokemon_v2_moveeffect pokemon_v2_moveeffect? @relation(fields: [move_effect_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language   pokemon_v2_language?   @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([move_effect_id], map: "pokemon_v2_moveeffecteffecttext_move_effect_id_e834153e")
+  @@index([language_id], map: "pokemon_v2_moveeffecteffecttext_language_id_4e202686")
+}
+
+model pokemon_v2_moveflavortext {
+  id                      Int                      @id @default(autoincrement())
+  flavor_text             String
+  language_id             Int?
+  move_id                 Int?
+  version_group_id        Int?
+  pokemon_v2_versiongroup pokemon_v2_versiongroup? @relation(fields: [version_group_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_move         pokemon_v2_move?         @relation(fields: [move_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language     pokemon_v2_language?     @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([version_group_id], map: "pokemon_v2_moveflavortext_version_group_id_acb46240")
+  @@index([move_id], map: "pokemon_v2_moveflavortext_move_id_e694b553")
+  @@index([language_id], map: "pokemon_v2_moveflavortext_language_id_cad665e7")
+}
+
+model pokemon_v2_movelearnmethod {
+  id                                     Int                                      @id @default(autoincrement())
+  name                                   String
+  pokemon_v2_movelearnmethoddescription  pokemon_v2_movelearnmethoddescription[]
+  pokemon_v2_movelearnmethodname         pokemon_v2_movelearnmethodname[]
+  pokemon_v2_pokemonmove                 pokemon_v2_pokemonmove[]
+  pokemon_v2_versiongroupmovelearnmethod pokemon_v2_versiongroupmovelearnmethod[]
+
+  @@index([name], map: "pokemon_v2_movelearnmethod_name_d6294fe9")
+}
+
+model pokemon_v2_movelearnmethoddescription {
+  id                         Int                         @id @default(autoincrement())
+  description                String
+  language_id                Int?
+  move_learn_method_id       Int?
+  pokemon_v2_movelearnmethod pokemon_v2_movelearnmethod? @relation(fields: [move_learn_method_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language        pokemon_v2_language?        @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([move_learn_method_id], map: "pokemon_v2_movelearnmethoddescription_move_learn_method_id_09ec6a7b")
+  @@index([language_id], map: "pokemon_v2_movelearnmethoddescription_language_id_a6bac991")
+}
+
+model pokemon_v2_movelearnmethodname {
+  id                         Int                         @id @default(autoincrement())
+  language_id                Int?
+  move_learn_method_id       Int?
+  name                       String
+  pokemon_v2_movelearnmethod pokemon_v2_movelearnmethod? @relation(fields: [move_learn_method_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language        pokemon_v2_language?        @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_movelearnmethodname_name_b665e82d")
+  @@index([move_learn_method_id], map: "pokemon_v2_movelearnmethodname_move_learn_method_id_04b9abfa")
+  @@index([language_id], map: "pokemon_v2_movelearnmethodname_language_id_aa17010f")
+}
+
+model pokemon_v2_movemeta {
+  id                          Int                          @id @default(autoincrement())
+  min_hits                    Int?
+  max_hits                    Int?
+  min_turns                   Int?
+  max_turns                   Int?
+  crit_rate                   Int?
+  ailment_chance              Int?
+  flinch_chance               Int?
+  stat_chance                 Int?
+  move_meta_category_id       Int?
+  move_id                     Int                          @unique(map: "sqlite_autoindex_pokemon_v2_movemeta_1")
+  move_meta_ailment_id        Int?
+  drain                       Int?
+  healing                     Int?
+  pokemon_v2_movemetaailment  pokemon_v2_movemetaailment?  @relation(fields: [move_meta_ailment_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_move             pokemon_v2_move              @relation(fields: [move_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_movemetacategory pokemon_v2_movemetacategory? @relation(fields: [move_meta_category_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([move_meta_ailment_id], map: "pokemon_v2_movemeta_move_meta_ailment_id_d261d5e1")
+  @@index([move_meta_category_id], map: "pokemon_v2_movemeta_move_meta_category_id_5fc2f4b6")
+}
+
+model pokemon_v2_movemetaailment {
+  id                             Int                              @id @default(autoincrement())
+  name                           String
+  pokemon_v2_movemeta            pokemon_v2_movemeta[]
+  pokemon_v2_movemetaailmentname pokemon_v2_movemetaailmentname[]
+
+  @@index([name], map: "pokemon_v2_movemetaailment_name_7e8b85b0")
+}
+
+model pokemon_v2_movemetaailmentname {
+  id                         Int                         @id @default(autoincrement())
+  language_id                Int?
+  move_meta_ailment_id       Int?
+  name                       String
+  pokemon_v2_movemetaailment pokemon_v2_movemetaailment? @relation(fields: [move_meta_ailment_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language        pokemon_v2_language?        @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_movemetaailmentname_name_a286e4d0")
+  @@index([move_meta_ailment_id], map: "pokemon_v2_movemetaailmentname_move_meta_ailment_id_3166201a")
+  @@index([language_id], map: "pokemon_v2_movemetaailmentname_language_id_c536b83b")
+}
+
+model pokemon_v2_movemetacategory {
+  id                                     Int                                      @id @default(autoincrement())
+  name                                   String
+  pokemon_v2_movemeta                    pokemon_v2_movemeta[]
+  pokemon_v2_movemetacategorydescription pokemon_v2_movemetacategorydescription[]
+
+  @@index([name], map: "pokemon_v2_movemetacategory_name_2d508cb0")
+}
+
+model pokemon_v2_movemetacategorydescription {
+  id                          Int                          @id @default(autoincrement())
+  description                 String
+  language_id                 Int?
+  move_meta_category_id       Int?
+  pokemon_v2_movemetacategory pokemon_v2_movemetacategory? @relation(fields: [move_meta_category_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language         pokemon_v2_language?         @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([move_meta_category_id], map: "pokemon_v2_movemetacategorydescription_move_meta_category_id_4b604073")
+  @@index([language_id], map: "pokemon_v2_movemetacategorydescription_language_id_feacc726")
+}
+
+model pokemon_v2_movemetastatchange {
+  id              Int              @id @default(autoincrement())
+  change          Int
+  move_id         Int?
+  stat_id         Int?
+  pokemon_v2_stat pokemon_v2_stat? @relation(fields: [stat_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_move pokemon_v2_move? @relation(fields: [move_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([stat_id], map: "pokemon_v2_movemetastatchange_stat_id_7bbd0200")
+  @@index([move_id], map: "pokemon_v2_movemetastatchange_move_id_b8528bde")
+}
+
+model pokemon_v2_movename {
+  id                  Int                  @id @default(autoincrement())
+  language_id         Int?
+  move_id             Int?
+  name                String
+  pokemon_v2_move     pokemon_v2_move?     @relation(fields: [move_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language pokemon_v2_language? @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_movename_name_8f60338a")
+  @@index([move_id], map: "pokemon_v2_movename_move_id_f28e6bef")
+  @@index([language_id], map: "pokemon_v2_movename_language_id_9c478512")
+}
+
+model pokemon_v2_movetarget {
+  id                               Int                                @id @default(autoincrement())
+  name                             String
+  pokemon_v2_move                  pokemon_v2_move[]
+  pokemon_v2_movetargetdescription pokemon_v2_movetargetdescription[]
+  pokemon_v2_movetargetname        pokemon_v2_movetargetname[]
+
+  @@index([name], map: "pokemon_v2_movetarget_name_af0c75ad")
+}
+
+model pokemon_v2_movetargetdescription {
+  id                    Int                    @id @default(autoincrement())
+  description           String
+  language_id           Int?
+  move_target_id        Int?
+  pokemon_v2_movetarget pokemon_v2_movetarget? @relation(fields: [move_target_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language   pokemon_v2_language?   @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([move_target_id], map: "pokemon_v2_movetargetdescription_move_target_id_1afb9b51")
+  @@index([language_id], map: "pokemon_v2_movetargetdescription_language_id_85ac7390")
+}
+
+model pokemon_v2_movetargetname {
+  id                    Int                    @id @default(autoincrement())
+  language_id           Int?
+  move_target_id        Int?
+  name                  String
+  pokemon_v2_movetarget pokemon_v2_movetarget? @relation(fields: [move_target_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language   pokemon_v2_language?   @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_movetargetname_name_ae888d7a")
+  @@index([move_target_id], map: "pokemon_v2_movetargetname_move_target_id_61f56365")
+  @@index([language_id], map: "pokemon_v2_movetargetname_language_id_05d3b8b8")
+}
+
+model pokemon_v2_nature {
+  id                                                                               Int                                      @id @default(autoincrement())
+  game_index                                                                       Int
+  decreased_stat_id                                                                Int?
+  increased_stat_id                                                                Int?
+  hates_flavor_id                                                                  Int?
+  likes_flavor_id                                                                  Int?
+  name                                                                             String
+  pokemon_v2_berryflavor_pokemon_v2_nature_likes_flavor_idTopokemon_v2_berryflavor pokemon_v2_berryflavor?                  @relation("pokemon_v2_nature_likes_flavor_idTopokemon_v2_berryflavor", fields: [likes_flavor_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_berryflavor_pokemon_v2_nature_hates_flavor_idTopokemon_v2_berryflavor pokemon_v2_berryflavor?                  @relation("pokemon_v2_nature_hates_flavor_idTopokemon_v2_berryflavor", fields: [hates_flavor_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_stat_pokemon_v2_nature_increased_stat_idTopokemon_v2_stat             pokemon_v2_stat?                         @relation("pokemon_v2_nature_increased_stat_idTopokemon_v2_stat", fields: [increased_stat_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_stat_pokemon_v2_nature_decreased_stat_idTopokemon_v2_stat             pokemon_v2_stat?                         @relation("pokemon_v2_nature_decreased_stat_idTopokemon_v2_stat", fields: [decreased_stat_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_naturebattlestylepreference                                           pokemon_v2_naturebattlestylepreference[]
+  pokemon_v2_naturename                                                            pokemon_v2_naturename[]
+  pokemon_v2_naturepokeathlonstat                                                  pokemon_v2_naturepokeathlonstat[]
+
+  @@index([name], map: "pokemon_v2_nature_name_a7f453b0")
+  @@index([likes_flavor_id], map: "pokemon_v2_nature_likes_flavor_id_475f0a7d")
+  @@index([hates_flavor_id], map: "pokemon_v2_nature_hates_flavor_id_d9c22d5d")
+  @@index([increased_stat_id], map: "pokemon_v2_nature_increased_stat_id_949bb3bd")
+  @@index([decreased_stat_id], map: "pokemon_v2_nature_decreased_stat_id_d89610fc")
+}
+
+model pokemon_v2_naturebattlestylepreference {
+  id                         Int                         @id @default(autoincrement())
+  low_hp_preference          Int
+  high_hp_preference         Int
+  nature_id                  Int?
+  move_battle_style_id       Int?
+  pokemon_v2_movebattlestyle pokemon_v2_movebattlestyle? @relation(fields: [move_battle_style_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_nature          pokemon_v2_nature?          @relation(fields: [nature_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([move_battle_style_id], map: "pokemon_v2_naturebattlestylepreference_move_battle_style_id_f1dd2e92")
+  @@index([nature_id], map: "pokemon_v2_naturebattlestylepreference_nature_id_03c37bf2")
+}
+
+model pokemon_v2_naturename {
+  id                  Int                  @id @default(autoincrement())
+  language_id         Int?
+  nature_id           Int?
+  name                String
+  pokemon_v2_nature   pokemon_v2_nature?   @relation(fields: [nature_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language pokemon_v2_language? @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_naturename_name_d0bfe13a")
+  @@index([nature_id], map: "pokemon_v2_naturename_nature_id_e6043d64")
+  @@index([language_id], map: "pokemon_v2_naturename_language_id_7b3bb981")
+}
+
+model pokemon_v2_naturepokeathlonstat {
+  id                        Int                        @id @default(autoincrement())
+  max_change                Int
+  nature_id                 Int?
+  pokeathlon_stat_id        Int?
+  pokemon_v2_pokeathlonstat pokemon_v2_pokeathlonstat? @relation(fields: [pokeathlon_stat_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_nature         pokemon_v2_nature?         @relation(fields: [nature_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([pokeathlon_stat_id], map: "pokemon_v2_naturepokeathlonstat_pokeathlon_stat_id_0d042f0d")
+  @@index([nature_id], map: "pokemon_v2_naturepokeathlonstat_nature_id_11b4efea")
+}
+
+model pokemon_v2_palpark {
+  id                        Int                        @id @default(autoincrement())
+  rate                      Int
+  pal_park_area_id          Int?
+  pokemon_species_id        Int?
+  base_score                Int?
+  pokemon_v2_pokemonspecies pokemon_v2_pokemonspecies? @relation(fields: [pokemon_species_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_palparkarea    pokemon_v2_palparkarea?    @relation(fields: [pal_park_area_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([pokemon_species_id], map: "pokemon_v2_palpark_pokemon_species_id_639ae7f1")
+  @@index([pal_park_area_id], map: "pokemon_v2_palpark_pal_park_area_id_8df4fce8")
+}
+
+model pokemon_v2_palparkarea {
+  id                         Int                          @id @default(autoincrement())
+  name                       String
+  pokemon_v2_palpark         pokemon_v2_palpark[]
+  pokemon_v2_palparkareaname pokemon_v2_palparkareaname[]
+
+  @@index([name], map: "pokemon_v2_palparkarea_name_d27212e7")
+}
+
+model pokemon_v2_palparkareaname {
+  id                     Int                     @id @default(autoincrement())
+  language_id            Int?
+  pal_park_area_id       Int?
+  name                   String
+  pokemon_v2_palparkarea pokemon_v2_palparkarea? @relation(fields: [pal_park_area_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language    pokemon_v2_language?    @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_palparkareaname_name_1fef3377")
+  @@index([pal_park_area_id], map: "pokemon_v2_palparkareaname_pal_park_area_id_9732132d")
+  @@index([language_id], map: "pokemon_v2_palparkareaname_language_id_1961595b")
+}
+
+model pokemon_v2_pokeathlonstat {
+  id                              Int                               @id @default(autoincrement())
+  name                            String
+  pokemon_v2_naturepokeathlonstat pokemon_v2_naturepokeathlonstat[]
+  pokemon_v2_pokeathlonstatname   pokemon_v2_pokeathlonstatname[]
+
+  @@index([name], map: "pokemon_v2_pokeathlonstat_name_dfd410d4")
+}
+
+model pokemon_v2_pokeathlonstatname {
+  id                        Int                        @id @default(autoincrement())
+  language_id               Int?
+  pokeathlon_stat_id        Int?
+  name                      String
+  pokemon_v2_pokeathlonstat pokemon_v2_pokeathlonstat? @relation(fields: [pokeathlon_stat_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language       pokemon_v2_language?       @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_pokeathlonstatname_name_21dff6f1")
+  @@index([pokeathlon_stat_id], map: "pokemon_v2_pokeathlonstatname_pokeathlon_stat_id_95163495")
+  @@index([language_id], map: "pokemon_v2_pokeathlonstatname_language_id_053b296b")
+}
+
+model pokemon_v2_pokedex {
+  id                             Int                              @id @default(autoincrement())
+  is_main_series                 Unsupported("bool")
+  region_id                      Int?
+  name                           String
+  pokemon_v2_region              pokemon_v2_region?               @relation(fields: [region_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_pokedexdescription  pokemon_v2_pokedexdescription[]
+  pokemon_v2_pokedexname         pokemon_v2_pokedexname[]
+  pokemon_v2_pokedexversiongroup pokemon_v2_pokedexversiongroup[]
+  pokemon_v2_pokemondexnumber    pokemon_v2_pokemondexnumber[]
+
+  @@index([name], map: "pokemon_v2_pokedex_name_d3054d11")
+  @@index([region_id], map: "pokemon_v2_pokedex_region_id_d894ac3e")
+}
+
+model pokemon_v2_pokedexdescription {
+  id                  Int                  @id @default(autoincrement())
+  description         String
+  language_id         Int?
+  pokedex_id          Int?
+  pokemon_v2_pokedex  pokemon_v2_pokedex?  @relation(fields: [pokedex_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language pokemon_v2_language? @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([pokedex_id], map: "pokemon_v2_pokedexdescription_pokedex_id_6519a3de")
+  @@index([language_id], map: "pokemon_v2_pokedexdescription_language_id_908fbcc8")
+}
+
+model pokemon_v2_pokedexname {
+  id                  Int                  @id @default(autoincrement())
+  language_id         Int?
+  pokedex_id          Int?
+  name                String
+  pokemon_v2_pokedex  pokemon_v2_pokedex?  @relation(fields: [pokedex_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language pokemon_v2_language? @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_pokedexname_name_9e582b7c")
+  @@index([pokedex_id], map: "pokemon_v2_pokedexname_pokedex_id_e31703e5")
+  @@index([language_id], map: "pokemon_v2_pokedexname_language_id_97285e07")
+}
+
+model pokemon_v2_pokedexversiongroup {
+  id                      Int                      @id @default(autoincrement())
+  pokedex_id              Int?
+  version_group_id        Int?
+  pokemon_v2_versiongroup pokemon_v2_versiongroup? @relation(fields: [version_group_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_pokedex      pokemon_v2_pokedex?      @relation(fields: [pokedex_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([version_group_id], map: "pokemon_v2_pokedexversiongroup_version_group_id_2fbd3e54")
+  @@index([pokedex_id], map: "pokemon_v2_pokedexversiongroup_pokedex_id_e9aaac37")
+}
+
+model pokemon_v2_pokemon {
+  id                            Int                             @id @default(autoincrement())
+  order                         Int?
+  height                        Int?
+  weight                        Int?
+  base_experience               Int?
+  is_default                    Unsupported("bool")
+  pokemon_species_id            Int?
+  name                          String
+  pokemon_v2_encounter          pokemon_v2_encounter[]
+  pokemon_v2_pokemonspecies     pokemon_v2_pokemonspecies?      @relation(fields: [pokemon_species_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_pokemonability     pokemon_v2_pokemonability[]
+  pokemon_v2_pokemonabilitypast pokemon_v2_pokemonabilitypast[]
+  pokemon_v2_pokemoncries       pokemon_v2_pokemoncries[]
+  pokemon_v2_pokemonform        pokemon_v2_pokemonform[]
+  pokemon_v2_pokemongameindex   pokemon_v2_pokemongameindex[]
+  pokemon_v2_pokemonitem        pokemon_v2_pokemonitem[]
+  pokemon_v2_pokemonmove        pokemon_v2_pokemonmove[]
+  pokemon_v2_pokemonsprites     pokemon_v2_pokemonsprites[]
+  pokemon_v2_pokemonstat        pokemon_v2_pokemonstat[]
+  pokemon_v2_pokemontype        pokemon_v2_pokemontype[]
+  pokemon_v2_pokemontypepast    pokemon_v2_pokemontypepast[]
+
+  @@index([name], map: "pokemon_v2_pokemon_name_b4719884")
+  @@index([pokemon_species_id], map: "pokemon_v2_pokemon_pokemon_species_id_e3dbafe1")
+}
+
+model pokemon_v2_pokemonability {
+  id                 Int                 @id @default(autoincrement())
+  is_hidden          Unsupported("bool")
+  slot               Int
+  ability_id         Int?
+  pokemon_id         Int?
+  pokemon_v2_pokemon pokemon_v2_pokemon? @relation(fields: [pokemon_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_ability pokemon_v2_ability? @relation(fields: [ability_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([pokemon_id], map: "pokemon_v2_pokemonability_pokemon_id_2d9f606f")
+  @@index([ability_id], map: "pokemon_v2_pokemonability_ability_id_e6de97cc")
+}
+
+model pokemon_v2_pokemonabilitypast {
+  id                    Int                    @id @default(autoincrement())
+  is_hidden             Unsupported("bool")
+  slot                  Int
+  ability_id            Int?
+  generation_id         Int?
+  pokemon_id            Int?
+  pokemon_v2_pokemon    pokemon_v2_pokemon?    @relation(fields: [pokemon_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_generation pokemon_v2_generation? @relation(fields: [generation_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_ability    pokemon_v2_ability?    @relation(fields: [ability_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([pokemon_id], map: "pokemon_v2_pokemonabilitypast_pokemon_id_1f8eef75")
+  @@index([generation_id], map: "pokemon_v2_pokemonabilitypast_generation_id_7c49a4a1")
+  @@index([ability_id], map: "pokemon_v2_pokemonabilitypast_ability_id_27ce43f2")
+}
+
+model pokemon_v2_pokemoncolor {
+  id                          Int                           @id @default(autoincrement())
+  name                        String
+  pokemon_v2_pokemoncolorname pokemon_v2_pokemoncolorname[]
+  pokemon_v2_pokemonspecies   pokemon_v2_pokemonspecies[]
+
+  @@index([name], map: "pokemon_v2_pokemoncolor_name_be656ffc")
+}
+
+model pokemon_v2_pokemoncolorname {
+  id                      Int                      @id @default(autoincrement())
+  language_id             Int?
+  pokemon_color_id        Int?
+  name                    String
+  pokemon_v2_pokemoncolor pokemon_v2_pokemoncolor? @relation(fields: [pokemon_color_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language     pokemon_v2_language?     @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_pokemoncolorname_name_21cdd894")
+  @@index([pokemon_color_id], map: "pokemon_v2_pokemoncolorname_pokemon_color_id_33a759e5")
+  @@index([language_id], map: "pokemon_v2_pokemoncolorname_language_id_640a8271")
+}
+
+model pokemon_v2_pokemoncries {
+  id                 Int                 @id @default(autoincrement())
+  cries              String
+  pokemon_id         Int?
+  pokemon_v2_pokemon pokemon_v2_pokemon? @relation(fields: [pokemon_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([pokemon_id], map: "pokemon_v2_pokemoncries_pokemon_id_f4f1bdc4")
+}
+
+model pokemon_v2_pokemondexnumber {
+  id                        Int                        @id @default(autoincrement())
+  pokedex_number            Int
+  pokedex_id                Int?
+  pokemon_species_id        Int?
+  pokemon_v2_pokemonspecies pokemon_v2_pokemonspecies? @relation(fields: [pokemon_species_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_pokedex        pokemon_v2_pokedex?        @relation(fields: [pokedex_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([pokemon_species_id], map: "pokemon_v2_pokemondexnumber_pokemon_species_id_0b92eca5")
+  @@index([pokedex_id], map: "pokemon_v2_pokemondexnumber_pokedex_id_5f882d27")
+}
+
+model pokemon_v2_pokemonegggroup {
+  id                        Int                        @id @default(autoincrement())
+  egg_group_id              Int?
+  pokemon_species_id        Int?
+  pokemon_v2_pokemonspecies pokemon_v2_pokemonspecies? @relation(fields: [pokemon_species_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_egggroup       pokemon_v2_egggroup?       @relation(fields: [egg_group_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([pokemon_species_id], map: "pokemon_v2_pokemonegggroup_pokemon_species_id_d0fc6e47")
+  @@index([egg_group_id], map: "pokemon_v2_pokemonegggroup_egg_group_id_cd305d10")
+}
+
+model pokemon_v2_pokemonevolution {
+  id                                                                                                  Int                          @id @default(autoincrement())
+  min_level                                                                                           Int?
+  time_of_day                                                                                         String?
+  min_happiness                                                                                       Int?
+  min_affection                                                                                       Int?
+  relative_physical_stats                                                                             Int?
+  needs_overworld_rain                                                                                Unsupported("bool")
+  turn_upside_down                                                                                    Unsupported("bool")
+  evolution_trigger_id                                                                                Int?
+  evolved_species_id                                                                                  Int?
+  gender_id                                                                                           Int?
+  known_move_id                                                                                       Int?
+  known_move_type_id                                                                                  Int?
+  party_species_id                                                                                    Int?
+  party_type_id                                                                                       Int?
+  trade_species_id                                                                                    Int?
+  min_beauty                                                                                          Int?
+  evolution_item_id                                                                                   Int?
+  held_item_id                                                                                        Int?
+  location_id                                                                                         Int?
+  pokemon_v2_location                                                                                 pokemon_v2_location?         @relation(fields: [location_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_item_pokemon_v2_pokemonevolution_held_item_idTopokemon_v2_item                           pokemon_v2_item?             @relation("pokemon_v2_pokemonevolution_held_item_idTopokemon_v2_item", fields: [held_item_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_item_pokemon_v2_pokemonevolution_evolution_item_idTopokemon_v2_item                      pokemon_v2_item?             @relation("pokemon_v2_pokemonevolution_evolution_item_idTopokemon_v2_item", fields: [evolution_item_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_pokemonspecies_pokemon_v2_pokemonevolution_trade_species_idTopokemon_v2_pokemonspecies   pokemon_v2_pokemonspecies?   @relation("pokemon_v2_pokemonevolution_trade_species_idTopokemon_v2_pokemonspecies", fields: [trade_species_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_type_pokemon_v2_pokemonevolution_party_type_idTopokemon_v2_type                          pokemon_v2_type?             @relation("pokemon_v2_pokemonevolution_party_type_idTopokemon_v2_type", fields: [party_type_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_pokemonspecies_pokemon_v2_pokemonevolution_party_species_idTopokemon_v2_pokemonspecies   pokemon_v2_pokemonspecies?   @relation("pokemon_v2_pokemonevolution_party_species_idTopokemon_v2_pokemonspecies", fields: [party_species_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_type_pokemon_v2_pokemonevolution_known_move_type_idTopokemon_v2_type                     pokemon_v2_type?             @relation("pokemon_v2_pokemonevolution_known_move_type_idTopokemon_v2_type", fields: [known_move_type_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_move                                                                                     pokemon_v2_move?             @relation(fields: [known_move_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_gender                                                                                   pokemon_v2_gender?           @relation(fields: [gender_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_pokemonspecies_pokemon_v2_pokemonevolution_evolved_species_idTopokemon_v2_pokemonspecies pokemon_v2_pokemonspecies?   @relation("pokemon_v2_pokemonevolution_evolved_species_idTopokemon_v2_pokemonspecies", fields: [evolved_species_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_evolutiontrigger                                                                         pokemon_v2_evolutiontrigger? @relation(fields: [evolution_trigger_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([location_id], map: "pokemon_v2_pokemonevolution_location_id_fb0e2aa2")
+  @@index([held_item_id], map: "pokemon_v2_pokemonevolution_held_item_id_ef69a719")
+  @@index([evolution_item_id], map: "pokemon_v2_pokemonevolution_evolution_item_id_afdb70a5")
+  @@index([trade_species_id], map: "pokemon_v2_pokemonevolution_trade_species_id_6eefecdc")
+  @@index([party_type_id], map: "pokemon_v2_pokemonevolution_party_type_id_6af7cb68")
+  @@index([party_species_id], map: "pokemon_v2_pokemonevolution_party_species_id_aa57f0d1")
+  @@index([known_move_type_id], map: "pokemon_v2_pokemonevolution_known_move_type_id_de1a6bf4")
+  @@index([known_move_id], map: "pokemon_v2_pokemonevolution_known_move_id_301dfc54")
+  @@index([gender_id], map: "pokemon_v2_pokemonevolution_gender_id_ccbf258a")
+  @@index([evolved_species_id], map: "pokemon_v2_pokemonevolution_evolved_species_id_bcbf43a3")
+  @@index([evolution_trigger_id], map: "pokemon_v2_pokemonevolution_evolution_trigger_id_7d6a5102")
+}
+
+model pokemon_v2_pokemonform {
+  id                               Int                                @id @default(autoincrement())
+  order                            Int?
+  is_default                       Unsupported("bool")
+  is_battle_only                   Unsupported("bool")
+  version_group_id                 Int?
+  pokemon_id                       Int?
+  is_mega                          Unsupported("bool")
+  form_order                       Int?
+  form_name                        String
+  name                             String
+  pokemon_v2_pokemon               pokemon_v2_pokemon?                @relation(fields: [pokemon_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_versiongroup          pokemon_v2_versiongroup?           @relation(fields: [version_group_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_pokemonformgeneration pokemon_v2_pokemonformgeneration[]
+  pokemon_v2_pokemonformname       pokemon_v2_pokemonformname[]
+  pokemon_v2_pokemonformsprites    pokemon_v2_pokemonformsprites[]
+  pokemon_v2_pokemonformtype       pokemon_v2_pokemonformtype[]
+
+  @@index([name], map: "pokemon_v2_pokemonform_name_fe094947")
+  @@index([pokemon_id], map: "pokemon_v2_pokemonform_pokemon_id_f1307072")
+  @@index([version_group_id], map: "pokemon_v2_pokemonform_version_group_id_88573ce7")
+}
+
+model pokemon_v2_pokemonformgeneration {
+  id                     Int                     @id @default(autoincrement())
+  game_index             Int
+  generation_id          Int?
+  pokemon_form_id        Int?
+  pokemon_v2_pokemonform pokemon_v2_pokemonform? @relation(fields: [pokemon_form_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_generation  pokemon_v2_generation?  @relation(fields: [generation_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([pokemon_form_id], map: "pokemon_v2_pokemonformgeneration_pokemon_form_id_63610ed9")
+  @@index([generation_id], map: "pokemon_v2_pokemonformgeneration_generation_id_2f4d5474")
+}
+
+model pokemon_v2_pokemonformname {
+  id                     Int                     @id @default(autoincrement())
+  pokemon_name           String
+  language_id            Int?
+  pokemon_form_id        Int?
+  name                   String
+  pokemon_v2_pokemonform pokemon_v2_pokemonform? @relation(fields: [pokemon_form_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language    pokemon_v2_language?    @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_pokemonformname_name_4496fca6")
+  @@index([pokemon_form_id], map: "pokemon_v2_pokemonformname_pokemon_form_id_7c4f1fb5")
+  @@index([language_id], map: "pokemon_v2_pokemonformname_language_id_2570013b")
+}
+
+model pokemon_v2_pokemonformsprites {
+  id                     Int                     @id @default(autoincrement())
+  pokemon_form_id        Int?
+  sprites                String
+  pokemon_v2_pokemonform pokemon_v2_pokemonform? @relation(fields: [pokemon_form_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([pokemon_form_id], map: "pokemon_v2_pokemonformsprites_pokemon_form_id_b09cb8b3")
+}
+
+model pokemon_v2_pokemonformtype {
+  id                     Int                     @id @default(autoincrement())
+  slot                   Int
+  pokemon_form_id        Int?
+  type_id                Int?
+  pokemon_v2_type        pokemon_v2_type?        @relation(fields: [type_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_pokemonform pokemon_v2_pokemonform? @relation(fields: [pokemon_form_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([type_id], map: "pokemon_v2_pokemonformtype_type_id_10672412")
+  @@index([pokemon_form_id], map: "pokemon_v2_pokemonformtype_pokemon_form_id_bff24ddc")
+}
+
+model pokemon_v2_pokemongameindex {
+  id                 Int                 @id @default(autoincrement())
+  game_index         Int
+  pokemon_id         Int?
+  version_id         Int?
+  pokemon_v2_version pokemon_v2_version? @relation(fields: [version_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_pokemon pokemon_v2_pokemon? @relation(fields: [pokemon_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([version_id], map: "pokemon_v2_pokemongameindex_version_id_2f3cda39")
+  @@index([pokemon_id], map: "pokemon_v2_pokemongameindex_pokemon_id_d1278b45")
+}
+
+model pokemon_v2_pokemonhabitat {
+  id                            Int                             @id @default(autoincrement())
+  name                          String
+  pokemon_v2_pokemonhabitatname pokemon_v2_pokemonhabitatname[]
+  pokemon_v2_pokemonspecies     pokemon_v2_pokemonspecies[]
+
+  @@index([name], map: "pokemon_v2_pokemonhabitat_name_e36918ba")
+}
+
+model pokemon_v2_pokemonhabitatname {
+  id                        Int                        @id @default(autoincrement())
+  language_id               Int?
+  pokemon_habitat_id        Int?
+  name                      String
+  pokemon_v2_pokemonhabitat pokemon_v2_pokemonhabitat? @relation(fields: [pokemon_habitat_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language       pokemon_v2_language?       @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_pokemonhabitatname_name_0b8b38c3")
+  @@index([pokemon_habitat_id], map: "pokemon_v2_pokemonhabitatname_pokemon_habitat_id_8bb656e6")
+  @@index([language_id], map: "pokemon_v2_pokemonhabitatname_language_id_b247fa35")
+}
+
+model pokemon_v2_pokemonitem {
+  id                 Int                 @id @default(autoincrement())
+  rarity             Int
+  pokemon_id         Int?
+  version_id         Int?
+  item_id            Int?
+  pokemon_v2_item    pokemon_v2_item?    @relation(fields: [item_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_version pokemon_v2_version? @relation(fields: [version_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_pokemon pokemon_v2_pokemon? @relation(fields: [pokemon_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([item_id], map: "pokemon_v2_pokemonitem_item_id_f2d37afe")
+  @@index([version_id], map: "pokemon_v2_pokemonitem_version_id_4f5c2a1c")
+  @@index([pokemon_id], map: "pokemon_v2_pokemonitem_pokemon_id_d5dd8083")
+}
+
+model pokemon_v2_pokemonmove {
+  id                         Int                         @id @default(autoincrement())
+  order                      Int?
+  level                      Int
+  move_id                    Int?
+  pokemon_id                 Int?
+  version_group_id           Int?
+  move_learn_method_id       Int?
+  mastery                    Int?
+  pokemon_v2_movelearnmethod pokemon_v2_movelearnmethod? @relation(fields: [move_learn_method_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_versiongroup    pokemon_v2_versiongroup?    @relation(fields: [version_group_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_pokemon         pokemon_v2_pokemon?         @relation(fields: [pokemon_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_move            pokemon_v2_move?            @relation(fields: [move_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([move_learn_method_id], map: "pokemon_v2_pokemonmove_move_learn_method_id_f7503746")
+  @@index([version_group_id], map: "pokemon_v2_pokemonmove_version_group_id_ca4c374c")
+  @@index([pokemon_id], map: "pokemon_v2_pokemonmove_pokemon_id_ca9e0e55")
+  @@index([move_id], map: "pokemon_v2_pokemonmove_move_id_b5f71cf7")
+}
+
+model pokemon_v2_pokemonshape {
+  id                          Int                           @id @default(autoincrement())
+  name                        String
+  pokemon_v2_pokemonshapename pokemon_v2_pokemonshapename[]
+  pokemon_v2_pokemonspecies   pokemon_v2_pokemonspecies[]
+
+  @@index([name], map: "pokemon_v2_pokemonshape_name_d7251478")
+}
+
+model pokemon_v2_pokemonshapename {
+  id                      Int                      @id @default(autoincrement())
+  awesome_name            String
+  language_id             Int?
+  pokemon_shape_id        Int?
+  name                    String
+  pokemon_v2_pokemonshape pokemon_v2_pokemonshape? @relation(fields: [pokemon_shape_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language     pokemon_v2_language?     @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_pokemonshapename_name_224dc527")
+  @@index([pokemon_shape_id], map: "pokemon_v2_pokemonshapename_pokemon_shape_id_69bb934f")
+  @@index([language_id], map: "pokemon_v2_pokemonshapename_language_id_e094373f")
+}
+
+model pokemon_v2_pokemonspecies {
+  id                                                                                                    Int                                    @id @default(autoincrement())
+  order                                                                                                 Int?
+  gender_rate                                                                                           Int?
+  capture_rate                                                                                          Int?
+  base_happiness                                                                                        Int?
+  is_baby                                                                                               Int
+  hatch_counter                                                                                         Int?
+  has_gender_differences                                                                                Unsupported("bool")
+  forms_switchable                                                                                      Unsupported("bool")
+  evolution_chain_id                                                                                    Int?
+  generation_id                                                                                         Int?
+  growth_rate_id                                                                                        Int?
+  pokemon_color_id                                                                                      Int?
+  pokemon_habitat_id                                                                                    Int?
+  pokemon_shape_id                                                                                      Int?
+  is_legendary                                                                                          Unsupported("bool")
+  is_mythical                                                                                           Unsupported("bool")
+  name                                                                                                  String
+  evolves_from_species_id                                                                               Int?
+  pokemon_v2_palpark                                                                                    pokemon_v2_palpark[]
+  pokemon_v2_pokemon                                                                                    pokemon_v2_pokemon[]
+  pokemon_v2_pokemondexnumber                                                                           pokemon_v2_pokemondexnumber[]
+  pokemon_v2_pokemonegggroup                                                                            pokemon_v2_pokemonegggroup[]
+  pokemon_v2_pokemonevolution_pokemon_v2_pokemonevolution_trade_species_idTopokemon_v2_pokemonspecies   pokemon_v2_pokemonevolution[]          @relation("pokemon_v2_pokemonevolution_trade_species_idTopokemon_v2_pokemonspecies")
+  pokemon_v2_pokemonevolution_pokemon_v2_pokemonevolution_party_species_idTopokemon_v2_pokemonspecies   pokemon_v2_pokemonevolution[]          @relation("pokemon_v2_pokemonevolution_party_species_idTopokemon_v2_pokemonspecies")
+  pokemon_v2_pokemonevolution_pokemon_v2_pokemonevolution_evolved_species_idTopokemon_v2_pokemonspecies pokemon_v2_pokemonevolution[]          @relation("pokemon_v2_pokemonevolution_evolved_species_idTopokemon_v2_pokemonspecies")
+  pokemon_v2_pokemonspecies                                                                             pokemon_v2_pokemonspecies?             @relation("pokemon_v2_pokemonspeciesTopokemon_v2_pokemonspecies", fields: [evolves_from_species_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  other_pokemon_v2_pokemonspecies                                                                       pokemon_v2_pokemonspecies[]            @relation("pokemon_v2_pokemonspeciesTopokemon_v2_pokemonspecies")
+  pokemon_v2_pokemonshape                                                                               pokemon_v2_pokemonshape?               @relation(fields: [pokemon_shape_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_pokemonhabitat                                                                             pokemon_v2_pokemonhabitat?             @relation(fields: [pokemon_habitat_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_pokemoncolor                                                                               pokemon_v2_pokemoncolor?               @relation(fields: [pokemon_color_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_growthrate                                                                                 pokemon_v2_growthrate?                 @relation(fields: [growth_rate_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_generation                                                                                 pokemon_v2_generation?                 @relation(fields: [generation_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_evolutionchain                                                                             pokemon_v2_evolutionchain?             @relation(fields: [evolution_chain_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_pokemonspeciesdescription                                                                  pokemon_v2_pokemonspeciesdescription[]
+  pokemon_v2_pokemonspeciesflavortext                                                                   pokemon_v2_pokemonspeciesflavortext[]
+  pokemon_v2_pokemonspeciesname                                                                         pokemon_v2_pokemonspeciesname[]
+
+  @@index([evolves_from_species_id], map: "pokemon_v2_pokemonspecies_evolves_from_species_id_6e40aea2")
+  @@index([name], map: "pokemon_v2_pokemonspecies_name_f1ec390b")
+  @@index([pokemon_shape_id], map: "pokemon_v2_pokemonspecies_pokemon_shape_id_9420bbbf")
+  @@index([pokemon_habitat_id], map: "pokemon_v2_pokemonspecies_pokemon_habitat_id_61d7914c")
+  @@index([pokemon_color_id], map: "pokemon_v2_pokemonspecies_pokemon_color_id_27cb23c7")
+  @@index([growth_rate_id], map: "pokemon_v2_pokemonspecies_growth_rate_id_78ff36e3")
+  @@index([generation_id], map: "pokemon_v2_pokemonspecies_generation_id_57b5b3ef")
+  @@index([evolution_chain_id], map: "pokemon_v2_pokemonspecies_evolution_chain_id_d94981c6")
+}
+
+model pokemon_v2_pokemonspeciesdescription {
+  id                        Int                        @id @default(autoincrement())
+  description               String
+  language_id               Int?
+  pokemon_species_id        Int?
+  pokemon_v2_pokemonspecies pokemon_v2_pokemonspecies? @relation(fields: [pokemon_species_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language       pokemon_v2_language?       @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([pokemon_species_id], map: "pokemon_v2_pokemonspeciesdescription_pokemon_species_id_c62bce07")
+  @@index([language_id], map: "pokemon_v2_pokemonspeciesdescription_language_id_75b5e267")
+}
+
+model pokemon_v2_pokemonspeciesflavortext {
+  id                        Int                        @id @default(autoincrement())
+  flavor_text               String
+  language_id               Int?
+  pokemon_species_id        Int?
+  version_id                Int?
+  pokemon_v2_version        pokemon_v2_version?        @relation(fields: [version_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_pokemonspecies pokemon_v2_pokemonspecies? @relation(fields: [pokemon_species_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language       pokemon_v2_language?       @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([version_id], map: "pokemon_v2_pokemonspeciesflavortext_version_id_67eb47ad")
+  @@index([pokemon_species_id], map: "pokemon_v2_pokemonspeciesflavortext_pokemon_species_id_345e9c6c")
+  @@index([language_id], map: "pokemon_v2_pokemonspeciesflavortext_language_id_725fcf28")
+}
+
+model pokemon_v2_pokemonspeciesname {
+  id                        Int                        @id @default(autoincrement())
+  genus                     String
+  language_id               Int?
+  pokemon_species_id        Int?
+  name                      String
+  pokemon_v2_pokemonspecies pokemon_v2_pokemonspecies? @relation(fields: [pokemon_species_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language       pokemon_v2_language?       @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_pokemonspeciesname_name_e53fa719")
+  @@index([pokemon_species_id], map: "pokemon_v2_pokemonspeciesname_pokemon_species_id_6566cdc8")
+  @@index([language_id], map: "pokemon_v2_pokemonspeciesname_language_id_1a5acda5")
+}
+
+model pokemon_v2_pokemonsprites {
+  id                 Int                 @id @default(autoincrement())
+  pokemon_id         Int?
+  sprites            String
+  pokemon_v2_pokemon pokemon_v2_pokemon? @relation(fields: [pokemon_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([pokemon_id], map: "pokemon_v2_pokemonsprites_pokemon_id_37e1b6e5")
+}
+
+model pokemon_v2_pokemonstat {
+  id                 Int                 @id @default(autoincrement())
+  base_stat          Int
+  effort             Int
+  pokemon_id         Int?
+  stat_id            Int?
+  pokemon_v2_stat    pokemon_v2_stat?    @relation(fields: [stat_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_pokemon pokemon_v2_pokemon? @relation(fields: [pokemon_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([stat_id], map: "pokemon_v2_pokemonstat_stat_id_ff99830f")
+  @@index([pokemon_id], map: "pokemon_v2_pokemonstat_pokemon_id_224bda7f")
+}
+
+model pokemon_v2_pokemontype {
+  id                 Int                 @id @default(autoincrement())
+  slot               Int
+  pokemon_id         Int?
+  type_id            Int?
+  pokemon_v2_type    pokemon_v2_type?    @relation(fields: [type_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_pokemon pokemon_v2_pokemon? @relation(fields: [pokemon_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([type_id], map: "pokemon_v2_pokemontype_type_id_50c80158")
+  @@index([pokemon_id], map: "pokemon_v2_pokemontype_pokemon_id_8cd53409")
+}
+
+model pokemon_v2_pokemontypepast {
+  id                    Int                    @id @default(autoincrement())
+  slot                  Int
+  generation_id         Int?
+  pokemon_id            Int?
+  type_id               Int?
+  pokemon_v2_type       pokemon_v2_type?       @relation(fields: [type_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_pokemon    pokemon_v2_pokemon?    @relation(fields: [pokemon_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_generation pokemon_v2_generation? @relation(fields: [generation_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([type_id], map: "pokemon_v2_pokemontypepast_type_id_c7a01783")
+  @@index([pokemon_id], map: "pokemon_v2_pokemontypepast_pokemon_id_7c9bb3e4")
+  @@index([generation_id], map: "pokemon_v2_pokemontypepast_generation_id_9dbf45f3")
+}
+
+model pokemon_v2_region {
+  id                            Int                             @id @default(autoincrement())
+  name                          String
+  pokemon_v2_generation         pokemon_v2_generation?
+  pokemon_v2_location           pokemon_v2_location[]
+  pokemon_v2_pokedex            pokemon_v2_pokedex[]
+  pokemon_v2_regionname         pokemon_v2_regionname[]
+  pokemon_v2_versiongroupregion pokemon_v2_versiongroupregion[]
+
+  @@index([name], map: "pokemon_v2_region_name_8acf2189")
+}
+
+model pokemon_v2_regionname {
+  id                  Int                  @id @default(autoincrement())
+  language_id         Int?
+  region_id           Int?
+  name                String
+  pokemon_v2_region   pokemon_v2_region?   @relation(fields: [region_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language pokemon_v2_language? @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_regionname_name_d9c7dec9")
+  @@index([region_id], map: "pokemon_v2_regionname_region_id_70a321d1")
+  @@index([language_id], map: "pokemon_v2_regionname_language_id_b977a545")
+}
+
+model pokemon_v2_stat {
+  id                                                                     Int                             @id @default(autoincrement())
+  is_battle_only                                                         Unsupported("bool")
+  game_index                                                             Int
+  move_damage_class_id                                                   Int?
+  name                                                                   String
+  pokemon_v2_characteristic                                              pokemon_v2_characteristic[]
+  pokemon_v2_movemetastatchange                                          pokemon_v2_movemetastatchange[]
+  pokemon_v2_nature_pokemon_v2_nature_increased_stat_idTopokemon_v2_stat pokemon_v2_nature[]             @relation("pokemon_v2_nature_increased_stat_idTopokemon_v2_stat")
+  pokemon_v2_nature_pokemon_v2_nature_decreased_stat_idTopokemon_v2_stat pokemon_v2_nature[]             @relation("pokemon_v2_nature_decreased_stat_idTopokemon_v2_stat")
+  pokemon_v2_pokemonstat                                                 pokemon_v2_pokemonstat[]
+  pokemon_v2_movedamageclass                                             pokemon_v2_movedamageclass?     @relation(fields: [move_damage_class_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_statname                                                    pokemon_v2_statname[]
+
+  @@index([name], map: "pokemon_v2_stat_name_abcae9af")
+  @@index([move_damage_class_id], map: "pokemon_v2_stat_move_damage_class_id_0ed19a23")
+}
+
+model pokemon_v2_statname {
+  id                  Int                  @id @default(autoincrement())
+  language_id         Int?
+  stat_id             Int?
+  name                String
+  pokemon_v2_stat     pokemon_v2_stat?     @relation(fields: [stat_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language pokemon_v2_language? @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_statname_name_e6d5a1d2")
+  @@index([stat_id], map: "pokemon_v2_statname_stat_id_fadbe40b")
+  @@index([language_id], map: "pokemon_v2_statname_language_id_813421dc")
+}
+
+model pokemon_v2_supercontestcombo {
+  id                                                                           Int              @id @default(autoincrement())
+  first_move_id                                                                Int?
+  second_move_id                                                               Int?
+  pokemon_v2_move_pokemon_v2_supercontestcombo_second_move_idTopokemon_v2_move pokemon_v2_move? @relation("pokemon_v2_supercontestcombo_second_move_idTopokemon_v2_move", fields: [second_move_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_move_pokemon_v2_supercontestcombo_first_move_idTopokemon_v2_move  pokemon_v2_move? @relation("pokemon_v2_supercontestcombo_first_move_idTopokemon_v2_move", fields: [first_move_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([second_move_id], map: "pokemon_v2_supercontestcombo_second_move_id_15fdde61")
+  @@index([first_move_id], map: "pokemon_v2_supercontestcombo_first_move_id_b595ebbb")
+}
+
+model pokemon_v2_supercontesteffect {
+  id                                      Int                                       @id @default(autoincrement())
+  appeal                                  Int
+  pokemon_v2_move                         pokemon_v2_move[]
+  pokemon_v2_supercontesteffectflavortext pokemon_v2_supercontesteffectflavortext[]
+}
+
+model pokemon_v2_supercontesteffectflavortext {
+  id                            Int                            @id @default(autoincrement())
+  flavor_text                   String
+  language_id                   Int?
+  super_contest_effect_id       Int?
+  pokemon_v2_supercontesteffect pokemon_v2_supercontesteffect? @relation(fields: [super_contest_effect_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language           pokemon_v2_language?           @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([super_contest_effect_id], map: "pokemon_v2_supercontesteffectflavortext_super_contest_effect_id_632d04b4")
+  @@index([language_id], map: "pokemon_v2_supercontesteffectflavortext_language_id_a8b218a8")
+}
+
+model pokemon_v2_type {
+  id                                                                                          Int                           @id @default(autoincrement())
+  generation_id                                                                               Int?
+  move_damage_class_id                                                                        Int?
+  name                                                                                        String
+  pokemon_v2_berry                                                                            pokemon_v2_berry[]
+  pokemon_v2_move                                                                             pokemon_v2_move[]
+  pokemon_v2_movechange                                                                       pokemon_v2_movechange[]
+  pokemon_v2_pokemonevolution_pokemon_v2_pokemonevolution_party_type_idTopokemon_v2_type      pokemon_v2_pokemonevolution[] @relation("pokemon_v2_pokemonevolution_party_type_idTopokemon_v2_type")
+  pokemon_v2_pokemonevolution_pokemon_v2_pokemonevolution_known_move_type_idTopokemon_v2_type pokemon_v2_pokemonevolution[] @relation("pokemon_v2_pokemonevolution_known_move_type_idTopokemon_v2_type")
+  pokemon_v2_pokemonformtype                                                                  pokemon_v2_pokemonformtype[]
+  pokemon_v2_pokemontype                                                                      pokemon_v2_pokemontype[]
+  pokemon_v2_pokemontypepast                                                                  pokemon_v2_pokemontypepast[]
+  pokemon_v2_movedamageclass                                                                  pokemon_v2_movedamageclass?   @relation(fields: [move_damage_class_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_generation                                                                       pokemon_v2_generation?        @relation(fields: [generation_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_typeefficacy_pokemon_v2_typeefficacy_target_type_idTopokemon_v2_type             pokemon_v2_typeefficacy[]     @relation("pokemon_v2_typeefficacy_target_type_idTopokemon_v2_type")
+  pokemon_v2_typeefficacy_pokemon_v2_typeefficacy_damage_type_idTopokemon_v2_type             pokemon_v2_typeefficacy[]     @relation("pokemon_v2_typeefficacy_damage_type_idTopokemon_v2_type")
+  pokemon_v2_typeefficacypast_pokemon_v2_typeefficacypast_target_type_idTopokemon_v2_type     pokemon_v2_typeefficacypast[] @relation("pokemon_v2_typeefficacypast_target_type_idTopokemon_v2_type")
+  pokemon_v2_typeefficacypast_pokemon_v2_typeefficacypast_damage_type_idTopokemon_v2_type     pokemon_v2_typeefficacypast[] @relation("pokemon_v2_typeefficacypast_damage_type_idTopokemon_v2_type")
+  pokemon_v2_typegameindex                                                                    pokemon_v2_typegameindex[]
+  pokemon_v2_typename                                                                         pokemon_v2_typename[]
+  pokemon_v2_typesprites                                                                      pokemon_v2_typesprites[]
+
+  @@index([name], map: "pokemon_v2_type_name_90172f48")
+  @@index([move_damage_class_id], map: "pokemon_v2_type_move_damage_class_id_5f546a8f")
+  @@index([generation_id], map: "pokemon_v2_type_generation_id_f3988f1c")
+}
+
+model pokemon_v2_typeefficacy {
+  id                                                                      Int              @id @default(autoincrement())
+  damage_factor                                                           Int
+  damage_type_id                                                          Int?
+  target_type_id                                                          Int?
+  pokemon_v2_type_pokemon_v2_typeefficacy_target_type_idTopokemon_v2_type pokemon_v2_type? @relation("pokemon_v2_typeefficacy_target_type_idTopokemon_v2_type", fields: [target_type_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_type_pokemon_v2_typeefficacy_damage_type_idTopokemon_v2_type pokemon_v2_type? @relation("pokemon_v2_typeefficacy_damage_type_idTopokemon_v2_type", fields: [damage_type_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([target_type_id], map: "pokemon_v2_typeefficacy_target_type_id_bf2be275")
+  @@index([damage_type_id], map: "pokemon_v2_typeefficacy_damage_type_id_1b7c2d73")
+}
+
+model pokemon_v2_typeefficacypast {
+  id                                                                          Int                    @id @default(autoincrement())
+  damage_factor                                                               Int
+  damage_type_id                                                              Int?
+  generation_id                                                               Int?
+  target_type_id                                                              Int?
+  pokemon_v2_type_pokemon_v2_typeefficacypast_target_type_idTopokemon_v2_type pokemon_v2_type?       @relation("pokemon_v2_typeefficacypast_target_type_idTopokemon_v2_type", fields: [target_type_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_generation                                                       pokemon_v2_generation? @relation(fields: [generation_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_type_pokemon_v2_typeefficacypast_damage_type_idTopokemon_v2_type pokemon_v2_type?       @relation("pokemon_v2_typeefficacypast_damage_type_idTopokemon_v2_type", fields: [damage_type_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([target_type_id], map: "pokemon_v2_typeefficacypast_target_type_id_2e9e1cb6")
+  @@index([generation_id], map: "pokemon_v2_typeefficacypast_generation_id_43b555ea")
+  @@index([damage_type_id], map: "pokemon_v2_typeefficacypast_damage_type_id_b8eae4c9")
+}
+
+model pokemon_v2_typegameindex {
+  id                    Int                    @id @default(autoincrement())
+  game_index            Int
+  generation_id         Int?
+  type_id               Int?
+  pokemon_v2_type       pokemon_v2_type?       @relation(fields: [type_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_generation pokemon_v2_generation? @relation(fields: [generation_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([type_id], map: "pokemon_v2_typegameindex_type_id_8264662d")
+  @@index([generation_id], map: "pokemon_v2_typegameindex_generation_id_520a4043")
+}
+
+model pokemon_v2_typename {
+  id                  Int                  @id @default(autoincrement())
+  language_id         Int?
+  type_id             Int?
+  name                String
+  pokemon_v2_type     pokemon_v2_type?     @relation(fields: [type_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language pokemon_v2_language? @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_typename_name_95fbeace")
+  @@index([type_id], map: "pokemon_v2_typename_type_id_3fe2e4d2")
+  @@index([language_id], map: "pokemon_v2_typename_language_id_6b15eb1d")
+}
+
+model pokemon_v2_typesprites {
+  id              Int              @id @default(autoincrement())
+  sprites         String
+  type_id         Int?
+  pokemon_v2_type pokemon_v2_type? @relation(fields: [type_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([type_id], map: "pokemon_v2_typesprites_type_id_0cfdcdc8")
+}
+
+model pokemon_v2_version {
+  id                                   Int                                    @id @default(autoincrement())
+  version_group_id                     Int?
+  name                                 String
+  pokemon_v2_encounter                 pokemon_v2_encounter[]
+  pokemon_v2_locationareaencounterrate pokemon_v2_locationareaencounterrate[]
+  pokemon_v2_pokemongameindex          pokemon_v2_pokemongameindex[]
+  pokemon_v2_pokemonitem               pokemon_v2_pokemonitem[]
+  pokemon_v2_pokemonspeciesflavortext  pokemon_v2_pokemonspeciesflavortext[]
+  pokemon_v2_versiongroup              pokemon_v2_versiongroup?               @relation(fields: [version_group_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_versionname               pokemon_v2_versionname[]
+
+  @@index([name], map: "pokemon_v2_version_name_a1b54eaa")
+  @@index([version_group_id], map: "pokemon_v2_version_version_group_id_1ab67107")
+}
+
+model pokemon_v2_versiongroup {
+  id                                     Int                                      @id @default(autoincrement())
+  order                                  Int?
+  generation_id                          Int?
+  name                                   String
+  pokemon_v2_abilitychange               pokemon_v2_abilitychange[]
+  pokemon_v2_abilityflavortext           pokemon_v2_abilityflavortext[]
+  pokemon_v2_encounterslot               pokemon_v2_encounterslot[]
+  pokemon_v2_itemflavortext              pokemon_v2_itemflavortext[]
+  pokemon_v2_machine                     pokemon_v2_machine[]
+  pokemon_v2_movechange                  pokemon_v2_movechange[]
+  pokemon_v2_moveeffectchange            pokemon_v2_moveeffectchange[]
+  pokemon_v2_moveflavortext              pokemon_v2_moveflavortext[]
+  pokemon_v2_pokedexversiongroup         pokemon_v2_pokedexversiongroup[]
+  pokemon_v2_pokemonform                 pokemon_v2_pokemonform[]
+  pokemon_v2_pokemonmove                 pokemon_v2_pokemonmove[]
+  pokemon_v2_version                     pokemon_v2_version[]
+  pokemon_v2_generation                  pokemon_v2_generation?                   @relation(fields: [generation_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_versiongroupmovelearnmethod pokemon_v2_versiongroupmovelearnmethod[]
+  pokemon_v2_versiongroupregion          pokemon_v2_versiongroupregion[]
+
+  @@index([name], map: "pokemon_v2_versiongroup_name_4c396513")
+  @@index([generation_id], map: "pokemon_v2_versiongroup_generation_id_f7073699")
+}
+
+model pokemon_v2_versiongroupmovelearnmethod {
+  id                         Int                         @id @default(autoincrement())
+  move_learn_method_id       Int?
+  version_group_id           Int?
+  pokemon_v2_versiongroup    pokemon_v2_versiongroup?    @relation(fields: [version_group_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_movelearnmethod pokemon_v2_movelearnmethod? @relation(fields: [move_learn_method_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([version_group_id], map: "pokemon_v2_versiongroupmovelearnmethod_version_group_id_36c973b6")
+  @@index([move_learn_method_id], map: "pokemon_v2_versiongroupmovelearnmethod_move_learn_method_id_7e827604")
+}
+
+model pokemon_v2_versiongroupregion {
+  id                      Int                      @id @default(autoincrement())
+  version_group_id        Int?
+  region_id               Int?
+  pokemon_v2_region       pokemon_v2_region?       @relation(fields: [region_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_versiongroup pokemon_v2_versiongroup? @relation(fields: [version_group_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([region_id], map: "pokemon_v2_versiongroupregion_region_id_8f876d0b")
+  @@index([version_group_id], map: "pokemon_v2_versiongroupregion_version_group_id_a3445bcb")
+}
+
+model pokemon_v2_versionname {
+  id                  Int                  @id @default(autoincrement())
+  language_id         Int?
+  version_id          Int?
+  name                String
+  pokemon_v2_version  pokemon_v2_version?  @relation(fields: [version_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_v2_language pokemon_v2_language? @relation(fields: [language_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([name], map: "pokemon_v2_versionname_name_df504fd7")
+  @@index([version_id], map: "pokemon_v2_versionname_version_id_84baf0a3")
+  @@index([language_id], map: "pokemon_v2_versionname_language_id_890e148a")
+}
+
+model tcg_card {
+  id              String          @id
+  name            String?
+  image_small_url String?
+  image_large_url String?
+  set_id          String?
+  tcg_set         tcg_set?        @relation(fields: [set_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  tcg_deck_card   tcg_deck_card[]
+}
+
+model tcg_deck {
+  id            String          @id
+  name          String?
+  tcg_deck_card tcg_deck_card[]
+}
+
+model tcg_deck_card {
+  id       String    @id
+  deck_id  String?
+  card_id  String?
+  tcg_card tcg_card? @relation(fields: [card_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  tcg_deck tcg_deck? @relation(fields: [deck_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model tcg_set {
+  id                   String     @id
+  name                 String?
+  series               String?
+  printed_total        Int?
+  total                Int?
+  legalities_unlimited String?
+  ptcgo_code           String?
+  release_date         DateTime
+  updated_at           DateTime?
+  symbol_url           String?
+  logo_url             String?
+  tcg_card             tcg_card[]
+}
