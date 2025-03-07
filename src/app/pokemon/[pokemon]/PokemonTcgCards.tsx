@@ -44,7 +44,7 @@ export function PokemonTcgCards({
           {visibleCards.map((card, index) => (
             <div key={card.id}>
               <button
-                className="cursor-pointer"
+                className="cursor-pointer w-full"
                 onClick={() => {
                   setDialogState({ isOpen: true, initialIndex: index });
                 }}
@@ -56,6 +56,14 @@ export function PokemonTcgCards({
                   className="w-full object-contain"
                   loading="lazy"
                 />
+                <div className="text-sm flex justify-between mt-1 gap-1 items-center">
+                  <div className="flex-1 truncate text-left">
+                    {card.tcg_set.name}
+                  </div>
+                  <div className="shrink-0 font-medium">
+                    {dateFormatter.format(card.tcg_set.release_date)}
+                  </div>
+                </div>
               </button>
             </div>
           ))}
@@ -110,5 +118,10 @@ export function PokemonTcgCards({
     </Fragment>
   );
 }
+
+const dateFormatter = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  year: "numeric",
+});
 
 const COLLAPSED_CARDS_COUNT = 4;
