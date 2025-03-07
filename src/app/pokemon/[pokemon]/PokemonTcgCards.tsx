@@ -53,7 +53,7 @@ export function PokemonTcgCards({
                 <img
                   src={card.image_small_url ?? ""}
                   alt={card.name ?? ""}
-                  className="w-full object-contain"
+                  className={clsx("w-full", TCG_ASPECT_CLASS)}
                   loading="lazy"
                 />
                 {card.tcg_set && (
@@ -107,7 +107,7 @@ export function PokemonTcgCards({
                     <img
                       src={card.image_large_url ?? ""}
                       alt={card.name ?? ""}
-                      className="w-full"
+                      className={clsx("w-full", TCG_ASPECT_CLASS)}
                       loading="lazy"
                     />
                   </CarouselItem>
@@ -130,3 +130,4 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 });
 
 const COLLAPSED_CARDS_COUNT = 4;
+const TCG_ASPECT_CLASS = "aspect-[25/35] object-contain object-center";

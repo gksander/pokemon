@@ -245,7 +245,9 @@
   "magneton": {
     "lightVibrant": "#9cc9dc"
   },
-  "farfetchd": null,
+  "farfetchd": {
+    "lightVibrant": "#ecd998"
+  },
   "doduo": {
     "lightVibrant": "#dcb38d"
   },
@@ -1152,7 +1154,9 @@
   "jirachi": {
     "lightVibrant": "#fce494"
   },
-  "deoxys-normal": null,
+  "deoxys-normal": {
+    "lightVibrant": "#f49c64"
+  },
   "turtwig": {
     "lightVibrant": "#f6d977"
   },
@@ -1453,7 +1457,9 @@
   "regigigas": {
     "lightVibrant": "#f9dc89"
   },
-  "giratina-altered": null,
+  "giratina-altered": {
+    "lightVibrant": "#f4dc9c"
+  },
   "cresselia": {
     "lightVibrant": "#f0c88c"
   },
@@ -1466,7 +1472,9 @@
   "darkrai": {
     "lightVibrant": "#d08176"
   },
-  "shaymin-land": null,
+  "shaymin-land": {
+    "lightVibrant": "#dc8d94"
+  },
   "arceus": {
     "lightVibrant": "#dbcfa1"
   },
@@ -1653,7 +1661,9 @@
   "darumaka": {
     "lightVibrant": "#fcdc8c"
   },
-  "darmanitan-standard": null,
+  "darmanitan-standard": {
+    "lightVibrant": "#f0b281"
+  },
   "maractus": {
     "lightVibrant": "#ec94bd"
   },
@@ -1909,20 +1919,30 @@
   "virizion": {
     "lightVibrant": "#ec9396"
   },
-  "tornadus-incarnate": null,
-  "thundurus-incarnate": null,
+  "tornadus-incarnate": {
+    "lightVibrant": "#c4a474"
+  },
+  "thundurus-incarnate": {
+    "lightVibrant": "#93cce8"
+  },
   "reshiram": {
     "lightVibrant": "#acbcda"
   },
   "zekrom": {
     "lightVibrant": "#6cacbc"
   },
-  "landorus-incarnate": null,
+  "landorus-incarnate": {
+    "lightVibrant": "#f4cc8c"
+  },
   "kyurem": {
     "lightVibrant": "#c4e4e4"
   },
-  "keldeo-ordinary": null,
-  "meloetta-aria": null,
+  "keldeo-ordinary": {
+    "lightVibrant": "#8cd4f4"
+  },
+  "meloetta-aria": {
+    "lightVibrant": "#dcecbc"
+  },
   "genesect": {
     "lightVibrant": "#e5a38e"
   },
@@ -1983,7 +2003,9 @@
   "pyroar": {
     "lightVibrant": "#e7c686"
   },
-  "flabebe": null,
+  "flabebe": {
+    "lightVibrant": "#f8ed89"
+  },
   "floette": {
     "lightVibrant": "#d3df8a"
   },
@@ -2008,7 +2030,9 @@
   "espurr": {
     "lightVibrant": "#cfaace"
   },
-  "meowstic-male": null,
+  "meowstic-male": {
+    "lightVibrant": "#dabd56"
+  },
   "honedge": {
     "lightVibrant": "#a3d3e4"
   },
@@ -2102,8 +2126,12 @@
   "trevenant": {
     "lightVibrant": "#9bddbf"
   },
-  "pumpkaboo-average": null,
-  "gourgeist-average": null,
+  "pumpkaboo-average": {
+    "lightVibrant": "#f6da94"
+  },
+  "gourgeist-average": {
+    "lightVibrant": "#edb394"
+  },
   "bergmite": {
     "lightVibrant": "#f4d49c"
   },
@@ -2122,7 +2150,9 @@
   "yveltal": {
     "lightVibrant": "#eb7970"
   },
-  "zygarde-50": null,
+  "zygarde-50": {
+    "lightVibrant": "#ccdb92"
+  },
   "diancie": {
     "lightVibrant": "#efe4a9"
   },
@@ -2189,7 +2219,9 @@
   "crabominable": {
     "lightVibrant": "#90d4e3"
   },
-  "oricorio-baile": null,
+  "oricorio-baile": {
+    "lightVibrant": "#ec6c64"
+  },
   "cutiefly": {
     "lightVibrant": "#f4e484"
   },
@@ -2199,8 +2231,12 @@
   "rockruff": {
     "lightVibrant": "#81b4dc"
   },
-  "lycanroc-midday": null,
-  "wishiwashi-solo": null,
+  "lycanroc-midday": {
+    "lightVibrant": "#ecbbc4"
+  },
+  "wishiwashi-solo": {
+    "lightVibrant": "#81c4e3"
+  },
   "mareanie": {
     "lightVibrant": "#eed685"
   },
@@ -2292,7 +2328,9 @@
   "togedemaru": {
     "lightVibrant": "#fae976"
   },
-  "mimikyu-disguised": null,
+  "mimikyu-disguised": {
+    "lightVibrant": "#dcd3ad"
+  },
   "bruxish": {
     "lightVibrant": "#94d3e4"
   },
@@ -2581,9 +2619,15 @@
   "stonjourner": {
     "lightVibrant": "#bcbcbc"
   },
-  "eiscue-ice": null,
-  "indeedee-male": null,
-  "morpeko-full-belly": null,
+  "eiscue-ice": {
+    "lightVibrant": "#bcdce4"
+  },
+  "indeedee-male": {
+    "lightVibrant": "#a2cad7"
+  },
+  "morpeko-full-belly": {
+    "lightVibrant": "#ede397"
+  },
   "cufant": {
     "lightVibrant": "#f4ab74"
   },
@@ -2656,14 +2700,18 @@
   "ursaluna": {
     "lightVibrant": "#e1c797"
   },
-  "basculegion-male": null,
+  "basculegion-male": {
+    "lightVibrant": "#ec5880"
+  },
   "sneasler": {
     "lightVibrant": "#a4bcd4"
   },
   "overqwil": {
     "lightVibrant": "#dca4cc"
   },
-  "enamorus-incarnate": null,
+  "enamorus-incarnate": {
+    "lightVibrant": "#f1cc8c"
+  },
   "sprigatito": {
     "lightVibrant": "#d4e4bb"
   },
@@ -2694,7 +2742,9 @@
   "lechonk": {
     "lightVibrant": "#efd58c"
   },
-  "oinkologne-male": null,
+  "oinkologne-male": {
+    "lightVibrant": "#e2cd88"
+  },
   "tarountula": {
     "lightVibrant": "#e4dc6b"
   },
@@ -2719,7 +2769,9 @@
   "tandemaus": {
     "lightVibrant": "#fcfcf4"
   },
-  "maushold-family-of-four": null,
+  "maushold-family-of-four": {
+    "lightVibrant": "#fcfcf4"
+  },
   "fidough": {
     "lightVibrant": "#f6e17c"
   },
@@ -2735,7 +2787,9 @@
   "arboliva": {
     "lightVibrant": "#ecf0db"
   },
-  "squawkabilly-green-plumage": null,
+  "squawkabilly-green-plumage": {
+    "lightVibrant": "#f2c96c"
+  },
   "nacli": {
     "lightVibrant": "#d7baab"
   },
@@ -2832,7 +2886,9 @@
   "finizen": {
     "lightVibrant": "#a0d5df"
   },
-  "palafin-zero": null,
+  "palafin-zero": {
+    "lightVibrant": "#97cfdc"
+  },
   "varoom": {
     "lightVibrant": "#fcec8c"
   },
@@ -2872,7 +2928,9 @@
   "dondozo": {
     "lightVibrant": "#6cbcec"
   },
-  "tatsugiri-curly": null,
+  "tatsugiri-curly": {
+    "lightVibrant": "#f3a484"
+  },
   "annihilape": {
     "lightVibrant": "#e884b1"
   },
@@ -2882,7 +2940,9 @@
   "farigiraf": {
     "lightVibrant": "#eae290"
   },
-  "dudunsparce-two-segment": null,
+  "dudunsparce-two-segment": {
+    "lightVibrant": "#f4e484"
+  },
   "kingambit": {
     "lightVibrant": "#fbdc86"
   },
@@ -3086,12 +3146,24 @@
   "aegislash-blade": {
     "lightVibrant": "#e4d493"
   },
-  "pumpkaboo-small": null,
-  "pumpkaboo-large": null,
-  "pumpkaboo-super": null,
-  "gourgeist-small": null,
-  "gourgeist-large": null,
-  "gourgeist-super": null,
+  "pumpkaboo-small": {
+    "lightVibrant": "#f69680"
+  },
+  "pumpkaboo-large": {
+    "lightVibrant": "#f2dd75"
+  },
+  "pumpkaboo-super": {
+    "lightVibrant": "#f6977f"
+  },
+  "gourgeist-small": {
+    "lightVibrant": "#fbdb7e"
+  },
+  "gourgeist-large": {
+    "lightVibrant": "#fad47d"
+  },
+  "gourgeist-super": {
+    "lightVibrant": "#fadb7e"
+  },
   "venusaur-mega": {
     "lightVibrant": "#eb8b94"
   },
@@ -3345,8 +3417,12 @@
   "greninja-ash": {
     "lightVibrant": "#e4929a"
   },
-  "zygarde-10-power-construct": null,
-  "zygarde-50-power-construct": null,
+  "zygarde-10-power-construct": {
+    "lightVibrant": "#ccdc9d"
+  },
+  "zygarde-50-power-construct": {
+    "lightVibrant": "#e6b976"
+  },
   "zygarde-complete": {
     "lightVibrant": "#efbc76"
   },
@@ -3378,12 +3454,24 @@
   "minior-red": {
     "lightVibrant": "#e9a2bc"
   },
-  "minior-orange": null,
-  "minior-yellow": null,
-  "minior-green": null,
-  "minior-blue": null,
-  "minior-indigo": null,
-  "minior-violet": null,
+  "minior-orange": {
+    "lightVibrant": "#fce167"
+  },
+  "minior-yellow": {
+    "lightVibrant": "#f9f376"
+  },
+  "minior-green": {
+    "lightVibrant": "#d4f88c"
+  },
+  "minior-blue": {
+    "lightVibrant": "#abe4fb"
+  },
+  "minior-indigo": {
+    "lightVibrant": "#53e1fc"
+  },
+  "minior-violet": {
+    "lightVibrant": "#f09efc"
+  },
   "mimikyu-busted": {
     "lightVibrant": "#fce494"
   },
@@ -3400,7 +3488,9 @@
     "lightVibrant": "#9bded7"
   },
   "ribombee-totem": null,
-  "rockruff-own-tempo": null,
+  "rockruff-own-tempo": {
+    "lightVibrant": "#ecb6c0"
+  },
   "lycanroc-dusk": {
     "lightVibrant": "#dc9a6a"
   },
@@ -3592,7 +3682,9 @@
   "flapple-gmax": {
     "lightVibrant": "#ecd474"
   },
-  "appletun-gmax": null,
+  "appletun-gmax": {
+    "lightVibrant": "#e0b78a"
+  },
   "sandaconda-gmax": {
     "lightVibrant": "#d39693"
   },
@@ -3681,37 +3773,73 @@
   "basculin-white-striped": {
     "lightVibrant": "#f4fcfc"
   },
-  "basculegion-female": null,
+  "basculegion-female": {
+    "lightVibrant": "#dff4ed"
+  },
   "enamorus-therian": {
     "lightVibrant": "#e77ca4"
   },
-  "tauros-paldea-combat-breed": null,
-  "tauros-paldea-blaze-breed": null,
-  "tauros-paldea-aqua-breed": null,
-  "wooper-paldea": null,
-  "oinkologne-female": null,
-  "dudunsparce-three-segment": null,
-  "palafin-hero": null,
-  "maushold-family-of-three": null,
-  "tatsugiri-droopy": null,
-  "tatsugiri-stretchy": null,
-  "squawkabilly-blue-plumage": null,
-  "squawkabilly-yellow-plumage": null,
-  "squawkabilly-white-plumage": null,
-  "gimmighoul-roaming": null,
-  "koraidon-limited-build": null,
-  "koraidon-sprinting-build": null,
-  "koraidon-swimming-build": null,
-  "koraidon-gliding-build": null,
-  "miraidon-low-power-mode": null,
-  "miraidon-drive-mode": null,
-  "miraidon-aquatic-mode": null,
-  "miraidon-glide-mode": null,
-  "ursaluna-bloodmoon": null,
-  "ogerpon-wellspring-mask": null,
-  "ogerpon-hearthflame-mask": null,
-  "ogerpon-cornerstone-mask": null,
-  "terapagos-terastal": null,
-  "terapagos-stellar": null,
-  "jellicent-female": null
+  "tauros-paldea-combat-breed": {
+    "lightVibrant": "#bfbabe"
+  },
+  "tauros-paldea-blaze-breed": {
+    "lightVibrant": "#d5a3a3"
+  },
+  "tauros-paldea-aqua-breed": {
+    "lightVibrant": "#89cfef"
+  },
+  "wooper-paldea": {
+    "lightVibrant": "#d38b8a"
+  },
+  "oinkologne-female": {
+    "lightVibrant": "#e1a297"
+  },
+  "dudunsparce-three-segment": {
+    "lightVibrant": "#f4ec89"
+  },
+  "palafin-hero": {
+    "lightVibrant": "#8ccaf0"
+  },
+  "maushold-family-of-three": {
+    "lightVibrant": "#ecf4fb"
+  },
+  "tatsugiri-droopy": {
+    "lightVibrant": "#ec7f94"
+  },
+  "tatsugiri-stretchy": {
+    "lightVibrant": "#fcf494"
+  },
+  "squawkabilly-blue-plumage": {
+    "lightVibrant": "#fce761"
+  },
+  "squawkabilly-yellow-plumage": {
+    "lightVibrant": "#fcec6a"
+  },
+  "squawkabilly-white-plumage": {
+    "lightVibrant": "#fce860"
+  },
+  "gimmighoul-roaming": {
+    "lightVibrant": "#ead46d"
+  },
+  "ursaluna-bloodmoon": {
+    "lightVibrant": "#dab47c"
+  },
+  "ogerpon-wellspring-mask": {
+    "lightVibrant": "#d4c59f"
+  },
+  "ogerpon-hearthflame-mask": {
+    "lightVibrant": "#ecd184"
+  },
+  "ogerpon-cornerstone-mask": {
+    "lightVibrant": "#64b89d"
+  },
+  "terapagos-terastal": {
+    "lightVibrant": "#7fc6e8"
+  },
+  "terapagos-stellar": {
+    "lightVibrant": "#99e8f1"
+  },
+  "jellicent-female": {
+    "lightVibrant": "#f4bdd4"
+  }
 }
