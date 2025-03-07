@@ -96,7 +96,10 @@ export function PokemonTcgCards({
             <DialogTitle>Trading cards for {speciesName}</DialogTitle>
           </VisuallyHidden>
           <DialogContent className="p-0 overflow-hidden">
-            <Carousel opts={{ startIndex: dialogState.initialIndex }}>
+            <Carousel
+              opts={{ startIndex: dialogState.initialIndex }}
+              className="w-full overflow-hidden"
+            >
               <CarouselContent className="p-0 sm:p-4">
                 {cards.map((card) => (
                   <CarouselItem key={card.id}>
@@ -104,7 +107,7 @@ export function PokemonTcgCards({
                     <img
                       src={card.image_large_url ?? ""}
                       alt={card.name ?? ""}
-                      className="w-full object-contain"
+                      className="w-full"
                       loading="lazy"
                     />
                   </CarouselItem>
