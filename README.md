@@ -19,3 +19,4 @@ I claim no intellectual rights to any of the data or imagery used to build this 
 - [ ] OG images
 - [ ] Weight/height/gender etc
 - [ ] Catching data: catch rates, locations, etc.
+- [ ] Move detail pages
