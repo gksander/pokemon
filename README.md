@@ -1,5 +1,7 @@
 ## Some random guy's pokemon website
 
+![Sample of the site](https://raw.githubusercontent.com/gksander/pokemon/refs/heads/main/docs/img/sample.png)
+
 I built this for my kids and to have fun. The gist:
 
 - PokeAPI data is available as a sqlite file and you can use Prisma to introspect the data and generate a type-safe client. Very cool.
