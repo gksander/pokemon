@@ -10,7 +10,7 @@ export async function PokemonListPage({
   pageNum,
   children,
 }: PropsWithChildren<Props>) {
-  const pokemon = await db.pokemon_v2_pokemonspecies.findMany({
+  const species = await db.pokemon_v2_pokemonspecies.findMany({
     skip: (pageNum - 1) * PAGE_SIZE,
     take: PAGE_SIZE,
     include: {
@@ -49,19 +49,25 @@ export async function PokemonListPage({
       {children}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        {pokemon.map((p) => (
-          <PokeCard
-            key={p.id}
-            isLink={true}
-            speciesId={p.id}
-            name={p.name}
-            speciesName={p.pokemon_v2_pokemonspeciesname[0].name}
-            types={p.pokemon_v2_pokemon[0]!.pokemon_v2_pokemontype.map((t) => ({
-              name: t.pokemon_v2_type!.name,
-              displayName: t.pokemon_v2_type!.pokemon_v2_typename[0].name,
-            }))}
-          />
-        ))}
+        {species.map((s) => {
+          const defaultPokemon =
+            s.pokemon_v2_pokemon.find((p) => p.is_default) ??
+            s.pokemon_v2_pokemon[0]!;
+
+          return (
+            <PokeCard
+              key={s.id}
+              isLink={true}
+              speciesId={s.id}
+              name={defaultPokemon.name}
+              speciesName={s.pokemon_v2_pokemonspeciesname[0].name}
+              types={defaultPokemon.pokemon_v2_pokemontype.map((t) => ({
+                name: t.pokemon_v2_type!.name,
+                displayName: t.pokemon_v2_type!.pokemon_v2_typename[0].name,
+              }))}
+            />
+          );
+        })}
       </div>
 
       <div className="sticky bottom-0 inset-x-0 mt-8 z-100">
