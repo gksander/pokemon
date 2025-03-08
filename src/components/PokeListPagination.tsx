@@ -9,12 +9,7 @@ import {
 import { PAGE_SIZE } from "@/consts";
 import { URLS } from "@/urls";
 import { clsx } from "clsx";
-import {
-  ChevronFirst,
-  ChevronLast,
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 
 type Props = {
@@ -37,29 +32,12 @@ export function PokeListPagination({
         className="bg-background rounded-lg drop-border-sm flex overflow-hidden"
         style={{ viewTransitionName: "pagination-footer" }}
       >
-        {renderFirst()}
         {renderPrevious()}
         {renderCounter()}
         {renderNext()}
-        {renderLast()}
       </div>
     </div>
   );
-
-  function renderFirst() {
-    const Tag = isFirst ? "span" : Link;
-    const props = {
-      className: clsx(baseClasses, getInteractionClasses(isFirst)),
-      href: "#",
-      ...(isFirst ? {} : { href: URLS.pokemonListingPage({ page: 1 }) }),
-    };
-
-    return (
-      <Tag {...props}>
-        <ChevronFirst className="w-4" />
-      </Tag>
-    );
-  }
 
   function renderPrevious() {
     const Tag = isFirst ? "span" : Link;
@@ -74,6 +52,7 @@ export function PokeListPagination({
     return (
       <Tag {...props}>
         <ChevronLeft className="w-4" />
+        Prev
       </Tag>
     );
   }
@@ -126,28 +105,14 @@ export function PokeListPagination({
 
     return (
       <Tag {...props}>
+        Next
         <ChevronRight className="w-4" />
-      </Tag>
-    );
-  }
-
-  function renderLast() {
-    const Tag = isLast ? "span" : Link;
-    const props = {
-      className: clsx(baseClasses, getInteractionClasses(isLast)),
-      href: "#",
-      ...(isLast ? {} : { href: URLS.pokemonListingPage({ page: numPages }) }),
-    };
-
-    return (
-      <Tag {...props}>
-        <ChevronLast className="w-4" />
       </Tag>
     );
   }
 }
 
-const baseClasses = "w-10 h-10 text-sm flex items-center justify-center ";
+const baseClasses = "w-24 h-10 text-sm flex items-center justify-center ";
 const getInteractionClasses = (isDisabled: boolean) =>
   isDisabled
     ? "cursor-not-allowed text-foreground/50"
