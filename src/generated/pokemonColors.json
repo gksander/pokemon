@@ -2318,7 +2318,9 @@
   "silvally": {
     "lightVibrant": "#f4f7fb"
   },
-  "minior-red-meteor": null,
+  "minior-red-meteor": {
+    "lightVibrant": "#cab0ae"
+  },
   "komala": {
     "lightVibrant": "#e7caa5"
   },
@@ -3063,8 +3065,12 @@
   "iron-boulder": {
     "lightVibrant": "#fcbc54"
   },
-  "iron-crown": null,
-  "terapagos": null,
+  "iron-crown": {
+    "lightVibrant": "#d8c56f"
+  },
+  "terapagos": {
+    "lightVibrant": "#9cbcdc"
+  },
   "pecharunt": {
     "lightVibrant": "#f4c3dc"
   },

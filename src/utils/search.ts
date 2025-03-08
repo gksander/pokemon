@@ -50,7 +50,6 @@ export async function getItemsForSearch() {
           id: p.id,
           name: p.name,
           display: speciesName,
-          // @ts-expect-error it's fine
           suffix: !p.is_default && formName ? ` (${formName})` : undefined,
         };
       }),
