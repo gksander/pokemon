@@ -1,11 +1,11 @@
 "use client";
 
+import { AppLink } from "@/components/AppLink";
 import { ImageWithFallback } from "@/components/ImageWithFallback";
 import { TypeBadge } from "@/components/TypeBadge";
 import { URLS } from "@/urls";
 import { getPokemonColors } from "@/utils/getPokemonColors";
 import clsx from "clsx";
-import { Link as ViewTransitionLink } from "next-view-transitions";
 import { CardBanner } from "./CardBanner";
 
 type Props = {
@@ -53,7 +53,7 @@ export function PokeCard({
       )}
 
       {isLink && (
-        <ViewTransitionLink
+        <AppLink
           className="absolute inset-0 z-1"
           href={URLS.pokemonDetail({ name })}
         />

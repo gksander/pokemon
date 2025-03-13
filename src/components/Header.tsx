@@ -1,5 +1,10 @@
 "use client";
 
+import { AppLink } from "@/components/AppLink";
+import { ImageWithFallback } from "@/components/ImageWithFallback";
+import { Pokeball } from "@/components/Pokeball";
+import { TypeIcon } from "@/components/TypeIcon";
+import { Button } from "@/components/ui/button";
 import {
   CommandDialog,
   CommandEmpty,
@@ -16,18 +21,13 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import { TYPE_COLORS } from "@/consts";
 import { URLS } from "@/urls";
 import type { PokemonSearchItem, TypeSearchItem } from "@/utils/search";
+import { Layers2 } from "lucide-react";
+import { useRouter } from "next/navigation";
 import type { PropsWithChildren } from "react";
 import * as React from "react";
-import { TypeIcon } from "@/components/TypeIcon";
-import { TYPE_COLORS } from "@/consts";
-import { Pokeball } from "@/components/Pokeball";
-import { Button } from "@/components/ui/button";
-import { Layers2 } from "lucide-react";
-import { ImageWithFallback } from "@/components/ImageWithFallback";
-import { useRouter } from "next/navigation";
-import { Link as ViewTransitionLink } from "next-view-transitions";
 type Props = {
   allPokemon: PokemonSearchItem[];
   allTypes: TypeSearchItem[];
@@ -61,10 +61,10 @@ export function Header({ allPokemon, allTypes }: Props) {
   return (
     <React.Fragment>
       <Button asChild>
-        <ViewTransitionLink href={URLS.home()}>
+        <AppLink href={URLS.home()}>
           <Pokeball className="w-4 h-4" />
           <span className="hidden sm:block">Pokémon</span>
-        </ViewTransitionLink>
+        </AppLink>
       </Button>
 
       <div className="flex gap-2 flex-grow justify-end">
