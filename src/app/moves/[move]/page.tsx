@@ -1,11 +1,16 @@
-import { MovePokemonList } from "@/app/moves/[move]/MovePokemonList";
 import { PokeDetailSection } from "@/app/pokemon/[pokemon]/PokeDetailSection";
 import { PageTitle } from "@/components/PageTitle";
+import { PokeCard } from "@/components/PokeCard";
 import { SubsectionTitle } from "@/components/SubsectionTitle";
-import { ENGLISH_LANG_ID, LEVEL_UP_LEARN_METHOD_ID } from "@/consts";
+import {
+  ENGLISH_LANG_ID,
+  LEVEL_UP_LEARN_METHOD_ID,
+  TM_LEARN_METHOD_ID,
+} from "@/consts";
 import { db } from "@/db";
+import { isNotNull } from "@/utils/filters";
+import { uniqBy } from "lodash-es";
 import { notFound } from "next/navigation";
-import { Fragment } from "react";
 
 export default async function MovePage({
   params,
@@ -24,13 +29,33 @@ export default async function MovePage({
     move.pokemon_v2_moveeffect?.pokemon_v2_moveeffecteffecttext ?? []
   ).map((effect) => effect.effect);
 
-  return (
-    <Fragment>
-      <PageTitle className="mb-16">
-        {move.pokemon_v2_movename[0]?.name}
-      </PageTitle>
+  const pokemonLearnedFromLevelUp = uniqBy(
+    move.pokemon_v2_pokemonmove
+      .filter(
+        (pokemonMove) =>
+          pokemonMove.move_learn_method_id === LEVEL_UP_LEARN_METHOD_ID,
+      )
+      .map((pokemonMove) => pokemonMove.pokemon_v2_pokemon)
+      .filter(isNotNull),
+    "id",
+  );
 
-      <PokeDetailSection title="Stats" innerClassName="pt-8" className="mb-16">
+  const pokemonLearnedFromTMHM = uniqBy(
+    move.pokemon_v2_pokemonmove
+      .filter(
+        (pokemonMove) =>
+          pokemonMove.move_learn_method_id === TM_LEARN_METHOD_ID,
+      )
+      .map((pokemonMove) => pokemonMove.pokemon_v2_pokemon)
+      .filter(isNotNull),
+    "id",
+  );
+
+  return (
+    <div className="flex flex-col gap-16">
+      <PageTitle>{move.pokemon_v2_movename[0]?.name}</PageTitle>
+
+      <PokeDetailSection title="Stats" innerClassName="pt-8">
         <div className="flex justify-center gap-12">
           <StatItem label="Power" value={move.power} />
           <StatItem
@@ -48,11 +73,68 @@ export default async function MovePage({
         )}
       </PokeDetailSection>
 
-      <SubsectionTitle className="mb-4">
-        Pokemon that learn this move
-      </SubsectionTitle>
-      <MovePokemonList move={move} />
-    </Fragment>
+      {pokemonLearnedFromLevelUp.length > 0 && (
+        <div>
+          <SubsectionTitle className="mb-4">
+            Pokemon that learn this move by level up
+          </SubsectionTitle>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-8">
+            {pokemonLearnedFromLevelUp.map((pokemon) => (
+              <PokeCard
+                key={pokemon.id}
+                name={pokemon.name}
+                formName={
+                  pokemon.pokemon_v2_pokemonform?.[0]
+                    ?.pokemon_v2_pokemonformname[0]?.name
+                }
+                speciesName={
+                  pokemon.pokemon_v2_pokemonspecies!
+                    .pokemon_v2_pokemonspeciesname[0]!.name
+                }
+                types={pokemon.pokemon_v2_pokemontype.map((pokemonType) => ({
+                  name: pokemonType.pokemon_v2_type!.name,
+                  displayName:
+                    pokemonType.pokemon_v2_type!.pokemon_v2_typename[0]?.name,
+                }))}
+                isLink={true}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
+      {pokemonLearnedFromTMHM.length > 0 && (
+        <div>
+          <SubsectionTitle className="mb-4">
+            Pokemon that learn this move by TM/HM
+          </SubsectionTitle>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-8">
+            {pokemonLearnedFromTMHM.map((pokemon) => (
+              <PokeCard
+                key={pokemon.id}
+                name={pokemon.name}
+                formName={
+                  pokemon.pokemon_v2_pokemonform?.[0]
+                    ?.pokemon_v2_pokemonformname[0]?.name
+                }
+                speciesName={
+                  pokemon.pokemon_v2_pokemonspecies!
+                    .pokemon_v2_pokemonspeciesname[0]!.name
+                }
+                types={pokemon.pokemon_v2_pokemontype.map((pokemonType) => ({
+                  name: pokemonType.pokemon_v2_type!.name,
+                  displayName:
+                    pokemonType.pokemon_v2_type!.pokemon_v2_typename[0]?.name,
+                }))}
+                isLink={true}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
   );
 }
 
@@ -101,11 +183,42 @@ async function getMoveDetails(movename: string) {
       },
 
       pokemon_v2_pokemonmove: {
-        where: {
-          move_learn_method_id: LEVEL_UP_LEARN_METHOD_ID,
-        },
         include: {
-          pokemon_v2_pokemon: true,
+          pokemon_v2_pokemon: {
+            include: {
+              pokemon_v2_pokemonform: {
+                include: {
+                  pokemon_v2_pokemonformname: {
+                    where: {
+                      language_id: ENGLISH_LANG_ID,
+                    },
+                  },
+                },
+              },
+              pokemon_v2_pokemonspecies: {
+                include: {
+                  pokemon_v2_pokemonspeciesname: {
+                    where: {
+                      language_id: ENGLISH_LANG_ID,
+                    },
+                  },
+                },
+              },
+              pokemon_v2_pokemontype: {
+                include: {
+                  pokemon_v2_type: {
+                    include: {
+                      pokemon_v2_typename: {
+                        where: {
+                          language_id: ENGLISH_LANG_ID,
+                        },
+                      },
+                    },
+                  },
+                },
+              },
+            },
+          },
         },
       },
     },
