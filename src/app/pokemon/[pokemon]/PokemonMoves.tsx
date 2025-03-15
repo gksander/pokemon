@@ -1,6 +1,7 @@
 "use client";
 
 import { PokeDetailSection } from "@/app/pokemon/[pokemon]/PokeDetailSection";
+import { AppLink } from "@/components/AppLink";
 import {
   Select,
   SelectContent,
@@ -216,7 +217,12 @@ function MoveTableRow({
   return (
     <Fragment>
       <div>{getMethod()}</div>
-      <div>{move.pokemon_v2_move?.pokemon_v2_movename[0]?.name}</div>
+      <AppLink
+        href={`/moves/${move.pokemon_v2_move?.name}`}
+        className="font-medium hover:underline"
+      >
+        {move.pokemon_v2_move?.pokemon_v2_movename[0]?.name}
+      </AppLink>
       <div>
         {move.pokemon_v2_move?.pokemon_v2_type?.pokemon_v2_typename[0]?.name}
       </div>

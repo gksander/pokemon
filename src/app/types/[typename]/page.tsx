@@ -1,8 +1,14 @@
+import { PokeDetailSection } from "@/app/pokemon/[pokemon]/PokeDetailSection";
 import { PageTitle } from "@/components/PageTitle";
 import { PokeCard } from "@/components/PokeCard";
 import { SubsectionTitle } from "@/components/SubsectionTitle";
 import { TypeBadge } from "@/components/TypeBadge";
-import { ENGLISH_LANG_ID, EXCLUDED_POKEMON_IDS, MAX_TYPE_ID } from "@/consts";
+import {
+  ENGLISH_LANG_ID,
+  EXCLUDED_POKEMON_IDS,
+  MAX_TYPE_ID,
+  TYPE_COLORS,
+} from "@/consts";
 import { db } from "@/db";
 import { getPokemonTypeEfficacies } from "@/utils/pokemonTypes";
 import { notFound } from "next/navigation";
@@ -100,46 +106,56 @@ export default async function TypeDetailPage({
     <div className="flex flex-col gap-16">
       <PageTitle>{pokeType.pokemon_v2_typename[0].name}</PageTitle>
 
-      <div>
-        <SubsectionTitle
-          description={`The effectiveness of ${pokeType.pokemon_v2_typename[0].name} against other types.`}
-          className="mb-4"
-        >
-          Attacking effectiveness
-        </SubsectionTitle>
+      <div className="grid grid-cols-1 gap-16">
+        <PokeDetailSection title="Attacking effectiveness">
+          <p className="mb-2">
+            The effectiveness of{" "}
+            <span
+              className="font-bold"
+              style={{
+                color: TYPE_COLORS[pokeType.name],
+              }}
+            >
+              {pokeType.pokemon_v2_typename[0].name}
+            </span>{" "}
+            against other types.
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
+            {effectiveAgainst.map((efficacy) => (
+              <TypeBadge
+                key={efficacy.name}
+                name={efficacy.name}
+                displayName={efficacy.displayName}
+                variant="efficacy"
+                factor={efficacy.damageFactor}
+              />
+            ))}
+          </div>
+        </PokeDetailSection>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
-          {effectiveAgainst.map((efficacy) => (
-            <TypeBadge
-              key={efficacy.name}
-              name={efficacy.name}
-              displayName={efficacy.displayName}
-              variant="efficacy"
-              factor={efficacy.damageFactor}
-            />
-          ))}
-        </div>
-      </div>
-
-      <div>
-        <SubsectionTitle
-          description={`The effectiveness of other types against ${pokeType.pokemon_v2_typename[0].name}.`}
-          className="mb-4"
-        >
-          Weaknesses
-        </SubsectionTitle>
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
-          {effectiveFrom.map((efficacy) => (
-            <TypeBadge
-              key={efficacy.name}
-              name={efficacy.name}
-              displayName={efficacy.displayName}
-              variant="efficacy"
-              factor={efficacy.damageFactor}
-            />
-          ))}
-        </div>
+        <PokeDetailSection title="Weaknesses">
+          <p className="mb-2">
+            The effectiveness of other types against{" "}
+            <span
+              className="font-bold"
+              style={{ color: TYPE_COLORS[pokeType.name] }}
+            >
+              {pokeType.pokemon_v2_typename[0].name}
+            </span>
+            .
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
+            {effectiveFrom.map((efficacy) => (
+              <TypeBadge
+                key={efficacy.name}
+                name={efficacy.name}
+                displayName={efficacy.displayName}
+                variant="efficacy"
+                factor={efficacy.damageFactor}
+              />
+            ))}
+          </div>
+        </PokeDetailSection>
       </div>
 
       <div>
@@ -187,4 +203,29 @@ export async function generateStaticParams() {
   return allTypes.map((type) => ({
     typename: type.name,
   }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ typename: string }>;
+}) {
+  const { typename } = await params;
+
+  const pokeType = await db.pokemon_v2_type.findFirst({
+    where: {
+      name: typename,
+    },
+    include: {
+      pokemon_v2_typename: {
+        where: {
+          language_id: ENGLISH_LANG_ID,
+        },
+      },
+    },
+  });
+
+  return {
+    title: `${pokeType?.pokemon_v2_typename[0].name} | Type`,
+  };
 }

@@ -146,6 +146,7 @@ export async function getFullPokemonDetails({ name }: { name: string }) {
               power: true,
               pp: true,
               accuracy: true,
+              name: true,
               move_effect_chance: true,
               pokemon_v2_movedamageclass: {
                 select: {
