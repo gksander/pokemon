@@ -1,3 +1,4 @@
+import { MovePokemonList } from "@/app/moves/[move]/MovePokemonList";
 import { PokeDetailSection } from "@/app/pokemon/[pokemon]/PokeDetailSection";
 import { PageTitle } from "@/components/PageTitle";
 import { SubsectionTitle } from "@/components/SubsectionTitle";
@@ -13,37 +14,7 @@ export default async function MovePage({
 }) {
   const { move: movename } = await params;
 
-  const move = await db.pokemon_v2_move.findFirst({
-    where: {
-      name: movename,
-    },
-    include: {
-      pokemon_v2_movename: {
-        where: {
-          language_id: ENGLISH_LANG_ID,
-        },
-      },
-
-      pokemon_v2_moveeffect: {
-        include: {
-          pokemon_v2_moveeffecteffecttext: {
-            where: {
-              language_id: ENGLISH_LANG_ID,
-            },
-          },
-        },
-      },
-
-      pokemon_v2_pokemonmove: {
-        where: {
-          move_learn_method_id: LEVEL_UP_LEARN_METHOD_ID,
-        },
-        include: {
-          pokemon_v2_pokemon: true,
-        },
-      },
-    },
-  });
+  const move = await getMoveDetails(movename);
 
   if (!move) {
     notFound();
@@ -77,7 +48,10 @@ export default async function MovePage({
         )}
       </PokeDetailSection>
 
-      <SubsectionTitle>Pokemon that learn this move</SubsectionTitle>
+      <SubsectionTitle className="mb-4">
+        Pokemon that learn this move
+      </SubsectionTitle>
+      <MovePokemonList move={move} />
     </Fragment>
   );
 }
@@ -103,6 +77,42 @@ export async function generateStaticParams() {
     move: move.name,
   }));
 }
+
+async function getMoveDetails(movename: string) {
+  return db.pokemon_v2_move.findFirst({
+    where: {
+      name: movename,
+    },
+    include: {
+      pokemon_v2_movename: {
+        where: {
+          language_id: ENGLISH_LANG_ID,
+        },
+      },
+
+      pokemon_v2_moveeffect: {
+        include: {
+          pokemon_v2_moveeffecteffecttext: {
+            where: {
+              language_id: ENGLISH_LANG_ID,
+            },
+          },
+        },
+      },
+
+      pokemon_v2_pokemonmove: {
+        where: {
+          move_learn_method_id: LEVEL_UP_LEARN_METHOD_ID,
+        },
+        include: {
+          pokemon_v2_pokemon: true,
+        },
+      },
+    },
+  });
+}
+
+export type MoveDetails = Awaited<ReturnType<typeof getMoveDetails>>;
 
 export async function generateMetadata({
   params,
