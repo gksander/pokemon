@@ -2,6 +2,7 @@ import { Header } from "@/components/Header";
 import { getItemsForSearch } from "@/utils/search";
 import type { Metadata, Viewport } from "next";
 import { Baloo_Chettan_2 } from "next/font/google";
+import { Analytics } from "@vercel/analytics/react";
 import { PropsWithChildren } from "react";
 import "./globals.css";
 
@@ -37,6 +38,8 @@ export default async function RootLayout({ children }: PropsWithChildren) {
         <main className="mx-auto max-w-content content-x-padding pb-16">
           {children}
         </main>
+
+        <Analytics />
       </body>
     </html>
   );
