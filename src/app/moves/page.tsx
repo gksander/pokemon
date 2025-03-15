@@ -1,11 +1,10 @@
+import { PokeDetailSection } from "@/app/pokemon/[pokemon]/PokeDetailSection";
+import { AppLink } from "@/components/AppLink";
+import { PageTitle } from "@/components/PageTitle";
 import { ENGLISH_LANG_ID, MAX_TYPE_ID } from "@/consts";
 import { db } from "@/db";
-import { Fragment } from "react";
-import { PageTitle } from "@/components/PageTitle";
 import { groupBy, startCase } from "lodash-es";
-import { AppLink } from "@/components/AppLink";
-import { URLS } from "@/urls";
-import { PokeDetailSection } from "@/app/pokemon/[pokemon]/PokeDetailSection";
+import { Fragment } from "react";
 
 export default async function MovesPage() {
   const moves = await db.pokemon_v2_move.findMany({

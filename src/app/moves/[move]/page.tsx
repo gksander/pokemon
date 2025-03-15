@@ -1,12 +1,10 @@
-import { PageTitle } from "@/components/PageTitle";
 import { PokeDetailSection } from "@/app/pokemon/[pokemon]/PokeDetailSection";
+import { PageTitle } from "@/components/PageTitle";
+import { SubsectionTitle } from "@/components/SubsectionTitle";
 import { ENGLISH_LANG_ID, LEVEL_UP_LEARN_METHOD_ID } from "@/consts";
 import { db } from "@/db";
 import { notFound } from "next/navigation";
 import { Fragment } from "react";
-import { SubsectionTitle } from "@/components/SubsectionTitle";
-import { PokeCard } from "@/components/PokeCard";
-import { isNotNull } from "@/utils/filters";
 
 export default async function MovePage({
   params,
