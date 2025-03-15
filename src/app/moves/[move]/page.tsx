@@ -79,7 +79,7 @@ export default async function MovePage({
             Pokemon that learn this move by level up
           </SubsectionTitle>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             {pokemonLearnedFromLevelUp.map((pokemon) => (
               <PokeCard
                 key={pokemon.id}
@@ -110,7 +110,7 @@ export default async function MovePage({
             Pokemon that learn this move by TM/HM
           </SubsectionTitle>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             {pokemonLearnedFromTMHM.map((pokemon) => (
               <PokeCard
                 key={pokemon.id}
