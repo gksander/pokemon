@@ -143,22 +143,28 @@ export function Header({ allPokemon, allTypes }: Props) {
                   onSelect={() => {
                     navigateTo(URLS.pokemonDetail({ name: pokemon.name }));
                   }}
-                  className="flex gap-3"
+                  className="flex gap-3 justify-between"
+                  keywords={[`#${pokemon.speciesId}`]}
                 >
-                  <ImageWithFallback
-                    src={`/img/pokemon/${pokemon.name}.avif`}
-                    alt={pokemon.display}
-                    loading="lazy"
-                    className="w-6 h-6 object-center object-contain"
-                  />
-                  <span>
-                    {pokemon.display}{" "}
-                    {pokemon.suffix && (
-                      <span className="text-muted-foreground">
-                        {pokemon.suffix}
-                      </span>
-                    )}
-                  </span>
+                  <div className="flex gap-3">
+                    <ImageWithFallback
+                      src={`/img/pokemon/${pokemon.name}.avif`}
+                      alt={pokemon.display}
+                      loading="lazy"
+                      className="w-6 h-6 object-center object-contain"
+                    />
+                    <span>
+                      {pokemon.display}{" "}
+                      {pokemon.suffix && (
+                        <span className="text-muted-foreground">
+                          {pokemon.suffix}
+                        </span>
+                      )}
+                    </span>
+                  </div>
+                  <div className="text-muted-foreground">
+                    #{pokemon.speciesId}
+                  </div>
                 </CommandItem>
               );
             })}

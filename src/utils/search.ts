@@ -45,9 +45,11 @@ export async function getItemsForSearch() {
             ?.name ?? p.pokemon_v2_pokemonspecies!.name;
         const formName =
           p.pokemon_v2_pokemonform[0]?.pokemon_v2_pokemonformname?.[0]?.name;
+        const speciesId = p.pokemon_species_id;
 
         return {
           id: p.id,
+          speciesId,
           name: p.name,
           display: speciesName,
           suffix: !p.is_default && formName ? ` (${formName})` : undefined,
@@ -92,5 +94,6 @@ export type PokemonSearchItem = {
   name: string;
   display: string;
   suffix?: string;
+  speciesId: number;
 };
 export type TypeSearchItem = { name: string; display: string };
