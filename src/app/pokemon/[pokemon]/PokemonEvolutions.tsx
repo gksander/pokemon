@@ -67,6 +67,15 @@ export async function PokemonEvolutions({
             },
           },
         },
+      pokemon_v2_location: {
+        select: {
+          name: true,
+          pokemon_v2_locationname: {
+            where: { language_id: ENGLISH_LANG_ID },
+            select: { name: true },
+          },
+        },
+      },
     },
   });
 
@@ -152,6 +161,14 @@ export async function PokemonEvolutions({
 
     if (trigger === "level-up") {
       const minLevel = evData.min_level;
+      const locationName =
+        evData.pokemon_v2_location?.pokemon_v2_locationname?.[0]?.name ||
+        evData.pokemon_v2_location?.name;
+
+      if (minLevel && locationName) {
+        return `${previousSpeciesName} reaches level ${evData.min_level} in ${locationName}`;
+      }
+
       if (minLevel) {
         return `${previousSpeciesName} reaches level ${evData.min_level}`;
       }
@@ -161,7 +178,11 @@ export async function PokemonEvolutions({
         return `Level up ${previousSpeciesName} with high friendship`;
       }
 
-      return `${previousSpeciesName} reaches level ${evData.min_level}`;
+      if (locationName) {
+        return `Level up ${previousSpeciesName} in ${locationName}`;
+      }
+
+      return `${previousSpeciesName} levels up`;
     }
 
     if (trigger === "trade") {
