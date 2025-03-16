@@ -27,7 +27,16 @@ export default async function MovePage({
 
   const effects = (
     move.pokemon_v2_moveeffect?.pokemon_v2_moveeffecteffecttext ?? []
-  ).map((effect) => effect.effect);
+  ).map((effect) => {
+    if (move.move_effect_chance) {
+      return effect.effect.replace(
+        "$effect_chance",
+        move.move_effect_chance.toString(),
+      );
+    }
+
+    return effect.effect;
+  });
 
   const pokemonLearnedFromLevelUp = uniqBy(
     move.pokemon_v2_pokemonmove
@@ -75,7 +84,7 @@ export default async function MovePage({
 
       {pokemonLearnedFromLevelUp.length > 0 && (
         <div>
-          <SubsectionTitle className="mb-4">
+          <SubsectionTitle className="mb-8">
             Pokemon that learn this move by level up
           </SubsectionTitle>
 
@@ -83,6 +92,7 @@ export default async function MovePage({
             {pokemonLearnedFromLevelUp.map((pokemon) => (
               <PokeCard
                 key={pokemon.id}
+                speciesId={pokemon.pokemon_species_id!}
                 name={pokemon.name}
                 formName={
                   pokemon.pokemon_v2_pokemonform?.[0]
@@ -106,13 +116,14 @@ export default async function MovePage({
 
       {pokemonLearnedFromTMHM.length > 0 && (
         <div>
-          <SubsectionTitle className="mb-4">
+          <SubsectionTitle className="mb-8">
             Pokemon that learn this move by TM/HM
           </SubsectionTitle>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             {pokemonLearnedFromTMHM.map((pokemon) => (
               <PokeCard
+                speciesId={pokemon.pokemon_species_id!}
                 key={pokemon.id}
                 name={pokemon.name}
                 formName={
