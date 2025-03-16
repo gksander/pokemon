@@ -45,7 +45,7 @@ export async function getItemsForSearch() {
             ?.name ?? p.pokemon_v2_pokemonspecies!.name;
         const formName =
           p.pokemon_v2_pokemonform[0]?.pokemon_v2_pokemonformname?.[0]?.name;
-        const speciesId = p.pokemon_species_id;
+        const speciesId = p.pokemon_species_id!;
 
         return {
           id: p.id,
