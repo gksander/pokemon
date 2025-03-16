@@ -1,3 +1,41 @@
-# About This Project
+## Important disclaimer
 
-This page is a work in progress....
+I am in no way affiliated with The Pokemon Company. This project has no commercial intent. It is merely a hobby project. I claim no rights to the data or imagery used within this site.
+
+## About This Project
+
+I ([Grant Sander](https://github.com/gksander)) built this project for fun (and because my kids love Pokemon). This is a high-level overview of how it was built, for you nerds who might be curious.
+
+## The data
+
+[PokeAPI](https://pokeapi.co/) is a pretty well-known source of Pokemon data. They offer a publicly available ReST API for Pokemon data (hats off to you guys). The PokeAPI itself is basically just a bunch of CSV files with a ton of data and some Python to put the data into a consumable format; the CSV data is ingested into a database and that's what's used to serve the ReST API.
+
+As of [this pull request](https://github.com/PokeAPI/pokeapi/pull/1196), the PokeAPI started dumping the database in GitHub releases, meaning you can pretty easily get your hands on a postgres/sqlite dump of the data. The data in this site is driven by an SQLite file coming from PokeAPI; it lives within the respository as a read-only source of data.
+
+### Querying data: Prisma
+
+[Prisma](https://www.prisma.io/) is a pretty neat TypeScript "ORM". If you're building apps with Node/TypeScript, you've probably heard of it.
+
+Prisma has the ability to do [introspection](https://www.prisma.io/docs/orm/prisma-schema/introspection): connect to your database, read the schema, and then generate Prisma's SDL from that file. From there, you can generate a Prisma client that is type-safe based on the SDL schema, which effectively mean you get free TypeScript types from the SQLite file coming out of the PokeAPI release. Neat.
+
+From there, you can query your heart out with Prisma. There are some limitations (such as Prisma not supporting the `bool` columnns from SQLite) that can be worked around, but generally – things just work. You can query, filter, join, etc. all with effectively no setup/data massaging.
+
+## The site itself
+
+I originally built this site with [Astro](https://astro.build/); I'm a pretty big fan of Astro, and it seems like a great fit here. At some point, I wanted to make this international and support languages other than English, so I started exploring SSR solutions like Remix and Next.
+
+I ended up cutting over to [Next.js](https://nextjs.org/) because it's familiar and I'm just very comfortable in the TSX environment; Astro's templating language is nice, but my IDE doesn't like it as much and I just generally feel a bit slower with it 🤷‍♂️. Next.js also has the upside of hydrating into a SPA, which I like for this use-case because my kids will scroll through a ton of Pokemon pages exploring different Pokemon.
+
+Next.js has static export mode where you can spit out a few thousand static HTML pages, and then things hydrate nicely on the frontend. This works nice with server components, and allows me to write async server components and call Prisma directly from within my pages/components. For something like a static Pokemon site, this authoring experience is pretty sick: just write a gnarly Prisma query (with type safety) and then just render it with React. No worrying about data fetching, loading states, etc.. Query, template, add in some spice.
+
+### Progressive Web App
+
+Next.js supports PWA out of the box, all I had to do was drop in a pretty simple manifest declaration in `src/app/manifest.ts`. Define some colors, icons, a name – and that's it. Now I can install the site as a PWA on my iphone home screen for easy access when my 5 year old asks me who Magneton evolves into.
+
+### The UI
+
+I took a stab at a "neobrutalist" UI here. I'm not a designer, but I kind of like this style. It's different. Simple. New for me.
+
+CSS solution here is [TailwindCSS](https://tailwindcss.com/). I've been a long-time fan of Tailwind, sue me.
+
+The hard bits of UI are handled by [shadcn/ui](https://ui.shadcn.com/), which sits on top of [Radix primitives](https://www.radix-ui.com/primitives) and Tailwind. Honestly, shadcn/ui is impressive; floating UI like popovers, nav menus, dropdowns, etc are more or less drop-in and you can style to fit your project. Those are hard things to get right, and it's awesome to have a solid foundation.
