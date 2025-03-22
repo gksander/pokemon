@@ -2302,6 +2302,7 @@ model tcg_card {
   artist          String?
   rarity          String?
   flavor_text     String?
+  subtypes        String?
   tcg_set         tcg_set?        @relation(fields: [set_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   tcg_deck_card   tcg_deck_card[]
 }

@@ -13,16 +13,17 @@ export function SetDisplay({ details }: { details: TcgSetDetails }) {
     <Fragment>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
         {details.tcg_card.map((card, index) => (
-          <img
-            key={card.id}
-            className={cn("w-full cursor-pointer", TCG_ASPECT_CLASS)}
-            src={card.image_small_url!}
-            loading="lazy"
-            alt={card.name!}
-            onClick={() => {
-              cardCarouselHandle.current?.openDialog(index);
-            }}
-          />
+          <div key={card.id}>
+            <img
+              className={cn("w-full cursor-pointer", TCG_ASPECT_CLASS)}
+              src={card.image_small_url!}
+              loading="lazy"
+              alt={card.name!}
+              onClick={() => {
+                cardCarouselHandle.current?.openDialog(index);
+              }}
+            />
+          </div>
         ))}
       </div>
 

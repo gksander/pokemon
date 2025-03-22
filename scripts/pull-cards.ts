@@ -134,8 +134,7 @@ async function generateSchema() {
           artist          TEXT,
           rarity          TEXT,
           flavor_text     TEXT,
-          is_ex           INTEGER DEFAULT 0,
-          is_paradox      INTEGER DEFAULT 0,
+          subtypes        TEXT,
           FOREIGN KEY (set_id) REFERENCES tcg_set (id)
       )
   `);
@@ -239,13 +238,14 @@ async function pullCards() {
         artist,
         supertype,
         flavorText,
+        subtypes,
       } = card;
 
       const setId = id.split("-")[0];
 
       await dbRun(
-        `INSERT INTO tcg_card (id, number, name, image_small_url, image_large_url, set_id, supertype, artist, rarity, flavor_text)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        `INSERT INTO tcg_card (id, number, name, image_small_url, image_large_url, set_id, supertype, artist, rarity, flavor_text, subtypes)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
         [
           id,
           Number(number),
@@ -257,6 +257,7 @@ async function pullCards() {
           artist,
           rarity,
           flavorText,
+          subtypes?.join(","),
         ],
       );
     }

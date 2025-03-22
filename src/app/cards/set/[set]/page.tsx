@@ -42,7 +42,15 @@ function getTcgSet(setId: string) {
 export type TcgSetDetails = NonNullable<Awaited<ReturnType<typeof getTcgSet>>>;
 
 export async function generateStaticParams() {
-  const allSets = await db.tcg_set.findMany();
+  const allSets = await db.tcg_set.findMany({
+    where: {
+      name: {
+        not: {
+          contains: "mcdonald",
+        },
+      },
+    },
+  });
 
   return allSets.map((set) => ({ set: set.id }));
 }
