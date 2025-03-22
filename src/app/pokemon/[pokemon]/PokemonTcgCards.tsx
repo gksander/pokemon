@@ -12,8 +12,9 @@ import { type TcgCard } from "@/utils/getPokemonDetails";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import clsx from "clsx";
 import { ChevronDown } from "lucide-react";
-import { Fragment, useState } from "react";
+import { Fragment, useRef, useState } from "react";
 import { TCG_ASPECT_CLASS } from "@/utils/tcg";
+import { CardCarousel, CardCarouselHandle } from "@/components/CardCarousel";
 
 export function PokemonTcgCards({
   cards,
@@ -29,10 +30,7 @@ export function PokemonTcgCards({
     ? cards.slice(0, COLLAPSED_CARDS_COUNT)
     : cards;
 
-  const [dialogState, setDialogState] = useState({
-    isOpen: false,
-    initialIndex: 0,
-  });
+  const cardCarouselHandle = useRef<CardCarouselHandle>(null);
 
   return (
     <Fragment>
@@ -47,7 +45,7 @@ export function PokemonTcgCards({
               <button
                 className="cursor-pointer w-full"
                 onClick={() => {
-                  setDialogState({ isOpen: true, initialIndex: index });
+                  cardCarouselHandle.current?.openDialog(index);
                 }}
               >
                 <img
@@ -86,38 +84,11 @@ export function PokemonTcgCards({
           </button>
         )}
 
-        <Dialog
-          open={dialogState.isOpen}
-          onOpenChange={(isOpen) => {
-            setDialogState({ isOpen, initialIndex: dialogState.initialIndex });
-          }}
-        >
-          <VisuallyHidden asChild>
-            <DialogTitle>Trading cards for {speciesName}</DialogTitle>
-          </VisuallyHidden>
-          <DialogContent className="p-0 overflow-hidden">
-            <Carousel
-              opts={{ startIndex: dialogState.initialIndex }}
-              className="w-full overflow-hidden"
-            >
-              <CarouselContent className="p-0 sm:p-4">
-                {cards.map((card) => (
-                  <CarouselItem key={card.id}>
-                    <img
-                      src={card.image_large_url ?? ""}
-                      alt={card.name ?? ""}
-                      className={clsx("w-full", TCG_ASPECT_CLASS)}
-                      loading="lazy"
-                    />
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <div className="flex justify-end py-4 px-2 sm:px-4 sm:pt-0">
-                <CarouselControls />
-              </div>
-            </Carousel>
-          </DialogContent>
-        </Dialog>
+        <CardCarousel
+          cards={cards}
+          title={`Trading cards for ${speciesName}`}
+          ref={cardCarouselHandle}
+        />
       </DetailSection>
     </Fragment>
   );
