@@ -1,6 +1,6 @@
 "use client";
 
-import { PokeDetailSection } from "@/app/pokemon/[pokemon]/PokeDetailSection";
+import { DetailSection } from "@/components/DetailSection";
 import {
   Carousel,
   CarouselContent,
@@ -35,7 +35,7 @@ export function PokemonTcgCards({
 
   return (
     <Fragment>
-      <PokeDetailSection
+      <DetailSection
         title="Cards"
         className="order-5 sm:col-span-2"
         innerClassName="gap-4 pt-12"
@@ -119,7 +119,7 @@ export function PokemonTcgCards({
             </Carousel>
           </DialogContent>
         </Dialog>
-      </PokeDetailSection>
+      </DetailSection>
     </Fragment>
   );
 }

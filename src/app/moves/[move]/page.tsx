@@ -1,4 +1,4 @@
-import { PokeDetailSection } from "@/app/pokemon/[pokemon]/PokeDetailSection";
+import { DetailSection } from "@/components/DetailSection";
 import { PageTitle } from "@/components/PageTitle";
 import { PokeCard } from "@/components/PokeCard";
 import { SubsectionTitle } from "@/components/SubsectionTitle";
@@ -64,7 +64,7 @@ export default async function MovePage({
     <div className="flex flex-col gap-16">
       <PageTitle>{move.pokemon_v2_movename[0]?.name}</PageTitle>
 
-      <PokeDetailSection title="Stats" innerClassName="pt-8">
+      <DetailSection title="Stats" innerClassName="pt-8">
         <div className="flex justify-center gap-12">
           <StatItem label="Power" value={move.power} />
           <StatItem
@@ -80,7 +80,7 @@ export default async function MovePage({
             <div className="text-sm">{effects.join(", ")}</div>
           </div>
         )}
-      </PokeDetailSection>
+      </DetailSection>
 
       {pokemonLearnedFromLevelUp.length > 0 && (
         <div>

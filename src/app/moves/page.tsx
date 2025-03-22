@@ -1,4 +1,4 @@
-import { PokeDetailSection } from "@/app/pokemon/[pokemon]/PokeDetailSection";
+import { DetailSection } from "@/components/DetailSection";
 import { AppLink } from "@/components/AppLink";
 import { PageTitle } from "@/components/PageTitle";
 import { ENGLISH_LANG_ID, MAX_TYPE_ID } from "@/consts";
@@ -46,7 +46,7 @@ export default async function MovesPage() {
 
       <div className="grid grid-cols-1 gap-16">
         {Object.entries(movesByType).map(([type, moves]) => (
-          <PokeDetailSection
+          <DetailSection
             key={type}
             title={moves[0]!.pokemon_v2_type!.pokemon_v2_typename[0].name}
             innerClassName="pt-16"
@@ -69,7 +69,7 @@ export default async function MovesPage() {
               </div>
               {moves.map(renderRow)}
             </div>
-          </PokeDetailSection>
+          </DetailSection>
         ))}
       </div>
     </Fragment>

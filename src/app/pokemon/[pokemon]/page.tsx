@@ -1,4 +1,4 @@
-import { PokeDetailSection } from "@/app/pokemon/[pokemon]/PokeDetailSection";
+import { DetailSection } from "@/components/DetailSection";
 import { PokemonEvolutions } from "@/app/pokemon/[pokemon]/PokemonEvolutions";
 import { AppLink } from "@/components/AppLink";
 import { PokeCard } from "@/components/PokeCard";
@@ -57,7 +57,7 @@ export default async function PokemonDetailPage({
       pokemon_v2_pokemon: {
         take: 1,
         orderBy: {
-          id: 'asc'
+          id: "asc",
         },
         where: {
           id: { not: { in: EXCLUDED_POKEMON_IDS } },
@@ -65,7 +65,7 @@ export default async function PokemonDetailPage({
       },
     },
   });
-  
+
   const nextPokemon = await db.pokemon_v2_pokemonspecies.findFirst({
     where: {
       id: species!.id + 1,
@@ -79,7 +79,7 @@ export default async function PokemonDetailPage({
       pokemon_v2_pokemon: {
         take: 1,
         orderBy: {
-          id: 'asc'
+          id: "asc",
         },
         where: {
           id: { not: { in: EXCLUDED_POKEMON_IDS } },
@@ -143,7 +143,7 @@ export default async function PokemonDetailPage({
           className="order-1"
         />
 
-        <PokeDetailSection
+        <DetailSection
           title={`Stats (${statsTotal} total)`}
           className="order-3 sm:order-2"
           innerClassName="aspect-square"
@@ -152,9 +152,9 @@ export default async function PokemonDetailPage({
             statData={details.pokemon.pokemon_v2_pokemonstat}
             color={lightVibrant}
           />
-        </PokeDetailSection>
+        </DetailSection>
 
-        <PokeDetailSection
+        <DetailSection
           title="Details"
           className="order-2 sm:order-3 sm:col-span-2 flex flex-col"
           innerClassName="gap-12"
@@ -195,7 +195,7 @@ export default async function PokemonDetailPage({
               </div>
             </div>
           )}
-        </PokeDetailSection>
+        </DetailSection>
 
         <PokemonMoves moveData={details.pokemon.pokemon_v2_pokemonmove} />
 
@@ -213,7 +213,9 @@ export default async function PokemonDetailPage({
           <AppLink
             href={
               prevPokemon && prevPokemon.pokemon_v2_pokemon.length > 0
-                ? URLS.pokemonDetail({ name: prevPokemon.pokemon_v2_pokemon[0].name })
+                ? URLS.pokemonDetail({
+                    name: prevPokemon.pokemon_v2_pokemon[0].name,
+                  })
                 : URLS.home()
             }
             className="flex items-center justify-between py-2 px-2 gap-1 min-w-40 hover:bg-card-background/60 active:bg-card-background/60 transition-[background] duration-150"
@@ -239,7 +241,9 @@ export default async function PokemonDetailPage({
           <AppLink
             href={
               nextPokemon && nextPokemon.pokemon_v2_pokemon.length > 0
-                ? URLS.pokemonDetail({ name: nextPokemon.pokemon_v2_pokemon[0].name })
+                ? URLS.pokemonDetail({
+                    name: nextPokemon.pokemon_v2_pokemon[0].name,
+                  })
                 : URLS.home()
             }
             className="flex items-center py-2 px-2 gap-1 w-40 hover:bg-card-background/60 active:bg-card-background/60 transition-[background] duration-150"
@@ -317,4 +321,3 @@ export async function generateMetadata({
     // description: `Details about ${displayName}`,
   };
 }
-

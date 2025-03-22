@@ -1,6 +1,6 @@
 "use client";
 
-import { PokeDetailSection } from "@/app/pokemon/[pokemon]/PokeDetailSection";
+import { DetailSection } from "@/components/DetailSection";
 import { AppLink } from "@/components/AppLink";
 import {
   Select,
@@ -120,7 +120,7 @@ export function PokemonMoves({ moveData }: Props) {
     : rows;
 
   return (
-    <PokeDetailSection title="Moves" className="order-4 sm:col-span-2">
+    <DetailSection title="Moves" className="order-4 sm:col-span-2">
       <div className="">
         <Select value={selectedVersion} onValueChange={setSelectedVersion}>
           <SelectTrigger className="w-fit border-none shadow-none font-bold text-2xl pl-0 cursor-pointer">
@@ -190,7 +190,7 @@ export function PokemonMoves({ moveData }: Props) {
           <ChevronDown className="w-4 h-4" />
         </button>
       )}
-    </PokeDetailSection>
+    </DetailSection>
   );
 }
 

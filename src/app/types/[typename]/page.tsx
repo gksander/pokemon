@@ -1,4 +1,4 @@
-import { PokeDetailSection } from "@/app/pokemon/[pokemon]/PokeDetailSection";
+import { DetailSection } from "@/components/DetailSection";
 import { PageTitle } from "@/components/PageTitle";
 import { PokeCard } from "@/components/PokeCard";
 import { SubsectionTitle } from "@/components/SubsectionTitle";
@@ -107,7 +107,7 @@ export default async function TypeDetailPage({
       <PageTitle>{pokeType.pokemon_v2_typename[0].name}</PageTitle>
 
       <div className="grid grid-cols-1 gap-16">
-        <PokeDetailSection title="Attacking effectiveness">
+        <DetailSection title="Attacking effectiveness">
           <p className="mb-2">
             The effectiveness of{" "}
             <span
@@ -131,9 +131,9 @@ export default async function TypeDetailPage({
               />
             ))}
           </div>
-        </PokeDetailSection>
+        </DetailSection>
 
-        <PokeDetailSection title="Weaknesses">
+        <DetailSection title="Weaknesses">
           <p className="mb-2">
             The effectiveness of other types against{" "}
             <span
@@ -155,7 +155,7 @@ export default async function TypeDetailPage({
               />
             ))}
           </div>
-        </PokeDetailSection>
+        </DetailSection>
       </div>
 
       <div>

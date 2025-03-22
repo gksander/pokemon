@@ -9,7 +9,7 @@ type Props = {
   innerClassName?: string;
 };
 
-export function PokeDetailSection({
+export function DetailSection({
   children,
   title,
   className,
