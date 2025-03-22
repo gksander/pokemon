@@ -10,18 +10,7 @@ export default async function SetPage({
   params: Promise<{ set: string }>;
 }) {
   const { set: setId } = await params;
-  const set = await db.tcg_set.findFirst({
-    where: {
-      id: setId,
-    },
-    include: {
-      tcg_card: {
-        orderBy: {
-          number: "asc",
-        },
-      },
-    },
-  });
+  const set = await getTcgSet(setId);
 
   if (!set) {
     notFound();
@@ -45,6 +34,23 @@ export default async function SetPage({
     </div>
   );
 }
+
+function getTcgSet(setId: string) {
+  return db.tcg_set.findFirst({
+    where: {
+      id: setId,
+    },
+    include: {
+      tcg_card: {
+        orderBy: {
+          number: "asc",
+        },
+      },
+    },
+  });
+}
+
+export type TcgSetDetails = Awaited<ReturnType<typeof getTcgSet>>;
 
 export async function generateStaticParams() {
   const allSets = await db.tcg_set.findMany();
