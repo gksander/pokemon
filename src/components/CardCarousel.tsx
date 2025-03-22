@@ -9,6 +9,8 @@ import {
   CarouselControls,
   CarouselItem,
 } from "./ui/carousel";
+import { cn } from "@/lib/utils";
+import { TCG_ASPECT_CLASS } from "@/utils/tcg";
 
 export type CardCarouselProps = {
   title: string;
@@ -53,14 +55,11 @@ export const CardCarousel = forwardRef<CardCarouselHandle, CardCarouselProps>(
           >
             <CarouselContent className="p-0 sm:p-4">
               {cards.map((card) => (
-                <CarouselItem
-                  key={card.id}
-                  className="h-[calc(100dvh-12rem)] max-h-[620px]"
-                >
+                <CarouselItem key={card.id} className="overflow-hidden">
                   <img
                     src={card.image_large_url ?? ""}
                     alt={card.name ?? ""}
-                    className="h-full w-full object-contain object-center"
+                    className={cn("w-full", TCG_ASPECT_CLASS)}
                     loading="lazy"
                   />
                 </CarouselItem>
