@@ -54,8 +54,18 @@ export default async function PokemonDetailPage({
           language_id: ENGLISH_LANG_ID,
         },
       },
+      pokemon_v2_pokemon: {
+        take: 1,
+        orderBy: {
+          id: 'asc'
+        },
+        where: {
+          id: { not: { in: EXCLUDED_POKEMON_IDS } },
+        },
+      },
     },
   });
+  
   const nextPokemon = await db.pokemon_v2_pokemonspecies.findFirst({
     where: {
       id: species!.id + 1,
@@ -64,6 +74,15 @@ export default async function PokemonDetailPage({
       pokemon_v2_pokemonspeciesname: {
         where: {
           language_id: ENGLISH_LANG_ID,
+        },
+      },
+      pokemon_v2_pokemon: {
+        take: 1,
+        orderBy: {
+          id: 'asc'
+        },
+        where: {
+          id: { not: { in: EXCLUDED_POKEMON_IDS } },
         },
       },
     },
@@ -193,20 +212,20 @@ export default async function PokemonDetailPage({
         >
           <AppLink
             href={
-              prevPokemon
-                ? URLS.pokemonDetail({ name: prevPokemon.name })
+              prevPokemon && prevPokemon.pokemon_v2_pokemon.length > 0
+                ? URLS.pokemonDetail({ name: prevPokemon.pokemon_v2_pokemon[0].name })
                 : URLS.home()
             }
             className="flex items-center justify-between py-2 px-2 gap-1 min-w-40 hover:bg-card-background/60 active:bg-card-background/60 transition-[background] duration-150"
           >
             <ChevronLeft className="w-4" />
-            {prevPokemon ? (
+            {prevPokemon && prevPokemon.pokemon_v2_pokemon.length > 0 ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img
-                src={`/img/pokemon/${prevPokemon.name}.avif`}
+                src={`/img/pokemon/${prevPokemon.pokemon_v2_pokemon[0].name}.avif`}
                 className="w-5 aspect-square object-center object-contain"
                 loading="lazy"
-                alt={prevPokemon.name}
+                alt={prevPokemon.pokemon_v2_pokemon[0].name}
               />
             ) : (
               <span className="w-4" />
@@ -219,8 +238,8 @@ export default async function PokemonDetailPage({
           </AppLink>
           <AppLink
             href={
-              nextPokemon
-                ? URLS.pokemonDetail({ name: nextPokemon.name })
+              nextPokemon && nextPokemon.pokemon_v2_pokemon.length > 0
+                ? URLS.pokemonDetail({ name: nextPokemon.pokemon_v2_pokemon[0].name })
                 : URLS.home()
             }
             className="flex items-center py-2 px-2 gap-1 w-40 hover:bg-card-background/60 active:bg-card-background/60 transition-[background] duration-150"
@@ -230,13 +249,13 @@ export default async function PokemonDetailPage({
                 ? nextPokemon.pokemon_v2_pokemonspeciesname[0]!.name
                 : "Pokémon"}
             </span>
-            {nextPokemon ? (
+            {nextPokemon && nextPokemon.pokemon_v2_pokemon.length > 0 ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img
-                src={`/img/pokemon/${nextPokemon.name}.avif`}
+                src={`/img/pokemon/${nextPokemon.pokemon_v2_pokemon[0].name}.avif`}
                 className="w-5 aspect-square object-center object-contain"
                 loading="lazy"
-                alt={nextPokemon.name}
+                alt={nextPokemon.pokemon_v2_pokemon[0].name}
               />
             ) : (
               <span className="w-4" />
@@ -298,3 +317,4 @@ export async function generateMetadata({
     // description: `Details about ${displayName}`,
   };
 }
+
