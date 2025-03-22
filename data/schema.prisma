@@ -2293,10 +2293,15 @@ model pokemon_v2_versionname {
 
 model tcg_card {
   id              String          @id
+  number          Int?
   name            String?
   image_small_url String?
   image_large_url String?
   set_id          String?
+  supertype       String?
+  artist          String?
+  rarity          String?
+  flavor_text     String?
   tcg_set         tcg_set?        @relation(fields: [set_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   tcg_deck_card   tcg_deck_card[]
 }
@@ -2328,53 +2333,4 @@ model tcg_set {
   symbol_url           String?
   logo_url             String?
   tcg_card             tcg_card[]
-}
-
-model card_cards {
-  id              String            @id
-  name            String?
-  image_small_url String?
-  image_large_url String?
-  set_id          String?
-  card_sets       card_sets?        @relation(fields: [set_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  card_deck_cards card_deck_cards[]
-  card_set_cards  card_set_cards[]
-}
-
-model card_deck_cards {
-  id         String      @id
-  deck_id    String?
-  card_id    String?
-  card_cards card_cards? @relation(fields: [card_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  card_decks card_decks? @relation(fields: [deck_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-}
-
-model card_decks {
-  id              String            @id
-  name            String?
-  card_deck_cards card_deck_cards[]
-}
-
-model card_set_cards {
-  id         String      @id
-  set_id     String?
-  card_id    String?
-  card_cards card_cards? @relation(fields: [card_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-  card_sets  card_sets?  @relation(fields: [set_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
-}
-
-model card_sets {
-  id                   String           @id
-  name                 String?
-  series               String?
-  printed_total        Int?
-  total                Int?
-  legalities_unlimited String?
-  ptcgo_code           String?
-  release_date         String?
-  updated_at           String?
-  symbol_url           String?
-  logo_url             String?
-  card_cards           card_cards[]
-  card_set_cards       card_set_cards[]
 }

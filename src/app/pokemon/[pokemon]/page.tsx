@@ -222,7 +222,6 @@ export default async function PokemonDetailPage({
           >
             <ChevronLeft className="w-4" />
             {prevPokemon && prevPokemon.pokemon_v2_pokemon.length > 0 ? (
-              // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={`/img/pokemon/${prevPokemon.pokemon_v2_pokemon[0].name}.avif`}
                 className="w-5 aspect-square object-center object-contain"
@@ -254,7 +253,6 @@ export default async function PokemonDetailPage({
                 : "Pokémon"}
             </span>
             {nextPokemon && nextPokemon.pokemon_v2_pokemon.length > 0 ? (
-              // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={`/img/pokemon/${nextPokemon.pokemon_v2_pokemon[0].name}.avif`}
                 className="w-5 aspect-square object-center object-contain"

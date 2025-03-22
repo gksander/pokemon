@@ -13,6 +13,7 @@ import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import clsx from "clsx";
 import { ChevronDown } from "lucide-react";
 import { Fragment, useState } from "react";
+import { TCG_ASPECT_CLASS } from "@/utils/tcg";
 
 export function PokemonTcgCards({
   cards,
@@ -49,7 +50,6 @@ export function PokemonTcgCards({
                   setDialogState({ isOpen: true, initialIndex: index });
                 }}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={card.image_small_url ?? ""}
                   alt={card.name ?? ""}
@@ -103,7 +103,6 @@ export function PokemonTcgCards({
               <CarouselContent className="p-0 sm:p-4">
                 {cards.map((card) => (
                   <CarouselItem key={card.id}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={card.image_large_url ?? ""}
                       alt={card.name ?? ""}
@@ -130,4 +129,3 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 });
 
 const COLLAPSED_CARDS_COUNT = 4;
-const TCG_ASPECT_CLASS = "aspect-[25/35] object-contain object-center";

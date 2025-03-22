@@ -8,4 +8,5 @@ export const URLS = {
   typeDetail: ({ name }: { name: string }) => `/types/${name}`,
   pokemonDetail: ({ name }: { name: string }) => `/pokemon/${name}`,
   cards: () => `/cards`,
+  cardSet: ({ id }: { id: string }) => `/cards/set/${id}`,
 } as const;
