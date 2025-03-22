@@ -1,8 +1,7 @@
 import { db } from "@/db";
 import { notFound } from "next/navigation";
 import { PageTitle } from "@/components/PageTitle";
-import { cn } from "@/lib/utils";
-import { TCG_ASPECT_CLASS } from "@/utils/tcg";
+import { SetDisplay } from "@/app/cards/set/[set]/SetDisplay";
 
 export default async function SetPage({
   params,
@@ -20,17 +19,7 @@ export default async function SetPage({
     <div className="flex flex-col gap-16">
       <PageTitle>{set.name}</PageTitle>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-        {set.tcg_card.map((card) => (
-          <img
-            key={card.id}
-            className={cn("w-full", TCG_ASPECT_CLASS)}
-            src={card.image_small_url!}
-            loading="lazy"
-            alt={card.name!}
-          />
-        ))}
-      </div>
+      <SetDisplay details={set} />
     </div>
   );
 }
@@ -50,7 +39,7 @@ function getTcgSet(setId: string) {
   });
 }
 
-export type TcgSetDetails = Awaited<ReturnType<typeof getTcgSet>>;
+export type TcgSetDetails = NonNullable<Awaited<ReturnType<typeof getTcgSet>>>;
 
 export async function generateStaticParams() {
   const allSets = await db.tcg_set.findMany();

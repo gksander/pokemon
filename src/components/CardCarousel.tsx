@@ -9,10 +9,8 @@ import {
   CarouselControls,
   CarouselItem,
 } from "./ui/carousel";
-import { TCG_ASPECT_CLASS } from "@/utils/tcg";
-import { clsx } from "clsx";
 
-type CardCarouselProps = {
+export type CardCarouselProps = {
   title: string;
   cards: { id: string; image_large_url: string | null; name: string | null }[];
 };
@@ -55,11 +53,14 @@ export const CardCarousel = forwardRef<CardCarouselHandle, CardCarouselProps>(
           >
             <CarouselContent className="p-0 sm:p-4">
               {cards.map((card) => (
-                <CarouselItem key={card.id}>
+                <CarouselItem
+                  key={card.id}
+                  className="h-[calc(100dvh-12rem)] max-h-[620px]"
+                >
                   <img
                     src={card.image_large_url ?? ""}
                     alt={card.name ?? ""}
-                    className={clsx("w-full", TCG_ASPECT_CLASS)}
+                    className="h-full w-full object-contain object-center"
                     loading="lazy"
                   />
                 </CarouselItem>

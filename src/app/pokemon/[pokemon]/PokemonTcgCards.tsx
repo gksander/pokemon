@@ -1,15 +1,7 @@
 "use client";
 
 import { DetailSection } from "@/components/DetailSection";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselControls,
-  CarouselItem,
-} from "@/components/ui/carousel";
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { type TcgCard } from "@/utils/getPokemonDetails";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import clsx from "clsx";
 import { ChevronDown } from "lucide-react";
 import { Fragment, useRef, useState } from "react";
