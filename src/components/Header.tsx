@@ -90,6 +90,9 @@ export function Header({ allPokemon, allTypes }: Props) {
                   <LinkItem href={URLS.moves()} title="Moves">
                     Learn more about Pokemon moves
                   </LinkItem>
+                  <LinkItem href={URLS.cards()} title="Cards">
+                    View Pokémon trading cards
+                  </LinkItem>
                   <LinkItem href={URLS.about()} title="About">
                     Learn about this was built
                   </LinkItem>

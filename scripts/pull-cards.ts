@@ -5,7 +5,8 @@ import axios from "axios";
 const BASE_URL =
   "https://api.github.com/repos/PokemonTCG/pokemon-tcg-data/contents";
 
-const SHOULD_SHORT_CIRCUIT = false;
+// To test db schema/pull first round only
+const SHOULD_SHORT_CIRCUIT = true;
 
 const dbLocation = path.resolve(process.cwd(), "data", "pokeapi.sqlite3");
 const db = new sqlite.Database(dbLocation);
@@ -20,7 +21,7 @@ const dbRun = (query: string, params: unknown[] = []) =>
 async function generateSchema() {
   /**
    * Example set:
-   * 
+   *
    * {
     "id": "base1",
     "name": "Base",
@@ -184,7 +185,7 @@ async function pullSets() {
       images,
     } = set;
 
-    await db.run(
+    await dbRun(
       `
       INSERT INTO tcg_set (id, name, series, printed_total, total, legalities_unlimited, ptcgo_code, release_date, updated_at, symbol_url, logo_url)
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -221,7 +222,7 @@ async function pullCards() {
 
       const setId = id.split("-")[0];
 
-      await db.run(
+      await dbRun(
         `INSERT INTO tcg_card (id, name, image_small_url, image_large_url, set_id) VALUES (?, ?, ?, ?, ?)`,
         [id, name, images.small, images.large, setId],
       );
