@@ -101,6 +101,7 @@ export async function GET() {
               bottom: SCALE * 32,
               width: SCALE * 400,
             }}
+            alt="not needed"
           />
         </div>
       </div>
@@ -127,3 +128,7 @@ export async function GET() {
 const SCALE = 2;
 
 export const dynamic = "force-static";
+
+export async function generateStaticParams() {
+  return [{ og: "site.png" }];
+}

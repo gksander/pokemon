@@ -11,10 +11,15 @@ const balooChettan2 = Baloo_Chettan_2({
 });
 
 export const metadata: Metadata = {
-  title: "Pokemon",
-  description: "Grant and Luca's Pokedex",
+  title: "Grant's Pokémon site",
+  description: "A hobby site to explore Pokémon.",
   icons: {
     icon: "/favicon.svg",
+  },
+  openGraph: {
+    images: ["/og/site.png"],
+    title: "Grant's Pokémon site.",
+    description: "A hobby site to explore Pokémon.",
   },
 };
 
