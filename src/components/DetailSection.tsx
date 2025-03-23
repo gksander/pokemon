@@ -22,7 +22,7 @@ export function DetailSection({
         className,
       )}
     >
-      <CardBanner isLarge={true}>{title}</CardBanner>
+      <CardBanner size="large">{title}</CardBanner>
       <div
         className={cn(
           "overflow-hidden relative p-4 pt-8 flex flex-col gap-4 rounded-xl",

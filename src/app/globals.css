@@ -91,6 +91,9 @@
   }
   .drop-border-sm {
     @apply border-2 border-border shadow-[2px_2px_0px_var(--color-border)];
+    &.interactive {
+      @apply hover:shadow-[3px_3px_0px_var(--color-border)] transition-shadow duration-150;
+    }
   }
   .drop-border {
     @apply border-3 border-border shadow-[3px_3px_0px_var(--color-border)];

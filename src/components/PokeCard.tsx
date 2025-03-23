@@ -47,9 +47,7 @@ export function PokeCard({
       }}
     >
       {id && (
-        <CardBanner isLarge={isLarge}>
-          #{String(id).padStart(3, "0")}
-        </CardBanner>
+        <CardBanner size="large">#{String(id).padStart(3, "0")}</CardBanner>
       )}
 
       {isLink && (
