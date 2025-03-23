@@ -89,7 +89,7 @@ export function SetDisplay({ details }: { details: TcgSetDetails }) {
       </div>
 
       <CardCarousel
-        cards={details.tcg_card}
+        cards={filteredCards}
         title={`Cards in set ${details.name}`}
         ref={cardCarouselHandle}
       />
