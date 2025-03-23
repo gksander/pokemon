@@ -73,6 +73,12 @@ export default async function CardsPage() {
   );
 }
 
+export async function generateMetadata() {
+  return {
+    title: "TCG Cards",
+  };
+}
+
 const dateFormatter = new Intl.DateTimeFormat("en-US", {
   month: "short",
   year: "numeric",

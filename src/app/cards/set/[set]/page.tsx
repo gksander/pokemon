@@ -1,13 +1,12 @@
 import { db } from "@/db";
 import { notFound } from "next/navigation";
-import { PageTitle } from "@/components/PageTitle";
 import { SetDisplay } from "@/app/cards/set/[set]/SetDisplay";
 
-export default async function SetPage({
-  params,
-}: {
+type Props = {
   params: Promise<{ set: string }>;
-}) {
+};
+
+export default async function SetPage({ params }: Props) {
   const { set: setId } = await params;
   const set = await getTcgSet(setId);
 
@@ -15,13 +14,7 @@ export default async function SetPage({
     notFound();
   }
 
-  return (
-    <div className="flex flex-col gap-16">
-      <PageTitle>{set.name}</PageTitle>
-
-      <SetDisplay details={set} />
-    </div>
-  );
+  return <SetDisplay details={set} />;
 }
 
 function getTcgSet(setId: string) {
@@ -53,4 +46,21 @@ export async function generateStaticParams() {
   });
 
   return allSets.map((set) => ({ set: set.id }));
+}
+
+export async function generateMetadata({ params }: Props) {
+  const { set: setId } = await params;
+  const set = await db.tcg_set.findFirst({
+    where: {
+      id: setId,
+    },
+  });
+
+  if (!set) {
+    throw new Error("Set not found");
+  }
+
+  return {
+    title: set.name,
+  };
 }

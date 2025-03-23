@@ -5,5 +5,9 @@ export function PageTitle({
   children,
   className,
 }: PropsWithChildren<{ className?: string }>) {
-  return <h1 className={cn("font-black text-6xl", className)}>{children}</h1>;
+  return (
+    <h1 className={cn("font-black text-5xl sm:text-6xl", className)}>
+      {children}
+    </h1>
+  );
 }

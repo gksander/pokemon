@@ -78,3 +78,41 @@ export function sortTcgCardByBadassness(
   // If rarities are the same, sort by number
   return (a.number ?? Infinity) - (b.number ?? Infinity);
 }
+
+/**
+ * "Tag" a card based on rarity and subtypes. We'll omit some "boring" subtypes and rarities.
+ */
+export function getTcgCardTags(card: TcgCardSlim): string[] {
+  const tags: string[] = ["All cards"];
+
+  if (card.rarity && !/^common$/i.test(card.rarity)) {
+    tags.push(
+      card.rarity === "Rare" ? "Rare" : card.rarity.replace(/rare/i, "").trim(),
+    );
+  }
+
+  if (card.subtypes) {
+    tags.push(
+      ...card.subtypes
+        .split(",")
+        .filter((subtype) => !SUBTYPES_EXCLUDED_FROM_TAGS.includes(subtype))
+        .map((s) => s.trim()),
+    );
+  }
+
+  if (/(ancient|future)/i.test(card.subtypes ?? "")) {
+    tags.push("Paradox");
+  }
+
+  return tags;
+}
+
+const SUBTYPES_EXCLUDED_FROM_TAGS = [
+  "Basic",
+  "Stage 1",
+  "Stage 2",
+  "Supporter",
+  // These will get grouped into Paradox
+  "Future",
+  "Ancient",
+];
