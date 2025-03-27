@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { TypeIcon } from "@/components/TypeIcon";
 import { URLS } from "@/urls";
 import { TYPE_COLORS } from "@/consts";
+import { Check } from "lucide-react";
 
 const typeBadgeVariants = cva(
   "border-1 border-[var(--type-color)] text-[var(--type-color)] transition-shadow duration-150 ring-0 bg-card-background",
@@ -11,7 +12,7 @@ const typeBadgeVariants = cva(
     variants: {
       variant: {
         default:
-          "rounded-lg py-0.5 px-3 flex gap-1.5 z-10 text-sm [&_svg]:w-3 shadow-[1px_1px_0px_var(--type-color)] hover:shadow-[2px_2px_0px_var(--type-color)] focus:shadow-[2px_2px_0px_var(--type-color)]",
+          "rounded-lg py-0.5 px-3 flex items-center gap-1.5 z-10 text-sm [&_svg]:w-3 shadow-[1px_1px_0px_var(--type-color)] hover:shadow-[2px_2px_0px_var(--type-color)] focus:shadow-[2px_2px_0px_var(--type-color)] cursor-pointer",
         efficacy:
           "rounded-lg py-1 px-3 flex gap-1.5 shadow-[1px_1px_0px_var(--type-color)] hover:shadow-[2px_2px_0px_var(--type-color)] focus:shadow-[2px_2px_0px_var(--type-color)] overflow-hidden",
         square:
@@ -21,6 +22,14 @@ const typeBadgeVariants = cva(
         default: "text-md",
         small: "text-sm",
         large: "text-lg [&_svg]:w-5 px-4 py-2 gap-3",
+      },
+      disabled: {
+        // TODO:
+        true: "cursor-not-allowed",
+      },
+      activeState: {
+        active: "",
+        inactive: "opacity-50",
       },
     },
     defaultVariants: {
@@ -37,23 +46,45 @@ export function TypeBadge({
   name,
   displayName,
   factor,
+  isLink = true,
+  activeState,
+  disabled,
   ...props
 }: React.ComponentProps<"a"> & {
   asChild?: boolean;
   name: string;
   displayName: string;
   factor?: number;
+  isLink?: boolean;
 } & VariantProps<typeof typeBadgeVariants>) {
+  const classnames = cn(
+    typeBadgeVariants({ variant, size, className, activeState, disabled }),
+  );
+
+  if (isLink) {
+    return (
+      <a
+        className={classnames}
+        {...props}
+        href={URLS.typeDetail({ name })}
+        // @ts-expect-error this is fine
+        style={{ "--type-color": TYPE_COLORS[name] }}
+      >
+        {getBodyContent()}
+      </a>
+    );
+  }
+
   return (
-    <a
-      className={cn(typeBadgeVariants({ variant, size, className }))}
+    <button
+      className={classnames}
       {...props}
-      href={URLS.typeDetail({ name })}
+      disabled={disabled ?? false}
       // @ts-expect-error this is fine
       style={{ "--type-color": TYPE_COLORS[name] }}
     >
       {getBodyContent()}
-    </a>
+    </button>
   );
 
   function getBodyContent() {
@@ -81,7 +112,8 @@ export function TypeBadge({
     return (
       <Fragment>
         <TypeIcon name={name} />
-        <span>{displayName}</span>
+        <span className="flex-1 text-left">{displayName}</span>
+        {activeState === "active" && <Check className="!w-3" />}
       </Fragment>
     );
   }

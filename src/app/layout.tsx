@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     title: "Grant's Pokémon site.",
     description: "A hobby site to explore Pokémon.",
   },
+  metadataBase: new URL("https://pokemon.gksander.com"),
 };
 
 export const viewport: Viewport = {

@@ -28,7 +28,7 @@ export default async function TypeListingPage() {
     <div className="flex flex-col gap-16">
       <PageTitle>Types</PageTitle>
 
-      <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+      <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
         {allTypes.map((pokeType) => (
           <li key={pokeType.id}>
             <TypeBadge
@@ -39,6 +39,8 @@ export default async function TypeListingPage() {
           </li>
         ))}
       </ul>
+
+      <hr className="border-primary/20" />
 
       <TypeComboSelector
         allPokemon={allPokemon}
