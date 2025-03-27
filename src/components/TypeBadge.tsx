@@ -20,6 +20,7 @@ const typeBadgeVariants = cva(
       size: {
         default: "text-md",
         small: "text-sm",
+        large: "text-lg [&_svg]:w-5 px-4 py-2 gap-3",
       },
     },
     defaultVariants: {
