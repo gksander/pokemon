@@ -58,8 +58,12 @@ export function TypeComboSelector({ allPokemon, allTypes }: Props) {
 
   return (
     <div className="flex flex-col gap-8 isolate">
-      <h2 className="text-2xl">Pokémon with type combos</h2>
-      <div>Select up to two types below to see Pokémon with those types.</div>
+      <div className="flex flex-col gap-2">
+        <h2 className="text-3xl font-medium">Pokémon with type combos</h2>
+        <div className="text-muted-foreground">
+          Select up to two types below to see Pokémon with those types.
+        </div>
+      </div>
       {renderBody()}
     </div>
   );

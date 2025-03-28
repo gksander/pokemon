@@ -26,7 +26,9 @@ export default async function TypeListingPage() {
 
   return (
     <div className="flex flex-col gap-16">
-      <PageTitle>Types</PageTitle>
+      <PageTitle description="Select a type below to view it's details.">
+        Types
+      </PageTitle>
 
       <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
         {allTypes.map((pokeType) => (
