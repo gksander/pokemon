@@ -76,8 +76,8 @@ export async function GET() {
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div
               style={{
-                fontSize: SCALE * 42,
-                color: "#312f2f",
+                fontSize: SCALE * 44,
+                color: "#575454",
                 lineHeight: 0,
               }}
             >
@@ -85,11 +85,11 @@ export async function GET() {
             </div>
             <div
               style={{
-                fontSize: SCALE * 84,
+                fontSize: SCALE * 70,
                 fontWeight: 900,
               }}
             >
-              Grant&#39;s Pokémon.
+              Grant&#39;s Pokémon site
             </div>
           </div>
 
