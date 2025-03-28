@@ -24,7 +24,7 @@ import {
 import { TYPE_COLORS } from "@/consts";
 import { URLS } from "@/urls";
 import type { PokemonSearchItem, TypeSearchItem } from "@/utils/search";
-import { Layers2 } from "lucide-react";
+import { Layers2, Swords, CreditCard, Info } from "lucide-react";
 import { useRouter } from "next/navigation";
 import type { PropsWithChildren } from "react";
 import * as React from "react";
@@ -109,15 +109,42 @@ export function Header({ allPokemon, allTypes }: Props) {
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
 
-          <CommandGroup heading="Types">
+          <CommandGroup heading="Pages">
             <CommandItem
               onSelect={() => {
                 navigateTo(URLS.types());
               }}
             >
-              <Layers2 className="w-4 h-4" />
-              <span>All types</span>
+              <Layers2 className="w-4 h-4 mr-2" />
+              <span>Types</span>
             </CommandItem>
+            <CommandItem
+              onSelect={() => {
+                navigateTo(URLS.moves());
+              }}
+            >
+              <Swords className="w-4 h-4 mr-2" />
+              <span>Moves</span>
+            </CommandItem>
+            <CommandItem
+              onSelect={() => {
+                navigateTo(URLS.cards());
+              }}
+            >
+              <CreditCard className="w-4 h-4 mr-2" />
+              <span>Cards</span>
+            </CommandItem>
+            <CommandItem
+              onSelect={() => {
+                navigateTo(URLS.about());
+              }}
+            >
+              <Info className="w-4 h-4 mr-2" />
+              <span>About</span>
+            </CommandItem>
+          </CommandGroup>
+
+          <CommandGroup heading="Types">
             {allTypes.map((pokeType) => (
               <CommandItem
                 key={pokeType.name}
