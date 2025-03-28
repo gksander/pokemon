@@ -88,7 +88,7 @@ export function TypeComboSelector({ allPokemon, allTypes }: Props) {
 
     setSelectedTypenames((prev) => ({
       ...prev,
-      selected: [typename, ...prev.selected].slice(0, 2),
+      selected: [prev.selected[0], typename],
     }));
   }
 
@@ -136,7 +136,7 @@ export function TypeComboSelector({ allPokemon, allTypes }: Props) {
 
     return (
       <>
-        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2">
+        <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2">
           {allTypes.map((type) => (
             <TypeBadge
               key={type.name}
