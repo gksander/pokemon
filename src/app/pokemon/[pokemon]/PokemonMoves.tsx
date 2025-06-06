@@ -17,6 +17,7 @@ import clsx from "clsx";
 import { groupBy, startCase } from "lodash-es";
 import { ChevronDown } from "lucide-react";
 import { Fragment, PropsWithChildren, useState } from "react";
+import { useSearchParamsState } from "@/utils/useSearchParamsState";
 
 type Props = {
   moveData: PokemonSpeciesDetails["pokemon"]["pokemon_v2_pokemonmove"];
@@ -28,9 +29,10 @@ export function PokemonMoves({ moveData }: Props) {
     groupBy(moveData, (move) => move.pokemon_v2_versiongroup?.name),
   ).filter(([, moves]) => moves.length > 0);
 
-  const [selectedVersion, setSelectedVersion] = useState(
-    movesByVersionGroup[0]?.[0],
-  );
+  const [selectedVersion, setSelectedVersion] = useSearchParamsState({
+    key: "moves-version",
+    defaultValue: movesByVersionGroup[0]?.[0],
+  });
 
   const currentMoves =
     movesByVersionGroup.find(([version]) => version === selectedVersion)?.[1] ??
@@ -112,10 +114,11 @@ export function PokemonMoves({ moveData }: Props) {
       : []),
   ];
 
-  const [isCollapsed, setIsCollapsed] = useState(
-    rows.length > INITIAL_TO_SHOW + THRESHOLD,
-  );
-  const visibleRows = isCollapsed
+  const [isOpen, setIsOpen] = useSearchParamsState({
+    key: "moves-open",
+    defaultValue: rows.length <= INITIAL_TO_SHOW + THRESHOLD,
+  });
+  const visibleRows = !isOpen
     ? rows.slice(0, INITIAL_TO_SHOW + THRESHOLD)
     : rows;
 
@@ -177,14 +180,14 @@ export function PokemonMoves({ moveData }: Props) {
         })}
       </div>
 
-      {isCollapsed && (
+      {!isOpen && (
         <button
           className={clsx(
             "absolute inset-x-0 bottom-0 h-16 cursor-pointer",
             "bg-gradient-to-b from-card-background/70 via-card-background/95 to-card-background font-bold",
             "flex items-center justify-center gap-2",
           )}
-          onClick={() => setIsCollapsed(false)}
+          onClick={() => setIsOpen(true)}
         >
           View all
           <ChevronDown className="w-4 h-4" />
