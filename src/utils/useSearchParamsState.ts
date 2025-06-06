@@ -1,7 +1,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useCallback, useState } from "react";
 
-type Serializable = boolean | string;
+type Serializable = boolean | string | string[];
 
 type Args<T extends Serializable> = {
   key: string;
@@ -48,6 +48,11 @@ function serialize(value: Serializable) {
     return value ? "true" : "false";
   }
 
+  // string[]
+  if (Array.isArray(value)) {
+    return value.join(",");
+  }
+
   return value;
 }
 
@@ -58,6 +63,10 @@ function deserialize(value: string): Serializable {
 
   if (value === "false") {
     return false;
+  }
+
+  if (value.includes(",")) {
+    return value.split(",");
   }
 
   return value;

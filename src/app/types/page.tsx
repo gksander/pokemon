@@ -3,6 +3,7 @@ import { TypeBadge } from "@/components/TypeBadge";
 import { ENGLISH_LANG_ID, EXCLUDED_POKEMON_IDS, MAX_TYPE_ID } from "@/consts";
 import { db } from "@/db";
 import { TypeComboSelector } from "@/app/types/TypeComboSelector";
+import { Suspense } from "react";
 
 export default async function TypeListingPage() {
   const allTypes = await db.pokemon_v2_type.findMany({
@@ -44,13 +45,26 @@ export default async function TypeListingPage() {
 
       <hr className="border-primary/20" />
 
-      <TypeComboSelector
-        allPokemon={allPokemon}
-        allTypes={allTypes.map((t) => ({
-          name: t.name,
-          displayName: t.pokemon_v2_typename[0].name,
-        }))}
-      />
+      <Suspense
+        fallback={
+          <div className="animate-pulse">
+            <div className="h-40 bg-gray-200 rounded mb-8"></div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+              {[...Array(6)].map((_, i) => (
+                <div key={i} className="h-64 bg-gray-200 rounded"></div>
+              ))}
+            </div>
+          </div>
+        }
+      >
+        <TypeComboSelector
+          allPokemon={allPokemon}
+          allTypes={allTypes.map((t) => ({
+            name: t.name,
+            displayName: t.pokemon_v2_typename[0].name,
+          }))}
+        />
+      </Suspense>
     </div>
   );
 }

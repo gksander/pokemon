@@ -1,10 +1,11 @@
 "use client";
 
 import { AllPokemonForTypeSelector } from "@/app/types/page";
-import { Fragment, useState, useEffect } from "react";
-import { TypeBadge } from "@/components/TypeBadge";
 import { PokeCard } from "@/components/PokeCard";
+import { TypeBadge } from "@/components/TypeBadge";
 import { TYPE_COLORS } from "@/consts";
+import { useSearchParamsState } from "@/utils/useSearchParamsState";
+import { Fragment } from "react";
 
 type Props = {
   allPokemon: AllPokemonForTypeSelector;
@@ -12,48 +13,19 @@ type Props = {
 };
 
 export function TypeComboSelector({ allPokemon, allTypes }: Props) {
-  const [selectedTypenames, setSelectedTypenames] = useState<{
-    isHydrated: boolean;
-    selected: string[];
-  }>({
-    isHydrated: false,
-    selected: [],
+  const [selectedTypenames, setSelectedTypenames] = useSearchParamsState({
+    key: "selectedTypenames",
+    defaultValue: allTypes.slice(0, 1).map((t) => t.name),
   });
 
-  // Load from localStorage only once on mount
-  useEffect(() => {
-    const saved = localStorage.getItem("selectedTypenames");
-    if (saved) {
-      setSelectedTypenames({
-        isHydrated: true,
-        selected: JSON.parse(saved),
-      });
-    } else {
-      setSelectedTypenames({
-        isHydrated: true,
-        selected: ["grass"],
-      });
-    }
-  }, []);
-
-  // Save to localStorage whenever selected types change
-  useEffect(() => {
-    if (selectedTypenames.isHydrated) {
-      localStorage.setItem(
-        "selectedTypenames",
-        JSON.stringify(selectedTypenames.selected),
-      );
-    }
-  }, [selectedTypenames.isHydrated, selectedTypenames.selected]);
-
-  const type1 = allTypes.find((t) => t.name === selectedTypenames.selected[0]);
-  const type2 = allTypes.find((t) => t.name === selectedTypenames.selected[1]);
+  const type1 = allTypes.find((t) => t.name === selectedTypenames[0]);
+  const type2 = allTypes.find((t) => t.name === selectedTypenames[1]);
 
   const activePokemon = allPokemon.filter((pokemon) => {
     const pokemonTypes = pokemon.pokemon_v2_pokemontype.map(
       (t) => t.pokemon_v2_type!.name,
     );
-    return selectedTypenames.selected.every((t) => pokemonTypes.includes(t));
+    return selectedTypenames.every((t) => pokemonTypes.includes(t));
   });
 
   return (
@@ -70,8 +42,8 @@ export function TypeComboSelector({ allPokemon, allTypes }: Props) {
 
   function canSelect(typename: string) {
     // If already selected, can only toggle off another type selected
-    if (selectedTypenames.selected.includes(typename)) {
-      return selectedTypenames.selected.length > 1;
+    if (selectedTypenames.includes(typename)) {
+      return selectedTypenames.length > 1;
     }
 
     return true;
@@ -79,17 +51,13 @@ export function TypeComboSelector({ allPokemon, allTypes }: Props) {
 
   function handleClick(typename: string) {
     // If already selected, remove it out of the list
-    if (selectedTypenames.selected.includes(typename)) {
-      return setSelectedTypenames((prev) => ({
-        ...prev,
-        selected: prev.selected.filter((name) => name !== typename),
-      }));
+    if (selectedTypenames.includes(typename)) {
+      return setSelectedTypenames([
+        ...selectedTypenames.filter((name) => name !== typename),
+      ]);
     }
 
-    setSelectedTypenames((prev) => ({
-      ...prev,
-      selected: [prev.selected[0], typename],
-    }));
+    return setSelectedTypenames([selectedTypenames[0], typename]);
   }
 
   function renderDescription() {
@@ -121,19 +89,6 @@ export function TypeComboSelector({ allPokemon, allTypes }: Props) {
   }
 
   function renderBody() {
-    if (!selectedTypenames.isHydrated) {
-      return (
-        <div className="animate-pulse">
-          <div className="h-40 bg-gray-200 rounded mb-8"></div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {[...Array(6)].map((_, i) => (
-              <div key={i} className="h-64 bg-gray-200 rounded"></div>
-            ))}
-          </div>
-        </div>
-      );
-    }
-
     return (
       <>
         <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2">
@@ -147,9 +102,7 @@ export function TypeComboSelector({ allPokemon, allTypes }: Props) {
               disabled={!canSelect(type.name)}
               isLink={false}
               activeState={
-                selectedTypenames.selected.includes(type.name)
-                  ? "active"
-                  : "inactive"
+                selectedTypenames.includes(type.name) ? "active" : "inactive"
               }
             />
           ))}
