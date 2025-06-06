@@ -1,7 +1,7 @@
 "use client";
 
-import { DetailSection } from "@/components/DetailSection";
 import { AppLink } from "@/components/AppLink";
+import { DetailSection } from "@/components/DetailSection";
 import {
   Select,
   SelectContent,
@@ -12,12 +12,12 @@ import {
 } from "@/components/ui/select";
 import { LEVEL_UP_LEARN_METHOD_ID, TM_LEARN_METHOD_ID } from "@/consts";
 import type { PokemonSpeciesDetails } from "@/utils/getPokemonDetails.ts";
+import { useSearchParamsState } from "@/utils/useSearchParamsState";
 import { SelectGroup } from "@radix-ui/react-select";
 import clsx from "clsx";
 import { groupBy, startCase } from "lodash-es";
 import { ChevronDown } from "lucide-react";
-import { Fragment, PropsWithChildren, useState } from "react";
-import { useSearchParamsState } from "@/utils/useSearchParamsState";
+import { Fragment, PropsWithChildren } from "react";
 
 type Props = {
   moveData: PokemonSpeciesDetails["pokemon"]["pokemon_v2_pokemonmove"];

@@ -16,6 +16,10 @@ I built this for my kids and to have fun. The gist:
 
 I claim no intellectual rights to any of the data or imagery used to build this site. I'm in no way affiliated with Pokemon company. There are no commercial intents here, simply building something cool around something I like (Pokemon).
 
+## TODO
+
+- [ ] Better suspense fallbacks for moves/cards
+
 ## Things I might build
 
 - [ ] OG images

@@ -1,12 +1,13 @@
 "use client";
 
+import { CardCarousel, CardCarouselHandle } from "@/components/CardCarousel";
 import { DetailSection } from "@/components/DetailSection";
 import { type TcgCard } from "@/utils/getPokemonDetails";
+import { TCG_ASPECT_CLASS } from "@/utils/tcg";
+import { useSearchParamsState } from "@/utils/useSearchParamsState";
 import clsx from "clsx";
 import { ChevronDown } from "lucide-react";
-import { Fragment, useRef, useState } from "react";
-import { TCG_ASPECT_CLASS } from "@/utils/tcg";
-import { CardCarousel, CardCarouselHandle } from "@/components/CardCarousel";
+import { Fragment, useRef } from "react";
 
 export function PokemonTcgCards({
   cards,
@@ -15,12 +16,11 @@ export function PokemonTcgCards({
   cards: TcgCard[];
   speciesName: string;
 }) {
-  const [isSectionCollapsed, setIsSectionCollapsed] = useState(
-    cards.length > COLLAPSED_CARDS_COUNT,
-  );
-  const visibleCards = isSectionCollapsed
-    ? cards.slice(0, COLLAPSED_CARDS_COUNT)
-    : cards;
+  const [isOpen, setIsOpen] = useSearchParamsState({
+    key: "cards-open",
+    defaultValue: cards.length <= COLLAPSED_CARDS_COUNT,
+  });
+  const visibleCards = !isOpen ? cards.slice(0, COLLAPSED_CARDS_COUNT) : cards;
 
   const cardCarouselHandle = useRef<CardCarouselHandle>(null);
 
@@ -62,14 +62,14 @@ export function PokemonTcgCards({
         </div>
 
         {/* This is copy-pasted from PokemonMoves, should probably abstract */}
-        {isSectionCollapsed && (
+        {!isOpen && (
           <button
             className={clsx(
               "absolute inset-x-0 bottom-0 h-16 cursor-pointer",
               "bg-gradient-to-b from-card-background/70 via-card-background/95 to-card-background font-bold",
               "flex items-center justify-center gap-2",
             )}
-            onClick={() => setIsSectionCollapsed(false)}
+            onClick={() => setIsOpen(true)}
           >
             View all
             <ChevronDown className="w-4 h-4" />

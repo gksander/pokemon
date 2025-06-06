@@ -17,7 +17,7 @@ import { sumBy } from "lodash-es";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { Fragment } from "react";
+import { Fragment, Suspense } from "react";
 import { SubsectionTitle } from "@/components/SubsectionTitle";
 import { PokemonTcgCards } from "@/app/pokemon/[pokemon]/PokemonTcgCards";
 
@@ -197,10 +197,14 @@ export default async function PokemonDetailPage({
           )}
         </DetailSection>
 
-        <PokemonMoves moveData={details.pokemon.pokemon_v2_pokemonmove} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <PokemonMoves moveData={details.pokemon.pokemon_v2_pokemonmove} />
+        </Suspense>
 
         {tcgCards.length > 0 && (
-          <PokemonTcgCards cards={tcgCards} speciesName={displayName} />
+          <Suspense fallback={<div>Loading...</div>}>
+            <PokemonTcgCards cards={tcgCards} speciesName={displayName} />
+          </Suspense>
         )}
       </div>
 
