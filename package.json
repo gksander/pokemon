@@ -11,7 +11,8 @@
     "db:generate": "prisma generate --schema=./data/schema.prisma",
     "images:scrape": "node scripts/scrape-images.ts",
     "images:resize": "node scripts/resize-pokemon-images.ts",
-    "generate:data": "node scripts/generateData.ts"
+    "generate:data": "node scripts/generateData.ts",
+    "pull:cards": "node scripts/pull-cards.ts"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",
