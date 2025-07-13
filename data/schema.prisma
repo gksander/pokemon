@@ -1589,9 +1589,9 @@ model pokemon_v2_pokemon {
   height                        Int?
   weight                        Int?
   base_experience               Int?
-  is_default                    Unsupported("bool")
   pokemon_species_id            Int?
   name                          String
+  is_default                    Int?
   pokemon_v2_encounter          pokemon_v2_encounter[]
   pokemon_v2_pokemonspecies     pokemon_v2_pokemonspecies?      @relation(fields: [pokemon_species_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   pokemon_v2_pokemonability     pokemon_v2_pokemonability[]
