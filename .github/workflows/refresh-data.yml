@@ -7,6 +7,9 @@ jobs:
   refresh-data:
     runs-on: ubuntu-latest
 
+    env:
+      GH_TOKEN: ${{ github.token }}
+
     permissions:
       contents: write
 
