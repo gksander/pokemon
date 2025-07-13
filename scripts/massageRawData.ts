@@ -19,31 +19,47 @@ async function main() {
 
   const db = new sqlite3.Database(newFilePath);
 
-  // pokemon_v2_pokemonspecies is_baby column: from bool to int
-  await dbRun(
-    `
-      ALTER TABLE pokemon_v2_pokemonspecies
-      ADD COLUMN is_baby_int INTEGER;
-    `,
-  );
-  await dbRun(
-    `
-      UPDATE pokemon_v2_pokemonspecies
-      SET is_baby_int = CASE WHEN is_baby THEN 1 ELSE 0 END;
-    `,
-  );
-  await dbRun(
-    `
-      ALTER TABLE pokemon_v2_pokemonspecies
-      DROP COLUMN is_baby;
-    `,
-  );
-  await dbRun(
-    `
-      ALTER TABLE pokemon_v2_pokemonspecies
-      RENAME COLUMN is_baby_int TO is_baby;
-    `,
-  );
+  await boolToInt({
+    tableName: "pokemon_v2_pokemon",
+    columnName: "is_default",
+  });
+  await boolToInt({
+    tableName: "pokemon_v2_pokemonspecies",
+    columnName: "is_baby",
+  });
+
+  async function boolToInt({
+    tableName,
+    columnName,
+  }: {
+    tableName: string;
+    columnName: string;
+  }) {
+    await dbRun(
+      `
+        ALTER TABLE ${tableName}
+        ADD COLUMN ${columnName}_int INTEGER;
+      `,
+    );
+    await dbRun(
+      `
+        UPDATE ${tableName}
+        SET ${columnName}_int = CASE WHEN ${columnName} THEN 1 ELSE 0 END;
+      `,
+    );
+    await dbRun(
+      `
+        ALTER TABLE ${tableName}
+        DROP COLUMN ${columnName};
+      `,
+    );
+    await dbRun(
+      `
+        ALTER TABLE ${tableName}
+        RENAME COLUMN ${columnName}_int TO ${columnName};
+      `,
+    );
+  }
 
   // Promisify db.run
   function dbRun(command: string) {
