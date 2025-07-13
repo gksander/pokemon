@@ -19,6 +19,8 @@ I claim no intellectual rights to any of the data or imagery used to build this 
 ## TODO
 
 - [ ] Better suspense fallbacks for moves/cards
+- [ ] Slim up database file as much as possible in `massageRawData.ts`.
+- [ ] Colors into database
 
 ## Things I might build
 

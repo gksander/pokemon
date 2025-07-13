@@ -6,7 +6,7 @@ const BASE_URL =
   "https://api.github.com/repos/PokemonTCG/pokemon-tcg-data/contents";
 
 // To test db schema/pull first round only
-const SHOULD_SHORT_CIRCUIT = true;
+const SHOULD_SHORT_CIRCUIT = false;
 
 const dbLocation = path.resolve(process.cwd(), "data", "pokeapi.sqlite3");
 const db = new sqlite.Database(dbLocation);
