@@ -1589,7 +1589,7 @@ model pokemon_v2_pokemon {
   height                        Int?
   weight                        Int?
   base_experience               Int?
-  is_default                    Int
+  is_default                    Unsupported("bool")
   pokemon_species_id            Int?
   name                          String
   pokemon_v2_encounter          pokemon_v2_encounter[]
@@ -1907,7 +1907,6 @@ model pokemon_v2_pokemonspecies {
   gender_rate                                                                                           Int?
   capture_rate                                                                                          Int?
   base_happiness                                                                                        Int?
-  is_baby                                                                                               Int
   hatch_counter                                                                                         Int?
   has_gender_differences                                                                                Unsupported("bool")
   forms_switchable                                                                                      Unsupported("bool")
@@ -1921,6 +1920,7 @@ model pokemon_v2_pokemonspecies {
   is_mythical                                                                                           Unsupported("bool")
   name                                                                                                  String
   evolves_from_species_id                                                                               Int?
+  is_baby                                                                                               Int?
   pokemon_v2_palpark                                                                                    pokemon_v2_palpark[]
   pokemon_v2_pokemon                                                                                    pokemon_v2_pokemon[]
   pokemon_v2_pokemondexnumber                                                                           pokemon_v2_pokemondexnumber[]

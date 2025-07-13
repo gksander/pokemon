@@ -1,0 +1,52 @@
+name: Refresh data
+
+on:
+  workflow_dispatch:
+
+jobs:
+  refresh-cards:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "23"
+          cache: "yarn"
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      # Pulls data from gksander/pokeapi artifacts. A few assumptions:
+      # - There's a "fresh" run of the `Build` workflow in gksander/pokeapi, e.g. has been run in the last 90 days.
+      # - The workflow artifact is named `pokeapi.sqlite3`, and the database file is named `db.sqlite3` (this is handled upstream in pokeapi).
+      # - We want the raw data to live in `./data/pokeapi-raw.sqlite3`
+      - name: Pull database from GitHub actions artifacts
+        run: |
+          RUN_ID=$(gh run list -L 1 -R gksander/pokeapi --json databaseId -q '.[0].databaseId')
+          gh run download $RUN_ID -R gksander/pokeapi -n pokeapi.sqlite3
+          mv db.sqlite3 ./data/pokeapi-raw.sqlite3
+
+      - name: Massage raw data
+        run: yarn db:massageRawData
+
+      - name: Refresh card data
+        run: yarn refresh:cards
+
+      - name: Update prisma schema
+        run: yarn db:pull
+
+      - name: Test build
+        run: yarn build
+
+      # - uses: stefanzweifel/git-auto-commit-action@v6

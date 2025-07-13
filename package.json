@@ -12,7 +12,9 @@
     "images:scrape": "node scripts/scrape-images.ts",
     "images:resize": "node scripts/resize-pokemon-images.ts",
     "generate:data": "node scripts/generateData.ts",
-    "pull:cards": "node scripts/pull-cards.ts"
+    "pull:database": "TODO: grab raw sqlite file from github",
+    "db:massageRawData": "node ./scripts/massageRawData.ts",
+    "refresh:cards": "node scripts/refreshCardData.ts"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",

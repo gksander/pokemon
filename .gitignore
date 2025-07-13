@@ -42,3 +42,6 @@ next-env.d.ts
 
 # editor
 .idea
+
+# Data
+./data/pokeapi-raw.sqlite3
